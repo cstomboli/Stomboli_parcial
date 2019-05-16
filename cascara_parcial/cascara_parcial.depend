@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1558024781 source:c:\users\maría del carmen\desktop\stomboli\programacion1-clases\cascara_parcial\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+
+1558023340 c:\users\maría del carmen\desktop\stomboli\programacion1-clases\cascara_parcial\utn.h
+
+1558025301 source:c:\users\maría del carmen\desktop\stomboli\programacion1-clases\cascara_parcial\fantasma.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"fantasma.h"
+	"utn.h"
+
+1558025301 c:\users\maría del carmen\desktop\stomboli\programacion1-clases\cascara_parcial\fantasma.h
+
+1558025627 source:c:\users\maría del carmen\desktop\stomboli\programacion1-clases\cascara_parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fantasma.h"
+	"utn.h"
+
