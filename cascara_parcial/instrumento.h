@@ -16,7 +16,7 @@ int ins_empty (Instrumento *instrumentos, int length);
 
 int ins_inicializar(Instrumento* instrumentos, int length);
 
-int ins_alta(Instrumento* instrumentos, char *msgError,int lengthint, int *contador);
+int ins_alta(Instrumento* instrumentos, char *msgError,int lengthint);
 
 
 int ins_lugarLibre (Instrumento* instrumentos, int length, int *posLibre);

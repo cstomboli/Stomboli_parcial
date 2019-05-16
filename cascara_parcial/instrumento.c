@@ -81,13 +81,13 @@ int ins_inicializar(Instrumento* instrumentos, int length)
  * \return  0 si pudo dar de alta, -1 si no pudo.
  *
  */
-int ins_alta(Instrumento* instrumentos, char *msgError,int length, int *contador)
+int ins_alta(Instrumento* instrumentos, char *msgError,int length)
 {
     char bufferName [30];
     int bufferTipo;
     int posLibre;
     int retorno=-1;
-    contador=-1;
+
     if(!ins_lugarLibre(instrumentos,length,&posLibre))
     {
         if(!utn_getName("Ingrese Nombre del instrumento: \n","Invalido, reingrese:\n",2,30,2,bufferName))
@@ -98,7 +98,6 @@ int ins_alta(Instrumento* instrumentos, char *msgError,int length, int *contador
                 instrumentos[posLibre].tipo =bufferTipo;
                 instrumentos[posLibre].IdInstrumento =generarId();
                 instrumentos[posLibre].isEmpty =0;
-                contador++;
                 retorno=0;
 
             }

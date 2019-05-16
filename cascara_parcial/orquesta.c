@@ -169,24 +169,12 @@ int orq_alta(Orquesta* orquestas, char *msgError,int length)
             {
                 if(!utn_getInt("Tipo de Orquesta:\n 1- Sinfonica: \n2- Filarmonica: \n3- Camara","Invalido, reingrese:\n",1,1,2,&bufferTipo))
                 {
-                    if(!utn_getTelefono("Telefono:\n","Invalido, reingrese:\n",4,20,2,bufferTel))
-                    {
-                       if(!utn_getMail("Mail:\n","Invalido, reingrese:\n",8,30,2,bufferMail))
-                       {
-                            if(!utn_fechaNacimiento("Fecha de Nacimiento dd-mm-aaaa sin guiones por favor:\n","Invalido, reingrese:\n",8,15,2,bufferFecha))
-                            {
-                                strncpy(orquestas[posLibre].nombre,bufferName,sizeof(bufferName));
-                                strncpy(orquestas[posLibre].apellido,bufferLastName,sizeof(bufferLastName));
-                                strncpy(orquestas[posLibre].sexo,bufferSexo,sizeof(bufferSexo));
-                                strncpy(orquestas[posLibre].telefono,bufferTel,sizeof(bufferTel));
-                                strncpy(orquestas[posLibre].mail,bufferMail,sizeof(bufferMail));
-                                strncpy(orquestas[posLibre].fechaAorqiado,bufferFecha,sizeof(bufferFecha));
-                                orquestas[posLibre].codigoorqiado=generarId();
-                                orquestas[posLibre].isEmpty=0;
-                                retorno=0;
-                            }
-                        }
-                    }
+                    strncpy(orquestas[posLibre].nombre,bufferName,sizeof(bufferName));
+                    strncpy(orquestas[posLibre].lugar,bufferLugar,sizeof(bufferLugar));
+                    orquestas[posLibre].tipo=bufferTipo;
+                    orquestas[posLibre].IdOrquesta=generarId();
+                    orquestas[posLibre].isEmpty=0;
+                    retorno=0;
                 }
             }
         }
@@ -230,6 +218,8 @@ int orq_lugarLibre (Orquesta* orquestas, int length, int *posLibre)
  * \return  0 si pudo modificar, -1 si no pudo.
  *
  */
+
+ /*
 int orq_modificar (Orquesta* orquestas, int length,int*id)
 {
     int retorno=-1;
@@ -279,7 +269,7 @@ int orq_modificar (Orquesta* orquestas, int length,int*id)
 
 
     return retorno;
-}
+} */
 
 /** \brief  Busca por Id el campo solicitado.
  *
@@ -298,7 +288,7 @@ int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, i
     utn_getInt(msg,msgError,1,3,2,id);
     for(i=0; i<length; i++)
     {
-        if (orquestas[i].codigoorqiado==*id)
+        if (orquestas[i].IdOrquesta==*id)
         {
             retorno=0;
             *id=i;
@@ -350,13 +340,10 @@ int orq_mostrar(Orquesta* orquestas, int length)
     {
         if(orquestas[i].isEmpty==0)
         {
-            printf("\n Codigo de orqio: %d",orquestas[i].codigoorqiado);
-            printf("\n Apellido: %s",orquestas[i].apellido);
+            printf("\n Id de la orquesta: %d",orquestas[i].IdOrquesta);
             printf("\n Nombre: %s",orquestas[i].nombre);
-            printf("\n Sexo: %s",orquestas[i].sexo);
-            printf("\n Telefono: %s", orquestas[i].telefono);
-            printf("\n Mail: %s",orquestas[i].mail);
-            printf("\n Fecha aorqiado: %s\n\n",orquestas[i].fechaAorqiado);
+            printf("\n Lugar: %s",orquestas[i].lugar);
+            printf("\n Tipo: %d", orquestas[i].tipo);
             retorno=0;
         }
     }
@@ -370,6 +357,8 @@ int orq_mostrar(Orquesta* orquestas, int length)
  * \return  -1 si no pudo Ordenar, 0 Si pudo.
  *
  */
+
+ /*
 int orq_ordenar (Orquesta* orquestas,int length)
 {
     int j;
@@ -412,7 +401,7 @@ int orq_ordenar (Orquesta* orquestas,int length)
         }while(flag);
     }return retorno;
 }
-
+ */
 /** \brief La funcion muestra los datos hardcodeados.
  *
  * \param la estructura
@@ -420,6 +409,7 @@ int orq_ordenar (Orquesta* orquestas,int length)
  * \return no retorna nada.
  *
  */
+ /*
 void orq_mock(Orquesta* orquestas, int length,int *contadorId)
 {
     orquestas[0].codigoorqiado =0;
@@ -458,7 +448,7 @@ void orq_mock(Orquesta* orquestas, int length,int *contadorId)
     strcpy(orquestas[3].mail,"catalinamoreno@gmail.com");
     strcpy(orquestas[3].fechaAorqiado,"29-04-2019");
 
-}
+} */
 
 
 #endif // ORQUESTA_C_INCLUDED
