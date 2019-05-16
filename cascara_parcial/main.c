@@ -2,12 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include "fantasma.h"
+#include "instrumento.h"
 #include "utn.h"
 #define FANTASMA 51 ///TAMAÑO DEL
+#define INSTRUMENTOS 20 ///TAMAÑO DEL
 
 int main()
 {
     ///char buffer[30];
+    int buffer;
     char seguir='s';
     int contadorIdfantasma=0;
 
@@ -15,18 +18,22 @@ int main()
     fan_inicializar(list3,FANTASMA);
     fan_mock(list3, FANTASMA, &contadorIdfantasma);
 
+    Instrumento listado [INSTRUMENTOS];
+    ins_inicializar(listado,INSTRUMENTOS);
+
     while(seguir=='s')
     {
-        switch(utn_getInSimple("Ingrese una opcion\n1- Altas: \n2- Modificar: \n3- Baja \n4- Informar \n5- Salir\n"))
+        switch(utn_getInSimple("Ingrese una opcion\n1- Instrumento: \n2- Modificar: \n3- Baja \n4- Informar \n5- Salir\n"))
         {
         case 1:
-                switch(utn_getInSimple("Que desea dar de alta 1-Autor o 2-Libro??\n\n" ))
+                switch(utn_getInSimple("Ingrese una opcion:\n 1- Alta \n 2- Imprimir \n\n" ))
                 {
                     case 1:
-                            if(!fan_alta(list3,"Error",FANTASMA))
+                            if(!ins_alta(listado,"Error",INSTRUMENTOS,&buffer))
                             {
-                                fan_mostrar(list3,FANTASMA);
-                                printf("%s", list3[1].telefono);
+                                printf("Alta correcta");
+                               /// printf("%d", listado[buffer].IdInstrumento);
+                               /// ins_mostrarId(listado,INSTRUMENTOS,buffer);
                             }
 
                         break;

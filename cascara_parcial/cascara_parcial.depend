@@ -24,3 +24,43 @@
 	"fantasma.h"
 	"utn.h"
 
+1558043062 source:d:\stomboli2\stomboli_parcial\cascara_parcial\fantasma.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"fantasma.h"
+	"utn.h"
+
+1558043062 d:\stomboli2\stomboli_parcial\cascara_parcial\fantasma.h
+
+1558043062 d:\stomboli2\stomboli_parcial\cascara_parcial\utn.h
+
+1558046491 source:d:\stomboli2\stomboli_parcial\cascara_parcial\instrumento.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"fantasma.h"
+	"instrumento.h"
+	"utn.h"
+
+1558046369 d:\stomboli2\stomboli_parcial\cascara_parcial\instrumento.h
+
+1558046314 source:d:\stomboli2\stomboli_parcial\cascara_parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fantasma.h"
+	"instrumento.h"
+	"utn.h"
+
+1558043537 source:d:\stomboli2\stomboli_parcial\cascara_parcial\musico.c
+
+1558043537 source:d:\stomboli2\stomboli_parcial\cascara_parcial\orquesta.c
+
+1558043062 source:d:\stomboli2\stomboli_parcial\cascara_parcial\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+
