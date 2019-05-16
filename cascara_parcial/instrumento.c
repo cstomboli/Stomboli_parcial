@@ -8,6 +8,10 @@
 #include "utn.h"
 #define TRUE 1
 #define FALSE 0
+#define CUERDAS 1
+#define VIENTO MADERA 2
+#define VENTO METAL 3
+#define PRECUSION 4
 
 static int generarId(void);
 
@@ -268,7 +272,22 @@ int ins_mostrar(Instrumento* instrumentos, int length)
         {
             printf("\n Id instrumento: %d",instrumentos[i].IdInstrumento);
             printf("\n Nombre: %s",instrumentos[i].nombre);
-            printf("\n Tipo: %d",instrumentos[i].tipo);
+
+            switch(instrumentos[i].tipo)
+            {
+                case 1:
+                    printf("\n Tipo de instrumento Cuerdas");
+                    break;
+                case 2:
+                    printf("\n Tipo de instrumento Viento de Madera");
+                    break;
+                case 3:
+                    printf("\n Tipo de instrumento Viento de Metal");
+                    break;
+                case 4:
+                    printf("\n Tipo de instrumento Percusion");
+                    break;
+            }
             retorno=0;
         }
     }

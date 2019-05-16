@@ -1,10 +1,11 @@
 #ifndef MUSICO_C_INCLUDED
 #define MUSICO_C_INCLUDED
-
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "mustasma.h"
+#include "musico.h"
+#include "instrumento.h"
+#include "orquesta.h"
 #include "utn.h"
 #define TRUE 1
 #define FALSE 0
@@ -148,7 +149,7 @@ int mus_inicializar(Musico* list3, int length)
  * \return  0 si pudo dar de alta, -1 si no pudo.
  *
  */
-int mus_alta(Musico* list3, char *msgError,int length)
+int mus_alta( Musico* list3, char *msgError,int length)
 {
     char bufferName [51];
     char bufferLastName [51];
@@ -174,13 +175,13 @@ int mus_alta(Musico* list3, char *msgError,int length)
                                 ///if(buscar orquesta por id)
                                 strncpy(list3[posLibre].nombre,bufferName,sizeof(bufferName));
                                 strncpy(list3[posLibre].apellido,bufferLastName,sizeof(bufferLastName));
-                                strncpy(list3[posLibre].edad,bufferEdad,sizeof(bufferEdad));
+                                list3[posLibre].edad=bufferEdad;
                                 list3[posLibre].IdOrquesta=bufferIdOrquesta;
-                                list3[posLibre].IdInstrumento=bufferIdInstrumento();
+                                list3[posLibre].IdInstrumento=bufferIdInstrumento;
                                 list3[posLibre].IdMusico=generarId();
                                 list3[posLibre].isEmpty=0;
                                 retorno=0;
-                            }
+
                         }
                     }
                 }
@@ -230,7 +231,7 @@ int mus_modificar (Musico* list3, int length,int*id)
 {
     int retorno=-1;
     int bufferEdad;
-    char bufferLastName [51];
+    int bufferIdOrquesta;
     int bufferId;
 
     char seguir='s';
@@ -243,18 +244,18 @@ int mus_modificar (Musico* list3, int length,int*id)
                 case 1:
                     if(!utn_getInt("Ingrese Edad:\n","Invalido, reingrese:\n",1,100,2,&bufferEdad))
                     {
-                        list3[bufferId].
-                        printf("Nombre modificado correctamente.\n");
+                        list3[bufferId].edad=bufferEdad;
+                        printf("Edad modificado correctamente.\n");
                     }
-                break;
+                    break;
 
                 case 2:
-                    if(!utn_getName("Ingrese Apellido:\n","Invalido, reingrese:\n",2,20,2,bufferLastName))
+                    if(!utn_getInt("Ingrese Id de Orquesta:\n","Invalido, reingrese:\n",1,20,2,&bufferIdOrquesta))
                         {
-                        strncpy(list3[bufferId].apellido,bufferLastName,sizeof(bufferLastName));
-                        printf("Apellido modificado correctamente.\n");
+                            list3[bufferId].IdOrquesta =bufferIdOrquesta;
+                            printf("Id de orquesta modificado correctamente.\n");
                         }
-                break;
+                    break;
 
                 case 3:
                     retorno=0;
@@ -294,7 +295,7 @@ int mus_buscarPorId (Musico* list3,char *msg,char *msgError, int length, int *id
     utn_getInt(msg,msgError,1,3,2,id);
     for(i=0; i<length; i++)
     {
-        if (list3[i].codigomusiado==*id)
+        if (list3[i].IdMusico==*id)
         {
             retorno=0;
             *id=i;
@@ -346,13 +347,13 @@ int mus_mostrar(Musico* list3, int length)
     {
         if(list3[i].isEmpty==0)
         {
-            printf("\n Codigo de musio: %d",list3[i].codigomusiado);
+            printf("\n Codigo de musico: %d",list3[i].IdMusico);
             printf("\n Apellido: %s",list3[i].apellido);
             printf("\n Nombre: %s",list3[i].nombre);
-            printf("\n Sexo: %s",list3[i].sexo);
-            printf("\n Telefono: %s", list3[i].telefono);
-            printf("\n Mail: %s",list3[i].mail);
-            printf("\n Fecha amusiado: %s\n\n",list3[i].fechaAmusiado);
+            printf("\n Edad: %d",list3[i].edad);
+            printf("\n Id Orquesta: %d",list3[i].IdOrquesta);
+            printf("\n Id Instrumento: %d",list3[i].IdInstrumento);
+
             retorno=0;
         }
     }
@@ -416,9 +417,11 @@ int mus_ordenar (Musico* list3,int length)
  * \return no retorna nada.
  *
  */
+
+ /*
 void mus_mock(Musico* list3, int length,int *contadorId)
 {
-    list3[0].codigomusiado =0;
+    list3[0].IdMusico =0;
     list3[0].isEmpty=0;
     strcpy(list3[0].apellido,"Stomboli");
     strcpy(list3[0].nombre,"Carolina");
@@ -455,6 +458,6 @@ void mus_mock(Musico* list3, int length,int *contadorId)
     strcpy(list3[3].fechaAmusiado,"29-04-2019");
 
 }
-
+*/
 
 #endif // MUSICO_C_INCLUDED
