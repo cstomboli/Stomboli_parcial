@@ -1,0 +1,6 @@
+#ifndef MUSICO_C_INCLUDED
+#define MUSICO_C_INCLUDED
+
+
+
+#endif // MUSICO_C_INCLUDED

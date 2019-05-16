@@ -38,8 +38,29 @@
 		<Unit filename="fantasma.h">
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="instrumento.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="instrumento.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="musico.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="musico.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="orquesta.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="orquesta.h">
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
