@@ -25,72 +25,6 @@ static int generarId(void)
     return id++;
 }
 
-/*
-int informar (Musico* list3,int length)
-{
-   int retorno=-1;
-   char seguir='s';
-
-
-    while(seguir=='s')
-    {
-        switch(utn_getInSimple("Ingrese una opcion a Informar\n1- Listado Ordenado por Apellido y Sector: \n2- Salario Total y Promedio: \n3- Salir\n"))
-        {
-            case 1:
-                sortMusico(list3, length);
-                printMusico(list3,length);
-            break;
-
-            case 2:
-                emp_promedio(list3, length);
-            break;
-
-            case 3:
-                retorno=0;
-                seguir= 'n';
-            break;
-        }
-    }
-
-    return retorno;
-}
-
-int mus_promedio (Musico* list3, int length)
-{
-    int i;
-    int retorno = -1;
-    float acumuladorSalary=0;
-    int contadorEmpleados=-1;
-    int contadorEmpleadosQueSuperan=0;
-    float promedio;
-
-    if(list3 != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(list3[i].isEmpty == 0)
-            {
-                acumuladorSalary += list3[i].salary;
-                contadorEmpleados++;
-            }
-        }
-        promedio = acumuladorSalary / contadorEmpleados;
-        for(i=0; i<=length; i++)
-        {
-            if(list3[i].salary >promedio)
-            {
-
-                contadorEmpleadosQueSuperan++;
-            }
-        }
-        printf("El total de los salarios es: %.2f \n",acumuladorSalary);
-        printf("El promedio de los Salarios es: %.2f \n",promedio);
-        printf("Los empleados que superan el salario Promedio Son: %d \n",contadorEmpleadosQueSuperan);
-        retorno = 0;
-    }
-    return retorno;
-}
-*/
 
 /** \brief  Busca si una estructura esta vacia o no.
  *
@@ -149,7 +83,7 @@ int mus_inicializar(Musico* list3, int length)
  * \return  0 si pudo dar de alta, -1 si no pudo.
  *
  */
-int mus_alta( Musico* list3, char *msgError,int length)
+int mus_alta(Orquesta* listado, Instrumento* list2, Musico* list3, char *msgError,int length3, int length2,int length)
 {
     char bufferName [51];
     char bufferLastName [51];
@@ -165,11 +99,12 @@ int mus_alta( Musico* list3, char *msgError,int length)
         {
             if(!utn_getName("Apellido:\n","Invalido, reingrese:\n",2,20,2,bufferLastName))
             {
+
                 if(!utn_getInt("Ingrese Edad:\n","Invalido, reingrese:\n",1,100,2,&bufferEdad))
                 {
-                    if(!utn_getInt("A que Orquesta pertenece:\n1- Sinfonica: \n2- Filarmonica: \n3- Camara","Invalido, reingrese:\n",1,20,2,&bufferIdOrquesta))
+                    if(!orq_buscarPorId(listado,"Ingrese id de la orquesta","Error",length3,&bufferIdOrquesta))
                     {
-                        if(!utn_getInt("Ingrese instrumento:\n","Invalido, reingrese:\n",1,20,2,&bufferIdInstrumento))
+                        if(!ins_buscarPorId(list2,"Ingrese instrumento:\n 1 - \n2 -\n3 -\n4\n","Invalido, reingrese:\n",length2,&bufferIdInstrumento))
 
                        {
                                 ///if(buscar orquesta por id)

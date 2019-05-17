@@ -12,7 +12,6 @@
 #define FILARMONICA 2
 #define CAMARA 3
 
-
 static int generarId(void);
 
 /** \brief  Genera Id.
@@ -28,72 +27,6 @@ static int generarId(void)
     return id++;
 }
 
-/*
-int informar (Orquesta* orquestas,int length)
-{
-   int retorno=-1;
-   char seguir='s';
-
-
-    while(seguir=='s')
-    {
-        switch(utn_getInSimple("Ingrese una opcion a Informar\n1- Listado Ordenado por Apellido y Sector: \n2- Salario Total y Promedio: \n3- Salir\n"))
-        {
-            case 1:
-                sortOrquesta(orquestas, length);
-                printOrquesta(orquestas,length);
-            break;
-
-            case 2:
-                emp_promedio(orquestas, length);
-            break;
-
-            case 3:
-                retorno=0;
-                seguir= 'n';
-            break;
-        }
-    }
-
-    return retorno;
-}
-
-int orq_promedio (Orquesta* orquestas, int length)
-{
-    int i;
-    int retorno = -1;
-    float acumuladorSalary=0;
-    int contadorEmpleados=-1;
-    int contadorEmpleadosQueSuperan=0;
-    float promedio;
-
-    if(orquestas != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(orquestas[i].isEmpty == 0)
-            {
-                acumuladorSalary += orquestas[i].salary;
-                contadorEmpleados++;
-            }
-        }
-        promedio = acumuladorSalary / contadorEmpleados;
-        for(i=0; i<=length; i++)
-        {
-            if(orquestas[i].salary >promedio)
-            {
-
-                contadorEmpleadosQueSuperan++;
-            }
-        }
-        printf("El total de los salarios es: %.2f \n",acumuladorSalary);
-        printf("El promedio de los Salarios es: %.2f \n",promedio);
-        printf("Los empleados que superan el salario Promedio Son: %d \n",contadorEmpleadosQueSuperan);
-        retorno = 0;
-    }
-    return retorno;
-}
-*/
 
 /** \brief  Busca si una estructura esta vacia o no.
  *
@@ -311,10 +244,9 @@ int orq_baja (Orquesta* orquestas, int length)
     int buffer;
     int retorno=-1;
 
-    orq_mostrar(orquestas,length);
-
     if(orq_buscarPorId(orquestas,"\nIngrese Id a dar de baja\n","\nId incorrecto\n",length,&buffer)==0)
     {
+
         orquestas[buffer].isEmpty=2;
         retorno=0;
     }
@@ -343,65 +275,25 @@ int orq_mostrar(Orquesta* orquestas, int length)
             printf("\n Id de la orquesta: %d",orquestas[i].IdOrquesta);
             printf("\n Nombre: %s",orquestas[i].nombre);
             printf("\n Lugar: %s",orquestas[i].lugar);
-            printf("\n Tipo: %d", orquestas[i].tipo);
+
+            switch(orquestas[i].tipo)
+            {
+                case 1:
+                    printf("\n Tipo de Orquesta Sinfonica\n");
+                    break;
+                case 2:
+                    printf("\n Tipo de Orquesta Viento de Filarmonica\n");
+                    break;
+                case 3:
+                    printf("\n Tipo de Orquesta Viento de Camara\n");
+                    break;
+            }
             retorno=0;
         }
     }
     return retorno;
 }
 
-/** \brief Ordena por 2 criterios
- *
- * \param  Recibe la Estructura
- * \param El tamaño de la misma
- * \return  -1 si no pudo Ordenar, 0 Si pudo.
- *
- */
-
- /*
-int orq_ordenar (Orquesta* orquestas,int length)
-{
-    int j;
-    int flag;
-    Orquesta buffer;
-    int retorno=-1;
-
-    if(orquestas != NULL && length>0)
-    {
-        do
-        {
-            flag=0;
-            for(j=0;j<length-1;j++)
-            {
-                if(strcmp(orquestas[j].apellido,orquestas[j+1].apellido)>0)
-                {
-                    buffer=orquestas[j];
-                    orquestas[j]=orquestas[j+1];
-                    orquestas[j+1]=buffer;
-                    flag=1;
-                    retorno=0;
-                    break;
-
-                    for(j=0;j<length-1;j++)
-                    {
-
-                        if(orquestas[j].nombre>orquestas[j+1].nombre)
-                        {
-                        buffer=orquestas[j];
-                        orquestas[j]=orquestas[j+1];
-                        orquestas[j+1]=buffer;
-                        flag=1;
-                        retorno=0;
-                        break;
-                        }
-                    }
-
-                }
-            }
-        }while(flag);
-    }return retorno;
-}
- */
 /** \brief La funcion muestra los datos hardcodeados.
  *
  * \param la estructura
@@ -409,19 +301,15 @@ int orq_ordenar (Orquesta* orquestas,int length)
  * \return no retorna nada.
  *
  */
- /*
-void orq_mock(Orquesta* orquestas, int length,int *contadorId)
+void orq_mock(Orquesta* orquestas, int length)
 {
-    orquestas[0].codigoorqiado =0;
+    orquestas[0].IdOrquesta =0;
+    orquestas[0].tipo =2;
     orquestas[0].isEmpty=0;
-    strcpy(orquestas[0].apellido,"Stomboli");
-    strcpy(orquestas[0].nombre,"Carolina");
-    strcpy(orquestas[0].sexo,"f");
-    strcpy(orquestas[0].telefono,"1521767920");
-    strcpy(orquestas[0].mail,"carostomboli@hotmail.com");
-    strcpy(orquestas[0].fechaAorqiado,"21-03-2018");
+    strcpy(orquestas[0].nombre,"Guitarra");
+    strcpy(orquestas[0].lugar ,"Lomas");
 
-    orquestas[1].codigoorqiado =1;
+    /*    orquestas[1].IdOrquesta =1;
     orquestas[1].isEmpty=0;
     strcpy(orquestas[1].apellido,"Sarubbi");
     strcpy(orquestas[1].nombre,"Maria del carmen");
@@ -430,7 +318,7 @@ void orq_mock(Orquesta* orquestas, int length,int *contadorId)
     strcpy(orquestas[1].mail,"marita.sarubbi@gmail.com");
     strcpy(orquestas[1].fechaAorqiado,"05-02-2017");
 
-    orquestas[2].codigoorqiado =2;
+    orquestas[2].IdOrquesta =2;
     orquestas[2].isEmpty=0;
     strcpy(orquestas[2].apellido,"Faundo");
     strcpy(orquestas[2].nombre,"El hagge");
@@ -447,8 +335,8 @@ void orq_mock(Orquesta* orquestas, int length,int *contadorId)
     strcpy(orquestas[3].telefono,"1533524848");
     strcpy(orquestas[3].mail,"catalinamoreno@gmail.com");
     strcpy(orquestas[3].fechaAorqiado,"29-04-2019");
-
-} */
+    */
+}
 
 
 #endif // ORQUESTA_C_INCLUDED

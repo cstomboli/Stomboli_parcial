@@ -1,5 +1,7 @@
 #ifndef ORQUESTA_H_INCLUDED
 #define ORQUESTA_H_INCLUDED
+#include "instrumento.h"
+#include "orquesta.h"
 
 typedef struct
 {
@@ -22,7 +24,7 @@ int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, i
 int orq_baja (Orquesta* orquestas, int length);
 int orq_mostrar(Orquesta* orquestas, int length);
 int orq_ordenar (Orquesta* orquestas,int length);
-void orq_mock(Orquesta* orquestas, int length,int *contadorId);
+void orq_mock(Orquesta* orquestas, int length);
 
 
 

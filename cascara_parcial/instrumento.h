@@ -29,7 +29,7 @@ int ins_mostrarId(Instrumento* instrumentos, int length, int id);
 
 int ins_mostrar(Instrumento* instrumentos, int length);
 int ins_ordenar (Instrumento* instrumentos,int length);
-void ins_mock(Instrumento* instrumentos, int length,int *contadorId);
+void ins_mock(Instrumento* instrumentos, int length);
 
 
 #endif // INSTRUMENTO_H_INCLUDED

@@ -276,16 +276,16 @@ int ins_mostrar(Instrumento* instrumentos, int length)
             switch(instrumentos[i].tipo)
             {
                 case 1:
-                    printf("\n Tipo de instrumento Cuerdas");
+                    printf("\n Tipo de instrumento: Cuerdas\n");
                     break;
                 case 2:
-                    printf("\n Tipo de instrumento Viento de Madera");
+                    printf("\n Tipo de instrumento: Viento de Madera\n");
                     break;
                 case 3:
-                    printf("\n Tipo de instrumento Viento de Metal");
+                    printf("\n Tipo de instrumento: Viento de Metal\n");
                     break;
                 case 4:
-                    printf("\n Tipo de instrumento Percusion");
+                    printf("\n Tipo de instrumento: Percusion\n");
                     break;
             }
             retorno=0;
@@ -294,57 +294,6 @@ int ins_mostrar(Instrumento* instrumentos, int length)
     return retorno;
 }
 
-/** \brief Ordena por 2 criterios
- *
- * \param  Recibe la Estructura
- * \param El tamaño de la misma
- * \return  -1 si no pudo Ordenar, 0 Si pudo.
- *
- */
-
- /*
-int ins_ordenar (Instrumento* instrumentos,int length)
-{
-    int j;
-    int flag;
-    Instrumento buffer;
-    int retorno=-1;
-
-    if(instrumentos != NULL && length>0)
-    {
-        do
-        {
-            flag=0;
-            for(j=0;j<length-1;j++)
-            {
-                if(strcmp(instrumentos[j].apellido,instrumentos[j+1].apellido)>0)
-                {
-                    buffer=instrumentos[j];
-                    instrumentos[j]=instrumentos[j+1];
-                    instrumentos[j+1]=buffer;
-                    flag=1;
-                    retorno=0;
-                    break;
-
-                    for(j=0;j<length-1;j++)
-                    {
-
-                        if(instrumentos[j].nombre>instrumentos[j+1].nombre)
-                        {
-                        buffer=instrumentos[j];
-                        instrumentos[j]=instrumentos[j+1];
-                        instrumentos[j+1]=buffer;
-                        flag=1;
-                        retorno=0;
-                        break;
-                        }
-                    }
-
-                }
-            }
-        }while(flag);
-    }return retorno;
-}   */
 
 /** \brief La funcion muestra los datos hardcodeados.
  *
@@ -354,18 +303,15 @@ int ins_ordenar (Instrumento* instrumentos,int length)
  *
  */
 
- /*
-void ins_mock(Instrumento* instrumentos, int length,int *contadorId)
-{
-    instrumentos[0].codigoinsiado =0;
-    instrumentos[0].isEmpty=0;
-    strcpy(instrumentos[0].apellido,"Stomboli");
-    strcpy(instrumentos[0].nombre,"Carolina");
-    strcpy(instrumentos[0].sexo,"f");
-    strcpy(instrumentos[0].telefono,"1521767920");
-    strcpy(instrumentos[0].mail,"carostomboli@hotmail.com");
-    strcpy(instrumentos[0].fechaAinsiado,"21-03-2018");
 
+void ins_mock(Instrumento* instrumentos, int length)
+{
+    instrumentos[0].IdInstrumento =0;
+    instrumentos[0].tipo =2;
+    instrumentos[0].isEmpty=0;
+    strcpy(instrumentos[0].nombre,"Guitarra");
+
+    /*
     instrumentos[1].codigoinsiado =1;
     instrumentos[1].isEmpty=0;
     strcpy(instrumentos[1].apellido,"Sarubbi");
@@ -392,8 +338,8 @@ void ins_mock(Instrumento* instrumentos, int length,int *contadorId)
     strcpy(instrumentos[3].telefono,"1533524848");
     strcpy(instrumentos[3].mail,"catalinamoreno@gmail.com");
     strcpy(instrumentos[3].fechaAinsiado,"29-04-2019");
-
-}
 */
+}
+
 
 #endif // INSTRUMENTO_C_INCLUDED

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "fantasma.h"
 #include "instrumento.h"
 #include "orquesta.h"
 #include "musico.h"
@@ -49,7 +48,7 @@ int main()
                 break;
 
             case 2:
-                switch(utn_getInSimple("\nMENU ORQUESTA\n: 1- Alta \n 2- Baja\n\n" ))
+                switch(utn_getInSimple("\nMENU ORQUESTA\n: 1- Alta \n 2- Baja 3- Mostrar\n\n" ))
                 {
                     case 1:
                         if(!orq_lugarLibre(list2,ORQUESTA,&buffer))
@@ -60,8 +59,19 @@ int main()
                             }
                         }
                         break;
-                    case 2:
 
+                    case 2:
+                        if(!orq_baja(list2,ORQUESTA))
+                        {
+
+                        }
+                        break;
+                        case 3:
+                        if(!orq_mostrar(list2,ORQUESTA))
+                        {
+
+
+                        }
                         break;
                 }
                 break;
@@ -72,7 +82,7 @@ int main()
                         case 1:
                             if(!mus_lugarLibre(listado3,MUSICOS,&buffer))
                             {
-                                if(!mus_alta(listado3,"Error",MUSICOS))
+                                if(!mus_alta(list2,listado,listado3,"Error",ORQUESTA,INSTRUMENTOS,MUSICOS))
                                 {
                                     printf("\nAlta correcta Id Musico: %d\n", listado3[buffer].IdMusico);
                                 }
@@ -99,6 +109,7 @@ int main()
                 seguir= 'n';
                 break;
         }
-    }
+      }
+
     return 0;
 }
