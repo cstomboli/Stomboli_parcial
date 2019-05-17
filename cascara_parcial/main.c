@@ -16,7 +16,6 @@ int main()
     ///char buffer[30];
     int buffer;
     char seguir='s';
-    int contadorIdfantasma=0;
 
     Instrumento listado [INSTRUMENTOS];
     ins_inicializar(listado,INSTRUMENTOS);
@@ -29,7 +28,7 @@ int main()
 
     while(seguir=='s')
     {
-        switch(utn_getInSimple("Ingrese una opcion\n1- Instrumentos: \n2- Orquesta: \n3- Musico \n4- Informar \n5- Salir\n"))
+        switch(utn_getInSimple("Ingrese una opcion\n1- Instrumentos: \n2- Orquesta: \n3- Musico \n4- Salir\n"))
         {
             case 1:
                 switch(utn_getInSimple("Ingrese una opcion:\n 1- Alta \n 2- Imprimir \n\n" ))
@@ -71,16 +70,29 @@ int main()
                     switch(utn_getInSimple("\nMENU MUSICO\n: 1- Alta\n 2-Modificar\n 3- Baja\n 4-Imprimir \n" ))
                     {
                         case 1:
-                        if(!mus_lugarLibre(list3,MUSICOS,&buffer))
-                        {
-                            if(!mus_alta(list3,"Error",MUSICOS))
+                            if(!mus_lugarLibre(listado3,MUSICOS,&buffer))
                             {
-                                printf("\nAlta correcta Id Musico: %d\n", list3[buffer].IdMusico);
+                                if(!mus_alta(listado3,"Error",MUSICOS))
+                                {
+                                    printf("\nAlta correcta Id Musico: %d\n", listado3[buffer].IdMusico);
+                                }
                             }
-                        }
-                        break;
-                    case 2:
-                     break;
+                            break;
+                        case 2:
+                            if(!mus_modificar(listado3,MUSICOS,&buffer))
+                            {
+                                printf("Modificado correctamente");
+                            }
+                            break;
+                        case 3:
+                            if(!mus_baja(listado3,MUSICOS))
+                            {
+                                printf("Eliminado correctamente");
+                            }
+                            break;
+                        case 4:
+                            mus_mostrar(listado3,MUSICOS);
+                            break;
                     }
 
                 case 4:

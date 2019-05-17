@@ -167,7 +167,7 @@ int orq_alta(Orquesta* orquestas, char *msgError,int length)
         {
             if(!utn_getName("Lugar de la orquesta:\n","Invalido, reingrese:\n",4,20,2,bufferLugar))
             {
-                if(!utn_getInt("Tipo de Orquesta:\n 1- Sinfonica: \n2- Filarmonica: \n3- Camara","Invalido, reingrese:\n",1,1,2,&bufferTipo))
+                if(!utn_getInt("Tipo de Orquesta:\n 1- Sinfonica: \n2- Filarmonica: \n3- Camara""Invalido, reingrese:\n","Error",1,3,2,&bufferTipo))
                 {
                     strncpy(orquestas[posLibre].nombre,bufferName,sizeof(bufferName));
                     strncpy(orquestas[posLibre].lugar,bufferLugar,sizeof(bufferLugar));
