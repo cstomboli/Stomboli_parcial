@@ -21,7 +21,11 @@ int orq_alta(Orquesta* orquestas, char *msgError,int length);
 int orq_lugarLibre (Orquesta* orquestas, int length, int *posLibre);
 int orq_modificar (Orquesta* orquestas, int length,int*id);
 int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, int *id);
-int orq_baja (Orquesta* orquestas, int length);
+
+int orq_buscarPorIdParaBaja (Orquesta* orquestas, int length, int *id);
+
+
+int orq_baja (Orquesta* orquestas, int length,int *id);
 int orq_mostrar(Orquesta* orquestas, int length);
 int orq_ordenar (Orquesta* orquestas,int length);
 void orq_mock(Orquesta* orquestas, int length);

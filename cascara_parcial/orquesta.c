@@ -100,7 +100,7 @@ int orq_alta(Orquesta* orquestas, char *msgError,int length)
         {
             if(!utn_getName("Lugar de la orquesta:\n","Invalido, reingrese:\n",4,20,2,bufferLugar))
             {
-                if(!utn_getInt("Tipo de Orquesta:\n 1- Sinfonica: \n2- Filarmonica: \n3- Camara""Invalido, reingrese:\n","Error",1,3,2,&bufferTipo))
+                if(!utn_getInt("Tipo de Orquesta:\n1- Sinfonica: \n2- Filarmonica: \n3- Camara: \n","Error",1,3,2,&bufferTipo))
                 {
                     strncpy(orquestas[posLibre].nombre,bufferName,sizeof(bufferName));
                     strncpy(orquestas[posLibre].lugar,bufferLugar,sizeof(bufferLugar));
@@ -214,11 +214,12 @@ int orq_modificar (Orquesta* orquestas, int length,int*id)
  * \return  0 si lo encontro, -1 si no.
  *
  */
-int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, int *id)
+
+ int orq_buscarPorIdSimple (Orquesta* orquestas,char *msg,char *msgError, int length, int *id)
 {
     int retorno=-1;
     int i;
-    utn_getInt(msg,msgError,1,3,2,id);
+    utn_getInt(msg,msgError,1,length,2,id);
     for(i=0; i<length; i++)
     {
         if (orquestas[i].IdOrquesta==*id)
@@ -232,6 +233,42 @@ int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, i
     return retorno;
 }
 
+int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, int *id)
+{
+    int retorno=-1;
+    int i;
+    utn_getInt(msg,msgError,1,3,2,id);
+    for(i=0; i<length; i++)
+    {
+        if (orquestas[i].IdOrquesta==*id)
+        {
+            retorno=0;
+            *id=i;
+             break;
+             printf("El id ingresado es de4 la orquesta %s",orquestas[i].nombre);
+        }
+    }
+
+    return retorno;
+}
+/*
+int orq_buscarPorIdParaBaja (Orquesta* orquestas, int length, int *id)
+{
+    int retorno=-1;
+    int i;
+    for(i=0; i<length; i++)
+    {
+        if (orquestas[i].IdOrquesta==*id)
+        {
+            retorno=0;
+            *id=i;
+             break;
+        }
+    }
+
+    return retorno;
+}
+*/
 /** \brief  Da de baja el campo solicitado.
  *
  * \param   Recibe la Estructura
@@ -239,15 +276,14 @@ int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, i
  * \return  0 si pudo dar de baja, -1 si no pudo.
  *
  */
-int orq_baja (Orquesta* orquestas, int length)
+int orq_baja (Orquesta* orquestas, int length, int *id)
 {
-    int buffer;
     int retorno=-1;
 
-    if(orq_buscarPorId(orquestas,"\nIngrese Id a dar de baja\n","\nId incorrecto\n",length,&buffer)==0)
+    if(orq_buscarPorId(orquestas,"ingre","e",length,id)==0)
     {
 
-        orquestas[buffer].isEmpty=2;
+        orquestas[*id].isEmpty=2;
         retorno=0;
     }
     else
@@ -289,7 +325,9 @@ int orq_mostrar(Orquesta* orquestas, int length)
                     break;
             }
             retorno=0;
+
         }
+
     }
     return retorno;
 }
@@ -306,18 +344,15 @@ void orq_mock(Orquesta* orquestas, int length)
     orquestas[0].IdOrquesta =0;
     orquestas[0].tipo =2;
     orquestas[0].isEmpty=0;
-    strcpy(orquestas[0].nombre,"Guitarra");
+    strcpy(orquestas[0].nombre,"Orquesta 1");
     strcpy(orquestas[0].lugar ,"Lomas");
 
-    /*    orquestas[1].IdOrquesta =1;
+    orquestas[1].IdOrquesta =1;
+    orquestas[1].tipo =3;
     orquestas[1].isEmpty=0;
-    strcpy(orquestas[1].apellido,"Sarubbi");
-    strcpy(orquestas[1].nombre,"Maria del carmen");
-    strcpy(orquestas[1].sexo,"f");
-    strcpy(orquestas[1].telefono,"4243-3403");
-    strcpy(orquestas[1].mail,"marita.sarubbi@gmail.com");
-    strcpy(orquestas[1].fechaAorqiado,"05-02-2017");
-
+    strcpy(orquestas[1].nombre,"Orquesta 2");
+    strcpy(orquestas[1].lugar,"Banfield");
+/*
     orquestas[2].IdOrquesta =2;
     orquestas[2].isEmpty=0;
     strcpy(orquestas[2].apellido,"Faundo");

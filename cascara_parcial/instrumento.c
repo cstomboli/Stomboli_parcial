@@ -270,22 +270,22 @@ int ins_mostrar(Instrumento* instrumentos, int length)
     {
         if(instrumentos[i].isEmpty==0)
         {
-            printf("\n Id instrumento: %d",instrumentos[i].IdInstrumento);
-            printf("\n Nombre: %s",instrumentos[i].nombre);
+            printf("\nId instrumento: %d",instrumentos[i].IdInstrumento);
+            printf("\nNombre: %s",instrumentos[i].nombre);
 
             switch(instrumentos[i].tipo)
             {
                 case 1:
-                    printf("\n Tipo de instrumento: Cuerdas\n");
+                    printf("\nTipo de instrumento: Cuerdas\n");
                     break;
                 case 2:
-                    printf("\n Tipo de instrumento: Viento de Madera\n");
+                    printf("\nTipo de instrumento: Viento de Madera\n");
                     break;
                 case 3:
-                    printf("\n Tipo de instrumento: Viento de Metal\n");
+                    printf("\nTipo de instrumento: Viento de Metal\n");
                     break;
                 case 4:
-                    printf("\n Tipo de instrumento: Percusion\n");
+                    printf("\nTipo de instrumento: Percusion\n");
                     break;
             }
             retorno=0;

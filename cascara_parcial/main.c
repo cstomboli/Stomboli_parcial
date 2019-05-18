@@ -7,7 +7,7 @@
 #include "utn.h"
 #define FANTASMA 51 ///TAMAÑO DEL
 #define INSTRUMENTOS 20 ///TAMAÑO DEL
-#define ORQUESTA 50 ///TAMAÑO DEL
+#define ORQUESTA 3 ///TAMAÑO DEL
 #define MUSICOS 1000 ///TAMAÑO DEL
 
 int main()
@@ -18,19 +18,22 @@ int main()
 
     Instrumento listado [INSTRUMENTOS];
     ins_inicializar(listado,INSTRUMENTOS);
+    ins_mock(listado,INSTRUMENTOS);
 
     Orquesta list2 [ORQUESTA];
     orq_inicializar(list2,ORQUESTA);
+    orq_mock(list2,ORQUESTA);
 
     Musico listado3 [MUSICOS];
     mus_inicializar(listado3,MUSICOS);
+   mus_mock(listado3,MUSICOS);
 
     while(seguir=='s')
     {
-        switch(utn_getInSimple("Ingrese una opcion\n1- Instrumentos: \n2- Orquesta: \n3- Musico \n4- Salir\n"))
+        switch(utn_getInSimple("\nIngrese una opcion\n1- Instrumentos: \n2- Orquesta: \n3- Musico \n4- Salir\n"))
         {
             case 1:
-                switch(utn_getInSimple("Ingrese una opcion:\n 1- Alta \n 2- Imprimir \n\n" ))
+                switch(utn_getInSimple("Ingrese una opcion:\n1- Alta \n2- Imprimir \n\n" ))
                 {
                     case 1:
                         if(!ins_lugarLibre(listado,INSTRUMENTOS,&buffer))
@@ -48,7 +51,7 @@ int main()
                 break;
 
             case 2:
-                switch(utn_getInSimple("\nMENU ORQUESTA\n: 1- Alta \n 2- Baja 3- Mostrar\n\n" ))
+                switch(utn_getInSimple("\nMENU ORQUESTA:\n 1- Alta \n 2- Baja \n 3- Mostrar \n 4- Volver\n\n" ))
                 {
                     case 1:
                         if(!orq_lugarLibre(list2,ORQUESTA,&buffer))
@@ -61,23 +64,31 @@ int main()
                         break;
 
                     case 2:
-                        if(!orq_baja(list2,ORQUESTA))
+                        if(!orq_baja(list2,ORQUESTA,&buffer))
                         {
 
+                            mus_bajaPorOrquesta(listado3,MUSICOS,&buffer);
                         }
                         break;
                         case 3:
                         if(!orq_mostrar(list2,ORQUESTA))
                         {
 
-
+                        }
+                        else
+                        {
+                            printf("No hay ninguna orquesta cargada");
+                            break;
                         }
                         break;
+                        case 4:
+                            orq_buscarPorId(list2,"i","e",ORQUESTA,&buffer);
+                            printf("%d",buffer);
                 }
                 break;
 
                 case 3:
-                    switch(utn_getInSimple("\nMENU MUSICO\n: 1- Alta\n 2-Modificar\n 3- Baja\n 4-Imprimir \n" ))
+                    switch(utn_getInSimple("\nMENU MUSICO:\n 1- Alta\n 2- Modificar\n 3- Baja\n 4- Imprimir \n" ))
                     {
                         case 1:
                             if(!mus_lugarLibre(listado3,MUSICOS,&buffer))
@@ -99,11 +110,23 @@ int main()
                             {
                                 printf("Eliminado correctamente");
                             }
+                            else
+                            {
+                                printf("No hay musicos cargados.");
+                            }
                             break;
                         case 4:
-                            mus_mostrar(listado3,MUSICOS);
+                            if(!mus_mostrar(listado3,MUSICOS))
+                            {
+
+                            }
+                            else
+                            {
+                                printf("no hay m");
+                            }
                             break;
                     }
+                    break;
 
                 case 4:
                 seguir= 'n';
