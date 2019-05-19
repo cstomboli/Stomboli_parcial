@@ -13,7 +13,6 @@
 
 int main()
 {
-    ///char buffer[30];
     int buffer;
     char seguir='s';
 
@@ -35,109 +34,40 @@ int main()
 
     while(seguir=='s')
     {
-        switch(utn_getInSimple("\n\nIngrese una opcion\n1- Instrumentos: \n2- Orquesta: \n3- Musico \n4- Salir\n"))
+        switch(utn_getInSimple("\nIngrese una opcion\n1-Agregar Orquesta: \n2-Eliminar Orquesta: \n3-Listar Orquesta: \n4-Agregar Musico: \n5-Modificar Musico: \n6-Eliminar Musico: \n7-Imprimir Musicos: \n8-Agregar Instrumento: \n9-Agregar Instrumento: \n10-Salir\n"))
         {
             case 1:
-                switch(utn_getInSimple("Ingrese una opcion:\n1- Alta \n2- Imprimir \n\n" ))
-                {
-                    case 1:
-                        if(!ins_lugarLibre(listado,INSTRUMENTOS,&buffer))
-                        {
-                            if(!ins_alta(listado,"Error",INSTRUMENTOS))
-                            {
-                                    printf("\nAlta correcta Id Instrumento: %d\n", listado[buffer].IdInstrumento);
-                            }
-                        }
-                        break;
-                    case 2:
-                        ins_mostrar(listado,INSTRUMENTOS);
-                        break;
-                }
+                orq_alta(list2,"Error",ORQUESTA);
                 break;
-
             case 2:
-                switch(utn_getInSimple("\nMENU ORQUESTA:\n 1- Alta \n 2- Eliminar \n 3- Mostrar \n 4- Volver\n\n" ))
+                if(!orq_baja(list2,ORQUESTA,&buffer))
                 {
-                    case 1:
-                        if(!orq_lugarLibre(list2,ORQUESTA,&buffer))
-                        {
-                            if(!orq_alta(list2,"Error",ORQUESTA))
-                            {
-                                printf("\nAlta correcta Id Orquesta: %d\n", list2[buffer].IdOrquesta);
-                            }
-                        }
-                        break;
-
-                    case 2:
-                        if(!orq_baja(list2,ORQUESTA,&buffer))
-                        {
-                            mus_bajaPorOrquesta(listado3,MUSICOS,&buffer);
-                            printf("Orquesta y musicos eliminados correctamente.");
-                        }
-                        break;
-                    case 3:
-                        if(!orq_mostrar(list2,ORQUESTA))
-                        {
-                        }
-                        else
-                        {
-                            printf("No hay ninguna orquesta cargada");
-                            break;
-                        }
-                        break;
-
+                    mus_bajaPorOrquesta(listado3,MUSICOS,&buffer);
+                    printf("Orquesta y musicos eliminados correctamente.");
                 }
                 break;
-
             case 3:
-                switch(utn_getInSimple("\nMENU MUSICO:\n 1- Alta\n 2- Modificar\n 3- Eliminar\n 4- Imprimir \n5- Ordenar\n" ))
-                {
-                    case 1:
-                        if(!mus_lugarLibre(listado3,MUSICOS,&buffer))
-                        {
-                            if(!mus_alta(list2,listado,listado3,"Error",ORQUESTA,INSTRUMENTOS,MUSICOS))
-                            {
-                                printf("\nAlta correcta Id Musico: %d\n", listado3[buffer].IdMusico);
-                            }
-                        }
-                        break;
-                    case 2:
-                        if(!mus_modificar(listado,listado3,MUSICOS,INSTRUMENTOS,&buffer))
-                        {
-                            printf("Modificado correctamente");
-                        }
-                        break;
-                    case 3:
-                        if(!mus_baja(listado,listado3,MUSICOS,INSTRUMENTOS))
-                        {
-                            printf("Eliminado correctamente");
-                        }
-                        else
-                        {
-                            printf("No hay musicos cargados.");
-                        }
-                        break;
-                    case 4:
-                        if(!mus_mostrar(listado,listado3,MUSICOS,INSTRUMENTOS))
-                        {
-
-                        }
-                        else
-                        {
-                            printf("No hay musicos cargados");
-                        }
-                        break;
-                    case 5:
-                        if(!mus_ordenar(listado3,MUSICOS))
-                        {
-
-                        }
-
-                        ///ins_cantidad(listado,INSTRUMENTOS);
-                }
+                orq_mostrar(list2,ORQUESTA);
                 break;
-
             case 4:
+                mus_alta(list2,listado,listado3,"Error",ORQUESTA,INSTRUMENTOS,MUSICOS);
+                break;
+            case 5:
+                mus_modificar(listado,listado3,MUSICOS,INSTRUMENTOS,&buffer);
+                break;
+            case 6:
+                mus_baja(listado,listado3,MUSICOS,INSTRUMENTOS);
+                break;
+            case 7:
+                mus_mostrar(listado,listado3,MUSICOS,INSTRUMENTOS);
+                break;
+            case 8:
+                ins_alta(listado,"Error",INSTRUMENTOS);
+                break;
+            case 9:
+                ins_mostrar(listado,INSTRUMENTOS);
+                break;
+            case 10:
             seguir= 'n';
             break;
 
@@ -145,6 +75,6 @@ int main()
                 printf("Opcion invalida");
                 break;
         }
-      }
+    }
     return 0;
 }

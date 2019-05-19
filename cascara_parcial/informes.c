@@ -151,7 +151,7 @@ int mus_cantidad (Musico* list3, int length)
 int mus_ordenar (Musico* list3,int length)
 {
     int j;
-    int i;
+    ///int i;
     int flag;
     Musico buffer;
     int retorno=-1;

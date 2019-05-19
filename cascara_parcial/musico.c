@@ -115,6 +115,7 @@ int mus_alta(Orquesta* listado, Instrumento* list2, Musico* list3, char *msgErro
                                 list3[posLibre].IdMusico=generarId();
                                 list3[posLibre].isEmpty=0;
                                 retorno=0;
+                                printf("\nAlta correcta Id Musico: %d\n", list3[posLibre].IdMusico);
 
                         }
                     }
@@ -244,6 +245,7 @@ int mus_baja (Instrumento* instrumentos,Musico* list3, int length, int lengthIns
     {
         list3[buffer].isEmpty=2;
         retorno=0;
+        printf("Musico Eliminado correctamente");
     }
     else
     {

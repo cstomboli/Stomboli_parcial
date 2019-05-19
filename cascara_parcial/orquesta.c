@@ -108,6 +108,7 @@ int orq_alta(Orquesta* orquestas, char *msgError,int length)
                     orquestas[posLibre].IdOrquesta=generarId();
                     orquestas[posLibre].isEmpty=0;
                     retorno=0;
+                    printf("\nAlta correcta Id Orquesta: %d\n", orquestas[posLibre].IdOrquesta);
                 }
             }
         }

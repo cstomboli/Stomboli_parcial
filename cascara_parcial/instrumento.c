@@ -104,6 +104,7 @@ int ins_alta(Instrumento* instrumentos, char *msgError,int length)
                 instrumentos[posLibre].IdInstrumento =generarId();
                 instrumentos[posLibre].isEmpty =0;
                 retorno=0;
+                printf("\nAlta correcta Id Instrumento: %d\n", instrumentos[posLibre].IdInstrumento);
 
             }
         }
