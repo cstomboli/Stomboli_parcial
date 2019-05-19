@@ -28,6 +28,52 @@ static int generarId(void)
     return id++;
 }
 
+int ins_cantidad (Instrumento* instrumentos, int length)
+{
+    int i;
+    int retorno = -1;
+    int contadorInstrumentos=0;
+    int contadorCuerdas=0;
+    int contadorMadera=0;
+    int contadorMetal=0;
+    int contadorPercusion=0;
+
+    if(instrumentos != NULL && length > 0)
+    {
+        for(i=0; i<=length; i++)
+        {
+            if(instrumentos[i].isEmpty == 0)
+            {
+                contadorInstrumentos++;
+                if(instrumentos[i].tipo==1)
+                {
+                    contadorCuerdas++;
+                }
+                if(instrumentos[i].tipo==2)
+                {
+                    contadorMadera++;
+                }
+                if(instrumentos[i].tipo==3)
+                {
+                    contadorMetal++;
+                }
+                if(instrumentos[i].tipo==4)
+                {
+                    contadorPercusion++;
+                }
+
+            }
+        }
+        printf("Los Instrumentos cargados son: %d \n",contadorInstrumentos);
+        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorCuerdas);
+        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorMadera);
+        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorMetal);
+        printf("Los Instrumentos cargados de tipo percusion son: %d \n",contadorPercusion);
+        retorno = 0;
+    }
+    return retorno;
+}
+
 /** \brief  Busca si una estructura esta vacia o no.
  *
  * \param   Recibe la Estructura
@@ -96,7 +142,7 @@ int ins_alta(Instrumento* instrumentos, char *msgError,int length)
     {
         if(!utn_getName("Ingrese Nombre del instrumento: \n","Invalido, reingrese:\n",2,30,2,bufferName))
         {
-            if(!utn_getInt("Ingrese tipo de instrumento:\n","Invalido, reingrese:\n",1,21,2,&bufferTipo))
+            if(!utn_getInt("Ingrese tipo de instrumento:\n","Invalido, reingrese:\n",1,4,2,&bufferTipo))
             {
                 strncpy(instrumentos[posLibre].nombre ,bufferName,sizeof(bufferName));
                 instrumentos[posLibre].tipo =bufferTipo;
@@ -215,6 +261,11 @@ int ins_buscarPorId (Instrumento* instrumentos,char *msg,char *msgError, int len
             *id=i;
              break;
         }
+        else
+        {
+            printf("Id no encontrado.");
+            break;
+        }
     }
 
     return retorno;
@@ -306,39 +357,25 @@ int ins_mostrar(Instrumento* instrumentos, int length)
 
 void ins_mock(Instrumento* instrumentos, int length)
 {
-    instrumentos[0].IdInstrumento =0;
-    instrumentos[0].tipo =2;
-    instrumentos[0].isEmpty=0;
+    instrumentos[0].IdInstrumento =1;
     strcpy(instrumentos[0].nombre,"Guitarra");
+    instrumentos[0].tipo= 3;
+    instrumentos[0].isEmpty=0;
 
-    /*
-    instrumentos[1].codigoinsiado =1;
+    instrumentos[1].IdInstrumento =2;
+    strcpy(instrumentos[1].nombre,"Flauta");
+    instrumentos[1].tipo= 3;
     instrumentos[1].isEmpty=0;
-    strcpy(instrumentos[1].apellido,"Sarubbi");
-    strcpy(instrumentos[1].nombre,"Maria del carmen");
-    strcpy(instrumentos[1].sexo,"f");
-    strcpy(instrumentos[1].telefono,"4243-3403");
-    strcpy(instrumentos[1].mail,"marita.sarubbi@gmail.com");
-    strcpy(instrumentos[1].fechaAinsiado,"05-02-2017");
 
-    instrumentos[2].codigoinsiado =2;
+    instrumentos[2].IdInstrumento =3;
+    strcpy(instrumentos[2].nombre,"Falutin");
+    instrumentos[2].tipo= 3;
     instrumentos[2].isEmpty=0;
-    strcpy(instrumentos[2].apellido,"Faundo");
-    strcpy(instrumentos[2].nombre,"El hagge");
-    strcpy(instrumentos[2].sexo,"m");
-    strcpy(instrumentos[2].telefono,"4245-8977");
-    strcpy(instrumentos[2].mail,"f.elhagge@hotmail.com");
-    strcpy(instrumentos[2].fechaAinsiado,"18-12-2018");
 
-    instrumentos[3].codigoinsiado =3;
+    instrumentos[3].IdInstrumento=4;
+    strcpy(instrumentos[3].nombre,"Bateria");
+    instrumentos[3].tipo= 3;
     instrumentos[3].isEmpty=0;
-    strcpy(instrumentos[3].apellido,"Moreno");
-    strcpy(instrumentos[3].nombre,"Catalina");
-    strcpy(instrumentos[3].sexo,"f");
-    strcpy(instrumentos[3].telefono,"1533524848");
-    strcpy(instrumentos[3].mail,"catalinamoreno@gmail.com");
-    strcpy(instrumentos[3].fechaAinsiado,"29-04-2019");
-*/
 }
 
 

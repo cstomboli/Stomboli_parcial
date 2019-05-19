@@ -25,6 +25,26 @@ static int generarId(void)
     return id++;
 }
 
+int mus_cantidad (Musico* list3, int length)
+{
+    int i;
+    int retorno = -1;
+    int contadorMusicos=0;
+
+    if(list3 != NULL && length > 0)
+    {
+        for(i=0; i<=length; i++)
+        {
+            if(list3[i].isEmpty == 0)
+            {
+                contadorMusicos++;
+            }
+        }
+        printf("Los musicos son: %d \n",contadorMusicos);
+        retorno = 0;
+    }
+    return retorno;
+}
 
 /** \brief  Busca si una estructura esta vacia o no.
  *
@@ -162,19 +182,17 @@ int mus_lugarLibre (Musico* list3, int length, int *posLibre)
  * \return  0 si pudo modificar, -1 si no pudo.
  *
  */
-int mus_modificar (Musico* list3, int length,int*id)
+int mus_modificar (Instrumento* instrumentos, Musico* list3, int length, int lengthInstru,int*id)
 {
     int retorno=-1;
     int bufferEdad;
     int bufferIdOrquesta;
     int bufferId;
+    mus_mostrar(instrumentos,list3,length,lengthInstru);
 
-    char seguir='s';
-    while(seguir=='s')
-    {
         if(mus_buscarPorId(list3,"\nIngrese Id a modificar\n", "Error id invalido\n",length,&bufferId)==0)
         {
-            switch(utn_getInSimple("\nMENU DE MODIFICACION\nIngrese opcion a modificar \n1- Edad - \n2- Id - \n3- Salir \n"))
+            switch(utn_getInSimple("\nMENU DE MODIFICACION\nIngrese opcion a modificar \n1- Edad - \n2- Id de la Orquesta - \n3- Salir \n"))
             {
                 case 1:
                     if(!utn_getInt("Ingrese Edad:\n","Invalido, reingrese:\n",1,100,2,&bufferEdad))
@@ -194,7 +212,6 @@ int mus_modificar (Musico* list3, int length,int*id)
 
                 case 3:
                     retorno=0;
-                    seguir= 'n';
                     break;
 
                 default:
@@ -207,7 +224,7 @@ int mus_modificar (Musico* list3, int length,int*id)
         printf("\nId no encontrado.\n\n");
         }
 
-    }
+
 
 
     return retorno;
@@ -238,11 +255,11 @@ int mus_buscarPorId (Musico* list3,char *msg,char *msgError, int length, int *id
  * \return  0 si pudo dar de baja, -1 si no pudo.
  *
  */
-int mus_baja (Musico* list3, int length)
+int mus_baja (Instrumento* instrumentos,Musico* list3, int length, int lengthIns)
 {
     int buffer;
     int retorno=-1;
-    mus_mostrar(list3,length);
+    mus_mostrar(instrumentos,list3,length,lengthIns);
 
     if(mus_buscarPorId(list3,"\nIngrese Id a dar de baja\n","\nId incorrecto\n",length,&buffer)==0)
     {
@@ -306,17 +323,6 @@ int mus_buscarPorIddeBaja (Musico* list3, int length, int *id)
     return retorno;
 }
 
-/** \brief  Da de baja el campo solicitado.
- *
- * \param   Recibe la Estructura
- * \param   Tamaño de la misma
- * \return  0 si pudo dar de baja, -1 si no pudo.
- *
- */
-
-
-
-
 /** \brief Muestra todos los campos indicados
  *
  * \param list3 Musico* Recibe la Estructura
@@ -324,24 +330,37 @@ int mus_buscarPorIddeBaja (Musico* list3, int length, int *id)
  * \return int 0 si pudo mostrar, -1 si no pudo.
  *
  */
-int mus_mostrar(Musico* list3, int length)
+int mus_mostrar(Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume)
 {
     int i;
     int retorno=-1;
+
     for (i=0; i<length; i++)
     {
         if(list3[i].isEmpty==0)
         {
             printf("\nCodigo de musico: %d",list3[i].IdMusico);
-            printf("\nApellido: %s",list3[i].apellido);
             printf("\nNombre: %s",list3[i].nombre);
-            printf("\nEdad: %d",list3[i].edad);
+            printf("\nApellido: %s",list3[i].apellido);
             printf("\nId Orquesta: %d",list3[i].IdOrquesta);
-            printf("\nId Instrumento: %d",list3[i].IdInstrumento);
-
+            printf("\nNombre del Instrumento: %s", instrumentos[i].nombre);
+            switch(instrumentos[i].tipo)
+            {
+                case 1:
+                    printf("\nTipo de Instrumento: Cuerdas.\n");
+                    break;
+                case 2:
+                    printf("\nTipo de Instrumento: Viento Madera.\n");
+                    break;
+                case 3:
+                    printf("\nTipo de Instrumento: Viento Metal.\n");
+                    break;
+                case 4:
+                    printf("\nTipo de Instrumento: Percusion.\n");
+                    break;
+            }
             retorno=0;
         }
-
     }
     return retorno;
 }
@@ -353,7 +372,7 @@ int mus_mostrar(Musico* list3, int length)
  * \return  -1 si no pudo Ordenar, 0 Si pudo.
  *
  */
-int mus_ordenar (Musico* list3,int length)
+int mus_ordenar (Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume)
 {
     int j;
     int flag;
@@ -405,42 +424,40 @@ int mus_ordenar (Musico* list3,int length)
  */
 
 
-void mus_mock(Musico* list3, int length)
+void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume)
 {
-    list3[0].IdMusico =0;
+    list3[0].IdMusico =1;
     list3[0].isEmpty=0;
-    list3[0].edad=22;
     list3[0].IdOrquesta=1;
-    list3[0].IdInstrumento=0;
     strcpy(list3[0].apellido,"Stomboli");
     strcpy(list3[0].nombre,"Carolina");
+    strcpy(instrumentos[0].nombre,"Guitarra");
+    instrumentos[0].tipo=1;
 
-    list3[1].IdMusico =1;
+    list3[1].IdMusico =2;
     list3[1].isEmpty=0;
-    list3[1].edad=22;
     list3[1].IdOrquesta=1;
-    list3[1].IdInstrumento=0;
-    strcpy(list3[1].apellido,"Tita");
-    strcpy(list3[1].nombre,"Tita");
-/*
-    list3[2].codigomusiado =2;
-    list3[2].isEmpty=0;
-    strcpy(list3[2].apellido,"Faundo");
-    strcpy(list3[2].nombre,"El hagge");
-    strcpy(list3[2].sexo,"m");
-    strcpy(list3[2].telefono,"4245-8977");
-    strcpy(list3[2].mail,"f.elhagge@hotmail.com");
-    strcpy(list3[2].fechaAmusiado,"18-12-2018");
+    strcpy(list3[1].apellido,"Del Vilano");
+    strcpy(list3[1].nombre,"Alberto");
+    strcpy(instrumentos[1].nombre,"Bateria");
+    instrumentos[1].tipo=4;
 
-    list3[3].codigomusiado =3;
+    list3[2].IdMusico=3;
+    list3[2].isEmpty=0;
+    list3[2].IdOrquesta=1;
+    strcpy(list3[2].apellido,"Stomboli");
+    strcpy(list3[2].nombre,"Soledad");
+    strcpy(instrumentos[2].nombre,"Flauta traversa");
+    instrumentos[2].tipo=2;
+
+    list3[3].IdMusico=4;
     list3[3].isEmpty=0;
-    strcpy(list3[3].apellido,"Moreno");
-    strcpy(list3[3].nombre,"Catalina");
-    strcpy(list3[3].sexo,"f");
-    strcpy(list3[3].telefono,"1533524848");
-    strcpy(list3[3].mail,"catalinamoreno@gmail.com");
-    strcpy(list3[3].fechaAmusiado,"29-04-2019");
-*/
+    list3[3].IdOrquesta=3;
+    strcpy(list3[3].apellido,"Sarubbi");
+    strcpy(list3[3].nombre,"Marita");
+    strcpy(instrumentos[3].nombre,"Flauta");
+    instrumentos[3].tipo=2;
+
 }
 
 

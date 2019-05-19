@@ -10,7 +10,7 @@ typedef struct
 
 } Instrumento;
 
-///int informar (Instrumento* instrumentos,int length);
+int ins_cantidad (Instrumento* instrumentos, int length);
 int ins_promedio (Instrumento* instrumentos, int length);
 int ins_empty (Instrumento *instrumentos, int length);
 
