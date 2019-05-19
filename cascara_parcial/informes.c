@@ -10,6 +10,48 @@
 
 ////////////////////////////////////////// INFORMES INSTRUMENTOS ////////////////////////////////////
 
+/** \brief  Cantidad de orquestas por tipo.
+ *
+ * \param   Estructura Orquesta
+ * \param   Tamaño de la misma
+ * \return  -1 si no pudo ejecutarse, 0 si pudo.
+ *
+ */
+int orq_cantidadTipo (Orquesta* orquestas, int length)
+{
+    int i;
+    int retorno = -1;
+    int contadorSinfonica=0;
+    int contadorFiloarmonica=0;
+    int contadorCamara=0;
+
+    if(orquestas != NULL && length > 0)
+    {
+        for(i=0; i<=length; i++)
+        {
+            if(orquestas[i].isEmpty== 0)
+            {
+                switch(orquestas[i].tipo)
+                {
+                    case 1:
+                        contadorSinfonica++;
+                        break;
+                    case 2:
+                        contadorFiloarmonica++;
+                        break;
+                    case 3:
+                        contadorCamara++;
+                        break;
+                }
+            }
+        }
+        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorSinfonica);
+        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorFiloarmonica);
+        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorCamara);
+        retorno = 0;
+    }
+    return retorno;
+}
 
 /** \brief  Cuenta la cantidad de Orquestas.
  *
@@ -38,7 +80,6 @@ int orq_cantidad (Orquesta* orquestas, int length)
     }
     return retorno;
 }
-
 
 
 ////////////////////////////////////////// INFORMES INSTRUMENTOS ////////////////////////////////////
@@ -84,7 +125,6 @@ int ins_cantidad (Instrumento* instrumentos, int length)
                 {
                     contadorPercusion++;
                 }
-
             }
         }
         printf("Los Instrumentos cargados son: %d \n",contadorInstrumentos);
@@ -98,28 +138,112 @@ int ins_cantidad (Instrumento* instrumentos, int length)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 ////////////////////////////////////////// INFORMES MUSICOS ////////////////////////////////////
+
+/** \brief  Cuenta la Cantidad de musicos por
+ *          tipo de Orquesta.
+ * \param   Estructura Musico
+ * \param   Tamaño de la misma
+ * \return  -1 si no pudo contar, 0 Si pudo.
+ *
+ */
+int mus_cantidadPorOrquesta (Musico* list3, int length)
+{
+    int i;
+    int retorno = -1;
+    int contadorSinfonica=0;
+    int contadorFiloarmonica=0;
+    int contadorCamara=0;
+
+    if(list3 != NULL && length > 0)
+    {
+        for(i=0; i<=length; i++)
+        {
+            if(list3[i].isEmpty== 0)
+            {
+
+                switch(list3[i].IdOrquesta)
+                {
+                    case 1:
+                        contadorSinfonica++;
+                        break;
+                    case 2:
+                        contadorFiloarmonica++;
+                        break;
+                    case 3:
+                        contadorCamara++;
+                        break;
+                }
+
+            }
+        }
+        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorSinfonica);
+        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorFiloarmonica);
+        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorCamara);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+/** \brief  Cuenta la Cantidad de musicos por
+ *          tipo de Instrumento.
+ * \param   Estructura Musico
+ * \param   Tamaño de la misma
+ * \return  -1 si no pudo contar, 0 Si pudo.
+ *
+ */
+int mus_cantidadPorTipoInstrumento (Musico* list3, int length)
+{
+    int i;
+    int retorno = -1;
+    int contadorCuerdas=0;
+    int contadorMadera=0;
+    int contadorMetal=0;
+    int contadorPercusion=0;
+
+    if(list3 != NULL && length > 0)
+    {
+        for(i=0; i<=length; i++)
+        {
+            if(list3[i].isEmpty== 0)
+            {
+
+                switch(list3[i].IdInstrumento)
+                {
+                    case 1:
+                        contadorCuerdas++;
+                        break;
+                    case 2:
+                        contadorMadera++;
+                        break;
+                    case 3:
+                        contadorMetal++;
+                        break;
+                    case 4:
+                        contadorPercusion++;
+                        break;
+                }
+
+            }
+        }
+        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorCuerdas);
+        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorMadera);
+        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorMetal);
+        printf("Los Instrumentos cargados de tipo percusion son: %d \n",contadorPercusion);
+        retorno = 0;
+    }
+    return retorno;
+}
 
 
 /** \brief Cuenta la cantidad de musicos que hay.
- *
+ *          y calcula el promedio de edades.
  * \param   Recibe la Estructura Musicos
  * \param   El tamaño de la misma.
  * \return  -1 si no pudo contar, 0 Si pudo.
  *
  */
-int mus_cantidad (Musico* list3, int length)
+int mus_cantidadYpromedio (Musico* list3, int length)
 {
     int i;
     int retorno = -1;

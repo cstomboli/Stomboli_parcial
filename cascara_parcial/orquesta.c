@@ -144,67 +144,6 @@ int orq_lugarLibre (Orquesta* orquestas, int length, int *posLibre)
     return retorno;
 }
 
-/** \brief  Modifica el campo solicitado.
- *
- * \param   Recibe la Estructura
- * \param   Tamaño de la misma
- * \param   El id a buscar
- * \return  0 si pudo modificar, -1 si no pudo.
- *
- */
-
- /*
-int orq_modificar (Orquesta* orquestas, int length,int*id)
-{
-    int retorno=-1;
-    char bufferName [51];
-    char bufferLastName [51];
-    int bufferId;
-
-    char seguir='s';
-    while(seguir=='s')
-    {
-        if(orq_buscarPorId(orquestas,"\nIngrese Id a modificar\n", "Error id invalido\n",length,&bufferId)==0)
-        {
-            switch(utn_getInSimple("\nMENU DE MODIFICACION\nIngrese opcion a modificar \n1- Nombre - \n2- Apellido - \n3- Salir \n"))
-            {
-                case 1:
-                    if(!utn_getName("Ingrese nombre:\n","Invalido, reingrese:\n",2,20,2,bufferName))
-                    {
-                        strncpy(orquestas[bufferId].nombre,bufferName,sizeof(bufferName));
-                        printf("Nombre modificado correctamente.\n");
-                    }
-                break;
-
-                case 2:
-                    if(!utn_getName("Ingrese Apellido:\n","Invalido, reingrese:\n",2,20,2,bufferLastName))
-                        {
-                        strncpy(orquestas[bufferId].apellido,bufferLastName,sizeof(bufferLastName));
-                        printf("Apellido modificado correctamente.\n");
-                        }
-                break;
-
-                case 3:
-                    retorno=0;
-                    seguir= 'n';
-                    break;
-
-                default:
-                    printf("Opcion invalida");
-                    break;
-            }
-        }
-        else
-        {
-        printf("\nId no encontrado.\n\n");
-        }
-
-    }
-
-
-    return retorno;
-} */
-
 /** \brief  Busca por Id el campo solicitado.
  *
  * \param   Recibe la Estructura
@@ -295,6 +234,7 @@ int orq_mostrar(Orquesta* orquestas, int length)
     }
     return retorno;
 }
+
 /** \brief La funcion muestra los datos hardcodeados.
  *
  * \param la estructura

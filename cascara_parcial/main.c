@@ -35,7 +35,7 @@ int main()
 
     while(seguir=='s')
     {
-        switch(utn_getInSimple("\nIngrese una opcion\n1-Agregar Orquesta: \n2-Eliminar Orquesta: \n3-Listar Orquesta: \n4-Agregar Musico: \n5-Modificar Musico: \n6-Eliminar Musico: \n7-Imprimir Musicos: \n8-Agregar Instrumento: \n9-Agregar Instrumento: \n10-Salir\n"))
+        switch(utn_getInSimple("\nIngrese una opcion\n1-Agregar Orquesta: \n2-Eliminar Orquesta: \n3-Listar Orquesta: \n4-Agregar Musico: \n5-Modificar Musico: \n6-Eliminar Musico: \n7-Imprimir Musicos: \n8-Agregar Instrumento: \n9-Imprimir Instrumento: \n10-Salir\n"))
         {
             case 1:
                 orq_alta(list2,"Error",ORQUESTA);

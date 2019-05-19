@@ -210,6 +210,14 @@ int mus_modificar (Instrumento* instrumentos, Musico* list3, int length, int len
     return retorno;
 }
 
+/** \brief  Busca por Id el campo solicitado.
+ *
+ * \param   Recibe la Estructura
+ * \param   Tamaño de la misma
+ * \param   Id a buscar
+ * \return  0 si lo encontro, -1 si no.
+ *
+ */
 int mus_buscarPorId (Musico* list3,char *msg,char *msgError, int length, int *id)
 {
     int retorno=-1;
@@ -254,15 +262,9 @@ int mus_baja (Instrumento* instrumentos,Musico* list3, int length, int lengthIns
     return retorno;
 }
 
-
-
-
-
 /** \brief  Busca por Id el campo solicitado.
  *
  * \param   Recibe la Estructura
- * \param   Mensaje
- * \param   Mensaje de Error
  * \param   Tamaño de la misma
  * \param   Id a buscar
  * \return  0 si lo encontro, -1 si no.
@@ -286,6 +288,14 @@ int mus_bajaPorOrquesta(Musico* list3, int length, int *id)
 
     return retorno;
 }
+/** \brief  Busca por Id el campo solicitado.
+ *
+ * \param   Recibe la Estructura
+ * \param   Tamaño de la misma
+ * \param   Id a buscar
+ * \return  0 si lo encontro, -1 si no.
+ *
+ */
 int mus_buscarPorIddeBaja (Musico* list3, int length, int *id)
 {
     int retorno=-1;
@@ -354,8 +364,6 @@ int mus_mostrar(Instrumento* instrumentos, Musico* list3, int length, int length
  * \return no retorna nada.
  *
  */
-
-
 void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume)
 {
     list3[0].IdMusico =1;

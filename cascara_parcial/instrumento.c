@@ -140,58 +140,6 @@ int ins_lugarLibre (Instrumento* instrumentos, int length, int *posLibre)
     return retorno;
 }
 
-/*
-int ins_modificar (Instrumento* instrumentos, int length,int*id)
-{
-    int retorno=-1;
-    char bufferName [51];
-    char bufferLastName [51];
-    int bufferId;
-
-    char seguir='s';
-    while(seguir=='s')
-    {
-        if(ins_buscarPorId(instrumentos,"\nIngrese Id a modificar\n", "Error id invalido\n",length,&bufferId)==0)
-        {
-            switch(utn_getInSimple("\nMENU DE MODIFICACION\nIngrese opcion a modificar \n1- Nombre - \n2- Apellido - \n3- Salir \n"))
-            {
-                case 1:
-                    if(!utn_getName("Ingrese nombre:\n","Invalido, reingrese:\n",2,20,2,bufferName))
-                    {
-                        strncpy(instrumentos[bufferId].nombre,bufferName,sizeof(bufferName));
-                        printf("Nombre modificado correctamente.\n");
-                    }
-                break;
-
-                case 2:
-                    if(!utn_getName("Ingrese Apellido:\n","Invalido, reingrese:\n",2,20,2,bufferLastName))
-                        {
-                        strncpy(instrumentos[bufferId].apellido,bufferLastName,sizeof(bufferLastName));
-                        printf("Apellido modificado correctamente.\n");
-                        }
-                break;
-
-                case 3:
-                    retorno=0;
-                    seguir= 'n';
-                    break;
-
-                default:
-                    printf("Opcion invalida");
-                    break;
-            }
-        }
-        else
-        {
-        printf("\nId no encontrado.\n\n");
-        }
-
-    }
-
-
-    return retorno;
-}   */
-
 /** \brief  Busca por Id el campo solicitado.
  *
  * \param   Recibe la Estructura
@@ -202,8 +150,6 @@ int ins_modificar (Instrumento* instrumentos, int length,int*id)
  * \return  0 si lo encontro, -1 si no.
  *
  */
-
-
 int ins_buscarPorId (Instrumento* instrumentos,char *msg,char *msgError, int length, int *id)
 {
     int retorno=-1;
@@ -256,19 +202,11 @@ int ins_baja (Instrumento* instrumentos, int length)
 
 /** \brief Muestra todos los campos indicados
  *
- * \param instrumentos Instrumento* Recibe la Estructura
- * \param length Tamaño de la misma
- * \return int 0 si pudo mostrar, -1 si no pudo.
+ * \param   Recibe la Estructura instrumentos
+ * \param   Tamaño de la misma
+ * \return  0 si pudo mostrar, -1 si no pudo.
  *
  */
- int ins_mostrarId(Instrumento* instrumentos, int length, int id)
-{
-    int retorno=0;
-
-    printf("%d",instrumentos[id].IdInstrumento);
-    return retorno;
-}
-
 int ins_mostrar(Instrumento* instrumentos, int length)
 {
     int i;
@@ -301,7 +239,6 @@ int ins_mostrar(Instrumento* instrumentos, int length)
     return retorno;
 }
 
-
 /** \brief La funcion muestra los datos hardcodeados.
  *
  * \param la estructura
@@ -309,8 +246,6 @@ int ins_mostrar(Instrumento* instrumentos, int length)
  * \return no retorna nada.
  *
  */
-
-
 void ins_mock(Instrumento* instrumentos, int length)
 {
     instrumentos[0].IdInstrumento =1;
