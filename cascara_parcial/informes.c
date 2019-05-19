@@ -124,6 +124,9 @@ int mus_cantidad (Musico* list3, int length)
     int i;
     int retorno = -1;
     int contadorMusicos=0;
+    int acumuladorEdad=0;
+    int contadorSuperan=0;
+    int promedio;
 
     if(list3 != NULL && length > 0)
     {
@@ -132,10 +135,22 @@ int mus_cantidad (Musico* list3, int length)
             if(list3[i].isEmpty == 0)
             {
                 contadorMusicos++;
+                acumuladorEdad += list3[i].edad;
                 retorno=0;
             }
         }
+        promedio=acumuladorEdad/contadorMusicos;
+        for(i=0; i<=length; i++)
+        {
+            if(list3[i].edad >promedio)
+            {
+
+                contadorSuperan++;
+            }
+        }
         printf("Los musicos son: %d \n",contadorMusicos);
+        printf("El promedio de edad de los musicos es: %d \n",promedio);
+        printf("Supera el promedio de edad de los musicos : %d \n",contadorSuperan);
         retorno = 0;
     }
     return retorno;
@@ -151,7 +166,7 @@ int mus_cantidad (Musico* list3, int length)
 int mus_ordenar (Musico* list3,int length)
 {
     int j;
-    ///int i;
+    int i;
     int flag;
     Musico buffer;
     int retorno=-1;
@@ -164,28 +179,35 @@ int mus_ordenar (Musico* list3,int length)
             flag=0;
             for(j=0;j<length-1;j++)
             {
+                if(list3[j].isEmpty==1)
+                {
+                    continue;
+                }
                 if(strcmp(list3[j].apellido,list3[j+1].apellido)>0)
                 {
                     buffer=list3[j];
                     list3[j]=list3[j+1];
                     list3[j+1]=buffer;
                     flag=1;
-                    break;
-                    /*
-                    for(i=0;i<length-1;i++)
-                    {
-
-                        if(strcmp(list3[i].nombre>list3[i+1].nombre)>0)
-                        {
-                            buffer=list3[i];
-                            list3[i]=list3[i+1];
-                            list3[i+1]=buffer;
-                            flag=1;
-                            break;
-                        }
-                    }*/
-
                 }
+                else if(strcmp(list3[j].apellido,list3[j+1].apellido)==0)
+                {
+                        for(i=0;i<length-1;i++)
+                        {
+                            if(list3[i].isEmpty==1)
+                            {
+                                continue;
+                            }
+                            if(strcmp(list3[i].nombre,list3[i+1].nombre)>0)
+                            {
+                                buffer=list3[i];
+                                list3[i]=list3[i+1];
+                                list3[i+1]=buffer;
+                                flag=1;
+                            }
+                        }
+                }
+
             }
         }while(flag);
     }return retorno;

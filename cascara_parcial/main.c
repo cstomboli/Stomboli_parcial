@@ -6,10 +6,11 @@
 #include "musico.h"
 #include "utn.h"
 #include "fantasma.h"
+#include "informes.h"
 #define FANTASMA 5      ///TAMAÑO DEL
 #define INSTRUMENTOS 20 ///TAMAÑO DEL
 #define ORQUESTA 50    ///TAMAÑO DEL
-#define MUSICOS 1000 ///TAMAÑO DEL
+#define MUSICOS 5 ///TAMAÑO DEL
 
 int main()
 {
@@ -56,7 +57,8 @@ int main()
                 mus_modificar(listado,listado3,MUSICOS,INSTRUMENTOS,&buffer);
                 break;
             case 6:
-                mus_baja(listado,listado3,MUSICOS,INSTRUMENTOS);
+                mus_ordenar(listado3,MUSICOS);
+                ///mus_baja(listado,listado3,MUSICOS,INSTRUMENTOS);
                 break;
             case 7:
                 mus_mostrar(listado,listado3,MUSICOS,INSTRUMENTOS);
