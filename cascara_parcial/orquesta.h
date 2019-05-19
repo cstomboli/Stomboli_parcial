@@ -13,7 +13,6 @@ typedef struct
 
 } Orquesta;
 
-int orq_cantidad (Orquesta* orquestas, int length);
 int orq_promedio (Orquesta* orquestas, int length);
 int orq_empty (Orquesta *orquestas, int length);
 int orq_inicializar(Orquesta* orquestas, int length);

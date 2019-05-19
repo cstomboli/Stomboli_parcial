@@ -5,9 +5,10 @@
 #include "orquesta.h"
 #include "musico.h"
 #include "utn.h"
-#define FANTASMA 51 ///TAMAÑO DEL
+#include "fantasma.h"
+#define FANTASMA 5      ///TAMAÑO DEL
 #define INSTRUMENTOS 20 ///TAMAÑO DEL
-#define ORQUESTA 50 ///TAMAÑO DEL
+#define ORQUESTA 50    ///TAMAÑO DEL
 #define MUSICOS 1000 ///TAMAÑO DEL
 
 int main()
@@ -15,6 +16,10 @@ int main()
     ///char buffer[30];
     int buffer;
     char seguir='s';
+
+    Fantasma fan [FANTASMA];
+    fan_inicializar(fan,FANTASMA);
+    fan_mock(fan, FANTASMA,&buffer);
 
     Instrumento listado [INSTRUMENTOS];
     ins_inicializar(listado,INSTRUMENTOS);
@@ -123,7 +128,12 @@ int main()
                         }
                         break;
                     case 5:
-                        ins_cantidad(listado,INSTRUMENTOS);
+                        if(!mus_ordenar(listado3,MUSICOS))
+                        {
+
+                        }
+
+                        ///ins_cantidad(listado,INSTRUMENTOS);
                 }
                 break;
 

@@ -38,6 +38,13 @@
 		<Unit filename="fantasma.h">
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="informes.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="informes.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="instrumento.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />

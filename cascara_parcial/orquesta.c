@@ -27,27 +27,6 @@ static int generarId(void)
     return id++;
 }
 
-int orq_cantidad (Orquesta* orquestas, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorOrquestas=0;
-
-    if(orquestas != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(orquestas[i].isEmpty== 0)
-            {
-                contadorOrquestas++;
-            }
-        }
-        printf("Las orquestas son: %d \n",contadorOrquestas);
-        retorno = 0;
-    }
-    return retorno;
-}
-
 
 /** \brief  Busca si una estructura esta vacia o no.
  *

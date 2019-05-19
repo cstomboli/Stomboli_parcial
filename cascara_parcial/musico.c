@@ -25,27 +25,6 @@ static int generarId(void)
     return id++;
 }
 
-int mus_cantidad (Musico* list3, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorMusicos=0;
-
-    if(list3 != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(list3[i].isEmpty == 0)
-            {
-                contadorMusicos++;
-            }
-        }
-        printf("Los musicos son: %d \n",contadorMusicos);
-        retorno = 0;
-    }
-    return retorno;
-}
-
 /** \brief  Busca si una estructura esta vacia o no.
  *
  * \param   Recibe la Estructura
@@ -365,55 +344,6 @@ int mus_mostrar(Instrumento* instrumentos, Musico* list3, int length, int length
     return retorno;
 }
 
-/** \brief Ordena por 2 criterios
- *
- * \param  Recibe la Estructura
- * \param El tamaño de la misma
- * \return  -1 si no pudo Ordenar, 0 Si pudo.
- *
- */
-int mus_ordenar (Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume)
-{
-    int j;
-    int flag;
-    Musico buffer;
-    int retorno=-1;
-
-    if(list3 != NULL && length>0)
-    {
-        do
-        {
-            flag=0;
-            for(j=0;j<length-1;j++)
-            {
-                if(strcmp(list3[j].apellido,list3[j+1].apellido)>0)
-                {
-                    buffer=list3[j];
-                    list3[j]=list3[j+1];
-                    list3[j+1]=buffer;
-                    flag=1;
-                    retorno=0;
-                    break;
-
-                    for(j=0;j<length-1;j++)
-                    {
-
-                        if(list3[j].nombre>list3[j+1].nombre)
-                        {
-                        buffer=list3[j];
-                        list3[j]=list3[j+1];
-                        list3[j+1]=buffer;
-                        flag=1;
-                        retorno=0;
-                        break;
-                        }
-                    }
-
-                }
-            }
-        }while(flag);
-    }return retorno;
-}
 
 /** \brief La funcion muestra los datos hardcodeados.
  *

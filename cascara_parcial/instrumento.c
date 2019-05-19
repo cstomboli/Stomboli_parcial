@@ -28,51 +28,6 @@ static int generarId(void)
     return id++;
 }
 
-int ins_cantidad (Instrumento* instrumentos, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorInstrumentos=0;
-    int contadorCuerdas=0;
-    int contadorMadera=0;
-    int contadorMetal=0;
-    int contadorPercusion=0;
-
-    if(instrumentos != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(instrumentos[i].isEmpty == 0)
-            {
-                contadorInstrumentos++;
-                if(instrumentos[i].tipo==1)
-                {
-                    contadorCuerdas++;
-                }
-                if(instrumentos[i].tipo==2)
-                {
-                    contadorMadera++;
-                }
-                if(instrumentos[i].tipo==3)
-                {
-                    contadorMetal++;
-                }
-                if(instrumentos[i].tipo==4)
-                {
-                    contadorPercusion++;
-                }
-
-            }
-        }
-        printf("Los Instrumentos cargados son: %d \n",contadorInstrumentos);
-        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorCuerdas);
-        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorMadera);
-        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorMetal);
-        printf("Los Instrumentos cargados de tipo percusion son: %d \n",contadorPercusion);
-        retorno = 0;
-    }
-    return retorno;
-}
 
 /** \brief  Busca si una estructura esta vacia o no.
  *

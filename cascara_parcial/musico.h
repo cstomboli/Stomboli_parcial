@@ -15,7 +15,6 @@ typedef struct
 
 } Musico;
 
-int mus_cantidad (Musico* list3, int length);
 int mus_promedio (Musico* list3, int length);
 int mus_empty (Musico *list3, int length);
 int mus_inicializar(Musico* list3, int length);
@@ -31,7 +30,6 @@ int mus_buscarPorId (Musico* list3,char *msg,char *msgError, int length, int *id
 int mus_baja (Instrumento* instrumentos,Musico* list3, int length, int lengthIns);
 
 int mus_mostrar(Instrumento*intrumentos, Musico* list3, int length, int lengthInstrume);
-int mus_ordenar (Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume);
 void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume);
 
 
