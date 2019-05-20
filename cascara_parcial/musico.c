@@ -349,8 +349,9 @@ int mus_mostrar(Instrumento* instrumentos, Musico* list3, int length, int length
                 case 4:
                     printf("\nTipo de Instrumento: Percusion.\n");
                     break;
+
             }
-            retorno=0;
+
         }
     }
     return retorno;
@@ -374,10 +375,10 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     strcpy(instrumentos[0].nombre,"Guitarra");
     instrumentos[0].tipo=3;
 
-    list3[1].IdMusico =3;
+    list3[1].IdMusico =2;
     list3[1].isEmpty=0;
     list3[1].IdOrquesta=1;
-    strcpy(list3[1].apellido,"Del Vilano");
+    strcpy(list3[1].apellido,"Stomboli");
     strcpy(list3[1].nombre,"Alberto");
     strcpy(instrumentos[1].nombre,"Bateria");
     instrumentos[1].tipo=3;

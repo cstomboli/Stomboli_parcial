@@ -20,7 +20,7 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
             {
                 while(seguir=='s')
                 {
-                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Cantidad de Orquesta\n2-Cantidad de Orquesta por Tipo: \n3-Cantidad de Instrumentos: \n4-Cantidad de Musicos por Orquesta: \n5-Cantidad de Musicos por Tipo de Instrumento: \n6-Cantidad de Musicos y promedio de Edad: \n8-Salir: \n"))
+                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Cantidad de Orquesta\n2-Cantidad de Orquesta por Tipo: \n3-Cantidad de Instrumentos: \n4-Cantidad de Musicos por Orquesta: \n5-Cantidad de Musicos por Tipo de Instrumento: \n6-Cantidad de Musicos y promedio de Edad: \n7-Ordenar: \n8-Salir: \n"))
                     {
                         case 1:
                             orq_cantidad (orquestas,  lengthOr);
@@ -41,7 +41,7 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
                             mus_cantidadYpromedio ( list3,  lengthMus); ///no anda
                             break;
                         case 7:
-                            mus_ordenar ( list3, lengthMus);
+                            mus_ordenar (instrumentos,list3, lengthMus,lengthIns);
                             break;
 
                         case 8:
@@ -333,55 +333,50 @@ int mus_cantidadYpromedio (Musico* list3, int length)
  * \return  -1 si no pudo Ordenar, 0 Si pudo.
  *
  */
-int mus_ordenar (Musico* list3,int length)
+int mus_ordenar (Instrumento* instrumentos, Musico* list3,int length,int lengthInstr)
 {
     int j;
-    int i;
     int flag;
     Musico buffer;
     int retorno=-1;
 
-    if(list3 != NULL && length>0)
+    if(list3 != NULL && length > 0)
     {
-        retorno=0;
+
         do
         {
             flag=0;
             for(j=0;j<length-1;j++)
             {
-                if(list3[j].isEmpty==1)
-                {
-                    continue;
-                }
-                if(strcmp(list3[j].apellido,list3[j+1].apellido)>0)
+
+                if(strcmp(list3[j].apellido,list3[j+1].apellido) > 0)
                 {
                     buffer=list3[j];
                     list3[j]=list3[j+1];
                     list3[j+1]=buffer;
                     flag=1;
-                }
-                else if(strcmp(list3[j].apellido,list3[j+1].apellido)==0)
-                {
-                        for(i=0;i<length-1;i++)
-                        {
-                            if(list3[i].isEmpty==1)
-                            {
-                                continue;
-                            }
-                            if(strcmp(list3[i].nombre,list3[i+1].nombre)>0)
-                            {
-                                buffer=list3[i];
-                                list3[i]=list3[i+1];
-                                list3[i+1]=buffer;
-                                flag=1;
-                            }
-                        }
+                    break;
                 }
 
+                else if(strcmp(list3[j].apellido,list3[j+1].apellido) == 0)
+                {
+                    if(strcmp(list3[j].nombre,list3[j+1].nombre) < 0)
+                    {
+                        buffer=list3[j];
+                        list3[j]=list3[j+1];
+                        list3[j+1]=buffer;
+                        flag=1;
+                        break;
+                    }
+                }
             }
+
         }while(flag);
-    }return retorno;
+        retorno=0;
+    }
+    return retorno;
 }
+
 
 
 #endif // INFORMES_C_INCLUDED
