@@ -1,6 +1,9 @@
 #ifndef INFORMES_H_INCLUDED
 #define INFORMES_H_INCLUDED
 
+void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int lengthIns, Musico* list3, int lengthMus);
+
+
 int orq_cantidadTipo (Orquesta* orquestas, int length);
 int orq_cantidad (Orquesta* orquestas, int length);
 

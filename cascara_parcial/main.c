@@ -35,7 +35,7 @@ int main()
 
     while(seguir=='s')
     {
-        switch(utn_getInSimple("\nIngrese una opcion\n1-Agregar Orquesta: \n2-Eliminar Orquesta: \n3-Listar Orquesta: \n4-Agregar Musico: \n5-Modificar Musico: \n6-Eliminar Musico: \n7-Imprimir Musicos: \n8-Agregar Instrumento: \n9-Imprimir Instrumento: \n10-Salir\n"))
+        switch(utn_getInSimple("\nIngrese una opcion\n1-Agregar Orquesta: \n2-Eliminar Orquesta: \n3-Listar Orquesta: \n4-Agregar Musico: \n5-Modificar Musico: \n6-Eliminar Musico: \n7-Imprimir Musicos: \n8-Agregar Instrumento: \n9-Imprimir Instrumento: \n10-Informes: \n11-Salir\n"))
         {
             case 1:
                 orq_alta(list2,"Error",ORQUESTA);
@@ -57,8 +57,7 @@ int main()
                 mus_modificar(listado,listado3,MUSICOS,INSTRUMENTOS,&buffer);
                 break;
             case 6:
-                mus_ordenar(listado3,MUSICOS);
-                ///mus_baja(listado,listado3,MUSICOS,INSTRUMENTOS);
+                mus_baja(listado,listado3,MUSICOS,INSTRUMENTOS);
                 break;
             case 7:
                 mus_mostrar(listado,listado3,MUSICOS,INSTRUMENTOS);
@@ -70,6 +69,9 @@ int main()
                 ins_mostrar(listado,INSTRUMENTOS);
                 break;
             case 10:
+                informes(list2,ORQUESTA,listado,INSTRUMENTOS,listado3,MUSICOS);
+                break;
+            case 11:
             seguir= 'n';
             break;
 

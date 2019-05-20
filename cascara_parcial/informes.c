@@ -7,6 +7,52 @@
 #include "instrumento.h"
 #include "orquesta.h"
 #include "utn.h"
+#include "informes.h"
+
+void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int lengthIns, Musico* list3, int lengthMus)
+{
+    char seguir='s';
+    if(orquestas != NULL && lengthOr > 0)
+    {
+        if(instrumentos != NULL && lengthIns > 0)
+        {
+            if(list3 != NULL && lengthMus > 0)
+            {
+                while(seguir=='s')
+                {
+                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Cantidad de Orquesta\n2-Cantidad de Orquesta por Tipo: \n3-Cantidad de Instrumentos: \n4-Cantidad de Musicos por Orquesta: \n5-Cantidad de Musicos por Tipo de Instrumento: \n6-Cantidad de Musicos y promedio de Edad: \n8-Salir: \n"))
+                    {
+                        case 1:
+                            orq_cantidad (orquestas,  lengthOr);
+                            break;
+                        case 2:
+                            orq_cantidadTipo (orquestas,  lengthOr);
+                            break;
+                        case 3:
+                            ins_cantidad (instrumentos, lengthIns);
+                            break;
+                         case 4:
+                            mus_cantidadPorOrquesta ( list3, lengthMus);
+                            break;
+                        case 5:
+                            mus_cantidadPorTipoInstrumento ( list3, lengthMus); ///no anda
+                            break;
+                        case 6:
+                            mus_cantidadYpromedio ( list3,  lengthMus); ///no anda
+                            break;
+                        case 7:
+                            mus_ordenar ( list3, lengthMus);
+                            break;
+
+                        case 8:
+                            seguir= 'n';
+                            break;
+                    }
+                }
+            }
+        }
+    }
+}
 
 ////////////////////////////////////////// INFORMES INSTRUMENTOS ////////////////////////////////////
 
@@ -45,9 +91,9 @@ int orq_cantidadTipo (Orquesta* orquestas, int length)
                 }
             }
         }
-        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorSinfonica);
-        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorFiloarmonica);
-        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorCamara);
+        printf("Orquesta tipo Sinfonica: %d \n",contadorSinfonica);
+        printf("Orquesta tipo Filoarmonica: %d \n",contadorFiloarmonica);
+        printf("Orquesta tipo Camara: %d \n",contadorCamara);
         retorno = 0;
     }
     return retorno;
@@ -177,9 +223,9 @@ int mus_cantidadPorOrquesta (Musico* list3, int length)
 
             }
         }
-        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorSinfonica);
-        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorFiloarmonica);
-        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorCamara);
+        printf("Los musicos de la Orquesta Sinfonica son: %d \n",contadorSinfonica);
+        printf("Los musicos de la Orquesta Filoarmonica son: %d \n",contadorFiloarmonica);
+        printf("Los musicos de la Orquesta Camara son: %d \n",contadorCamara);
         retorno = 0;
     }
     return retorno;

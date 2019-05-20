@@ -372,15 +372,15 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     strcpy(list3[0].apellido,"Stomboli");
     strcpy(list3[0].nombre,"Carolina");
     strcpy(instrumentos[0].nombre,"Guitarra");
-    instrumentos[0].tipo=1;
+    instrumentos[0].tipo=3;
 
-    list3[1].IdMusico =2;
+    list3[1].IdMusico =3;
     list3[1].isEmpty=0;
     list3[1].IdOrquesta=1;
     strcpy(list3[1].apellido,"Del Vilano");
     strcpy(list3[1].nombre,"Alberto");
     strcpy(instrumentos[1].nombre,"Bateria");
-    instrumentos[1].tipo=4;
+    instrumentos[1].tipo=3;
 
     list3[2].IdMusico=3;
     list3[2].isEmpty=0;
@@ -388,7 +388,7 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     strcpy(list3[2].apellido,"Stomboli");
     strcpy(list3[2].nombre,"Soledad");
     strcpy(instrumentos[2].nombre,"Flauta traversa");
-    instrumentos[2].tipo=2;
+    instrumentos[2].tipo=3;
 
     list3[3].IdMusico=4;
     list3[3].isEmpty=0;
@@ -396,7 +396,7 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     strcpy(list3[3].apellido,"Sarubbi");
     strcpy(list3[3].nombre,"Marita");
     strcpy(instrumentos[3].nombre,"Flauta");
-    instrumentos[3].tipo=2;
+    instrumentos[3].tipo=3;
 
 }
 
