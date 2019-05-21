@@ -54,7 +54,38 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
     }
 }
 
-////////////////////////////////////////// INFORMES INSTRUMENTOS ////////////////////////////////////
+
+int promedioMusicoPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq)
+{
+    int retorno=-1;
+    int i;
+    float contadorMusicos=0;
+    float contadorOrquestas=0;
+    float promedio;
+
+    if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquesta != NULL && lengthOrq>0 ))
+    {
+        for(i=0;i<lengthMus;i++)
+        {
+            if(arrayMusicos[i].isEmpty==0)
+            {
+                contadorMusicos++;
+            }
+            if(arrayOrquesta[i].isEmpty==0)
+            {
+                contadorOrquestas++;
+            }
+        }retorno=0;
+    }
+    promedio=contadorMusicos/contadorOrquestas;
+    printf("El promedio de musico por Orquesta es: %.2f",promedio);
+    return retorno;
+}
+
+
+
+
+////////////////////////////////////////// INFORMES ORQUESTAS ////////////////////////////////////
 
 /** \brief  Cantidad de orquestas por tipo.
  *
@@ -91,6 +122,7 @@ int orq_cantidadTipo (Orquesta* orquestas, int length)
                 }
             }
         }
+
         printf("Orquesta tipo Sinfonica: %d \n",contadorSinfonica);
         printf("Orquesta tipo Filoarmonica: %d \n",contadorFiloarmonica);
         printf("Orquesta tipo Camara: %d \n",contadorCamara);
@@ -272,10 +304,10 @@ int mus_cantidadPorTipoInstrumento (Musico* list3, int length)
 
             }
         }
-        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorCuerdas);
-        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorMadera);
-        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorMetal);
-        printf("Los Instrumentos cargados de tipo percusion son: %d \n",contadorPercusion);
+        printf("Los musicos que tocan un instrumentos de tipo Cuerdas son: %d \n",contadorCuerdas);
+        printf("Los musicos que tocan un instrumentos de tipo Viento Madera son: %d \n",contadorMadera);
+        printf("Los musicos que tocan un instrumentos de tipo Viento Metal son: %d \n",contadorMetal);
+        printf("Los musicos que tocan un instrumentos de tipo percusion son: %d \n",contadorPercusion);
         retorno = 0;
     }
     return retorno;
