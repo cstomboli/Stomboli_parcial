@@ -86,18 +86,18 @@
 	"instrumento.h"
 	"orquesta.h"
 
-1558308652 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\fantasma.c
+1558403888 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\fantasma.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"fantasma.h"
 	"utn.h"
 
-1558308652 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\fantasma.h
+1558403888 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\fantasma.h
 
-1558308652 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\utn.h
+1558403888 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\utn.h
 
-1558308652 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\instrumento.c
+1558403888 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\instrumento.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -105,9 +105,9 @@
 	"instrumento.h"
 	"utn.h"
 
-1558308652 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\instrumento.h
+1558403888 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\instrumento.h
 
-1558371164 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\main.c
+1558404878 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -118,15 +118,15 @@
 	"fantasma.h"
 	"informes.h"
 
-1558308652 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\orquesta.h
+1558403888 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\orquesta.h
 	"instrumento.h"
 	"orquesta.h"
 
-1558371164 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\musico.h
+1558403888 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\musico.h
 	"instrumento.h"
 	"orquesta.h"
 
-1558371507 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\musico.c
+1558403888 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\musico.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -135,14 +135,14 @@
 	"orquesta.h"
 	"utn.h"
 
-1558308652 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\utn.c
+1558403888 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"utn.h"
 
-1558308652 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\orquesta.c
+1558403888 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\orquesta.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -150,7 +150,7 @@
 	"instrumento.h"
 	"utn.h"
 
-1558371507 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\informes.c
+1558404783 source:c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\informes.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -160,5 +160,5 @@
 	"utn.h"
 	"informes.h"
 
-1558371164 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\informes.h
+1558404265 c:\users\maría del carmen\desktop\parcial\stomboli_parcial\cascara_parcial\informes.h
 

@@ -41,7 +41,7 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
                             mus_cantidadYpromedio ( list3,  lengthMus); ///no anda
                             break;
                         case 7:
-                            mus_ordenar (instrumentos,list3, lengthMus,lengthIns);
+                            mus_ordenar (list3, lengthMus);
                             break;
 
                         case 8:
@@ -300,6 +300,7 @@ int mus_cantidadYpromedio (Musico* list3, int length)
 
     if(list3 != NULL && length > 0)
     {
+
         for(i=0; i<=length; i++)
         {
             if(list3[i].isEmpty == 0)
@@ -312,7 +313,7 @@ int mus_cantidadYpromedio (Musico* list3, int length)
         promedio=acumuladorEdad/contadorMusicos;
         for(i=0; i<=length; i++)
         {
-            if(list3[i].edad >promedio)
+            if(list3[i].isEmpty == 0 && list3[i].edad >promedio)
             {
 
                 contadorSuperan++;
@@ -333,7 +334,7 @@ int mus_cantidadYpromedio (Musico* list3, int length)
  * \return  -1 si no pudo Ordenar, 0 Si pudo.
  *
  */
-int mus_ordenar (Instrumento* instrumentos, Musico* list3,int length,int lengthInstr)
+int mus_ordenar (Musico* list3,int length)
 {
     int j;
     int flag;
@@ -348,25 +349,27 @@ int mus_ordenar (Instrumento* instrumentos, Musico* list3,int length,int lengthI
             flag=0;
             for(j=0;j<length-1;j++)
             {
-
-                if(strcmp(list3[j].apellido,list3[j+1].apellido) > 0)
+                if(list3[j].isEmpty == 0)
                 {
-                    buffer=list3[j];
-                    list3[j]=list3[j+1];
-                    list3[j+1]=buffer;
-                    flag=1;
-                    break;
-                }
-
-                else if(strcmp(list3[j].apellido,list3[j+1].apellido) == 0)
-                {
-                    if(strcmp(list3[j].nombre,list3[j+1].nombre) < 0)
+                    if(strncmp(list3[j].apellido,list3[j+1].apellido,length) > 0)
                     {
                         buffer=list3[j];
                         list3[j]=list3[j+1];
                         list3[j+1]=buffer;
                         flag=1;
                         break;
+                    }
+
+                    else if(strncmp(list3[j].apellido,list3[j+1].apellido,length) == 0)
+                    {
+                        if(strncmp(list3[j].nombre,list3[j+1].nombre,length) > 0)
+                        {
+                            buffer=list3[j];
+                            list3[j]=list3[j+1];
+                            list3[j+1]=buffer;
+                            flag=1;
+                            break;
+                        }
                     }
                 }
             }

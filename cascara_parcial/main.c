@@ -10,7 +10,7 @@
 #define FANTASMA 5      ///TAMAÑO DEL
 #define INSTRUMENTOS 20 ///TAMAÑO DEL
 #define ORQUESTA 50    ///TAMAÑO DEL
-#define MUSICOS 5 ///TAMAÑO DEL
+#define MUSICOS 10 ///TAMAÑO DEL
 
 int main()
 {
@@ -69,6 +69,8 @@ int main()
                 ins_mostrar(listado,INSTRUMENTOS);
                 break;
             case 10:
+                ///mus_ordenar(listado3,MUSICOS);
+                ///mus_mostrar(listado,listado3,MUSICOS,INSTRUMENTOS);
                 informes(list2,ORQUESTA,listado,INSTRUMENTOS,listado3,MUSICOS);
                 break;
             case 11:
