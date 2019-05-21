@@ -162,6 +162,50 @@ int orq_cantidad (Orquesta* orquestas, int length)
 
 ////////////////////////////////////////// INFORMES INSTRUMENTOS ////////////////////////////////////
 
+/** \brief Informa el instrumento mas solicitado
+ *
+ * \param arrayMusicos Musico*
+ * \param arrayAux[] InstrumentoAuxiliar
+ * \param arrayInstrumento Instrumento*
+ * \param sizeArray int
+ * \return int
+ *
+ */
+
+ /*
+int informes_instrumentoMasUsado(Musico* arrayMusicos, InstrumentoAuxiliar arrayAux[], Instrumento* arrayInstrumento, int sizeArray)
+{
+    int retorno=-1;
+    int i,j;
+    int posicionAuxiliar = 0;
+    if(arrayMusicos!= NULL && sizeArray>=0 && arrayAux != NULL && arrayInstrumento != NULL)
+    {
+        informes_initInstrmentoAuxiliar(arrayAux, sizeArray);
+        for(i=0;i<sizeArray;i++)
+        {
+            if(arrayMusicos[i].isEmpty==1)
+                continue;
+            else
+            {
+                arrayAux[posicionAuxiliar].idInstrumento = arrayMusicos[i].idInstrumento;
+                arrayAux[posicionAuxiliar].isEmpty = 0;
+                for(j=0;j<20;j++)
+                {
+                    if(arrayAux[posicionAuxiliar].idInstrumento == arrayInstrumento[j].idInstrumento)
+                    {
+                        strcpy (arrayAux[posicionAuxiliar].nombre, arrayInstrumento[j].nombre);
+                        arrayAux[posicionAuxiliar].tipo = arrayInstrumento[j].tipo;
+                        break;
+                    }
+                }
+                posicionAuxiliar++;
+            }
+        }
+        retorno =0;
+    }
+}
+
+*/
 
 /** \brief  Cuenta la cantidad de instrumentos.
  *
