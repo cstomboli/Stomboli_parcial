@@ -35,10 +35,10 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
                             mus_cantidadPorOrquesta ( list3, lengthMus);
                             break;
                         case 5:
-                            mus_cantidadPorTipoInstrumento ( list3, lengthMus); ///no anda
+                            mus_cantidadPorTipoInstrumento ( list3, lengthMus);
                             break;
                         case 6:
-                            mus_cantidadYpromedio ( list3,  lengthMus); ///no anda
+                            mus_cantidadYpromedio ( list3,  lengthMus);
                             break;
                         case 7:
                             mus_ordenar (list3, lengthMus);
@@ -293,10 +293,10 @@ int mus_cantidadYpromedio (Musico* list3, int length)
 {
     int i;
     int retorno = -1;
-    int contadorMusicos=0;
-    int acumuladorEdad=0;
+    float contadorMusicos=0;
+    float acumuladorEdad=0;
     int contadorSuperan=0;
-    int promedio;
+    float promedio;
 
     if(list3 != NULL && length > 0)
     {
@@ -306,21 +306,20 @@ int mus_cantidadYpromedio (Musico* list3, int length)
             if(list3[i].isEmpty == 0)
             {
                 contadorMusicos++;
-                acumuladorEdad += list3[i].edad;
+                acumuladorEdad+= list3[i].edad;
                 retorno=0;
             }
         }
         promedio=acumuladorEdad/contadorMusicos;
         for(i=0; i<=length; i++)
         {
-            if(list3[i].isEmpty == 0 && list3[i].edad >promedio)
+            if(list3[i].isEmpty == 0 && list3[i].edad>promedio)
             {
-
                 contadorSuperan++;
             }
         }
-        printf("Los musicos son: %d \n",contadorMusicos);
-        printf("El promedio de edad de los musicos es: %d \n",promedio);
+        printf("Los musicos son: %.2f \n",contadorMusicos);
+        printf("El promedio de edad de los musicos es: %.2f \n",promedio);
         printf("Supera el promedio de edad de los musicos : %d \n",contadorSuperan);
         retorno = 0;
     }
