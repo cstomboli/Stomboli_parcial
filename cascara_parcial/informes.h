@@ -1,6 +1,12 @@
 #ifndef INFORMES_H_INCLUDED
 #define INFORMES_H_INCLUDED
 
+typedef struct
+{
+    char nombre;
+    int isEmpty;
+}
+
 void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int lengthIns, Musico* list3, int lengthMus);
 
 int promedioMusicoPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq);
