@@ -10,7 +10,7 @@
 #define FANTASMA 5      ///TAMAÑO DEL
 #define INSTRUMENTOS 20 ///TAMAÑO DEL
 #define ORQUESTA 50    ///TAMAÑO DEL
-#define MUSICOS 10 ///TAMAÑO DEL
+#define MUSICOS 50 ///TAMAÑO DEL
 
 int main()
 {
@@ -24,6 +24,7 @@ int main()
     Instrumento listado [INSTRUMENTOS];
     ins_inicializar(listado,INSTRUMENTOS);
     ins_mock(listado,INSTRUMENTOS);
+    ///InstrumentoAuxiliar arrayAux[INSTRUMENTOS];
 
     Orquesta list2 [ORQUESTA];
     orq_inicializar(list2,ORQUESTA);

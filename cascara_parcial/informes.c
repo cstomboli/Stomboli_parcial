@@ -20,16 +20,16 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
             {
                 while(seguir=='s')
                 {
-                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Cantidad de Orquesta\n2-Cantidad de Orquesta por Tipo: \n3-Cantidad de Instrumentos: \n4-Cantidad de Musicos por Orquesta: \n5-Cantidad de Musicos por Tipo de Instrumento: \n6-Cantidad de Musicos y promedio de Edad: \n7-Ordenar: \n8-Salir: \n"))
+                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Listar Orquesta por lugar: \n2-Musicos menores de 25 años: \n3-Cantidad de Instrumentos: \n4-Cantidad de Musicos por Orquesta: \n5-Cantidad de Musicos por Tipo de Instrumento: \n6-Cantidad de Musicos y promedio de Edad: \n7-Ordenar: \n8-Salir: \n"))
                     {
                         case 1:
-                            orq_cantidad (orquestas,  lengthOr);
+                            inf_mostrarOrquesta(orquestas,lengthOr);
                             break;
                         case 2:
-                            orq_cantidadTipo (orquestas,  lengthOr);
+                            inf_musicoMenor(orquestas,instrumentos,list3,lengthOr,lengthIns,lengthMus);
                             break;
                         case 3:
-                            ins_cantidad (instrumentos, lengthIns);
+                            inf_menosIntegrantesPorOrquesta(list3,orquestas,lengthMus,lengthOr);
                             break;
                          case 4:
                             mus_cantidadPorOrquesta ( list3, lengthMus);
@@ -54,14 +54,76 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
     }
 }
 
+int inf_mostrarOrquesta(Orquesta* orquestas, int length)
+{
+    int i;
+    int retorno=-1;
+    char buffer[30];
 
-int promedioMusicoPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq)
+    utn_getName("Ingrese lugar Orquesta","Error",2,30,2,buffer);
+    printf("buffer");
+    for (i=0; i<length; i++)
+    {
+        if(orquestas[i].isEmpty==0)
+        {
+            if(strncmp(orquestas[i].lugar,buffer,length)==0)
+            {
+                printf("\n Id de la orquesta: %d",orquestas[i].IdOrquesta);
+                printf("\n Nombre: %s",orquestas[i].nombre);
+                printf("\n Nombre: %s",orquestas[i].lugar);
+
+                switch(orquestas[i].tipo)
+                {
+                    case 1:
+                        printf("\n Tipo de Orquesta Sinfonica\n");
+                        break;
+                    case 2:
+                        printf("\n Tipo de Orquesta Viento de Filarmonica\n");
+                        break;
+                    case 3:
+                        printf("\n Tipo de Orquesta Viento de Camara\n");
+                        break;
+                }
+            }
+
+            retorno=0;
+        }
+    }
+    return retorno;
+}
+
+int inf_musicoMenor (Orquesta* orquestas, Instrumento* instrumentos, Musico* list3,int lengthOrq, int lengthIns, int lengthMus)
+{
+    int i;
+    int retorno=-1;
+
+    if((list3 != NULL && lengthMus > 0) && (orquestas != NULL && lengthOrq > 0) && (instrumentos != NULL && lengthIns> 0))
+    {
+        for(i=0; i<=lengthMus; i++)
+        {
+            if(list3[i].isEmpty == 0)
+            {
+                if(list3[i].edad<25)
+                {
+                    printf("\n\nId de musico: %d",list3[i].IdMusico);
+                    printf("\nNombre: %s",list3[i].nombre);
+                    printf("\nApellido: %s",list3[i].apellido);
+                    printf("\nEdad: %d",list3[i].edad);
+                    printf("\nNombre del Instrumento: %s", instrumentos[i].nombre);
+                    printf("\nNombre de la Orquesta: %s\n", orquestas[i].nombre);
+                }
+            }
+        }retorno=0;
+    }
+    return retorno;
+}
+
+int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq)
 {
     int retorno=-1;
     int i;
-    float contadorMusicos=0;
-    float contadorOrquestas=0;
-    float promedio;
+    int contadorMusicos=0;
+    int acumuladorMus=0;
 
     if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquesta != NULL && lengthOrq>0 ))
     {
@@ -69,18 +131,37 @@ int promedioMusicoPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int
         {
             if(arrayMusicos[i].isEmpty==0)
             {
-                contadorMusicos++;
+                if(arrayMusicos[i].IdOrquesta>0)
+                {
+                    for(i=0;i<2;i++)
+                    {
+                        printf("%d",arrayOrquesta[i].lugar);
+                    }
+                 }
             }
-            if(arrayOrquesta[i].isEmpty==0)
-            {
-                contadorOrquestas++;
-            }
+
+
         }retorno=0;
     }
-    promedio=contadorMusicos/contadorOrquestas;
-    printf("El promedio de musico por Orquesta es: %.2f",promedio);
     return retorno;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -158,7 +239,6 @@ int orq_cantidad (Orquesta* orquestas, int length)
     }
     return retorno;
 }
-
 
 ////////////////////////////////////////// INFORMES INSTRUMENTOS ////////////////////////////////////
 
@@ -357,7 +437,6 @@ int mus_cantidadPorTipoInstrumento (Musico* list3, int length)
     return retorno;
 }
 
-
 /** \brief Cuenta la cantidad de musicos que hay.
  *          y calcula el promedio de edades.
  * \param   Recibe la Estructura Musicos
@@ -418,7 +497,6 @@ int mus_ordenar (Musico* list3,int length)
 
     if(list3 != NULL && length > 0)
     {
-
         do
         {
             flag=0;

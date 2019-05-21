@@ -333,6 +333,7 @@ int mus_mostrar(Instrumento* instrumentos, Musico* list3, int length, int length
             printf("\nCodigo de musico: %d",list3[i].IdMusico);
             printf("\nNombre: %s",list3[i].nombre);
             printf("\nApellido: %s",list3[i].apellido);
+            printf("\nId Orquesta: %d",list3[i].edad);
             printf("\nId Orquesta: %d",list3[i].IdOrquesta);
             printf("\nNombre del Instrumento: %s", instrumentos[i].nombre);
             switch(instrumentos[i].tipo)
@@ -370,7 +371,7 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     list3[0].IdMusico =1;
     list3[0].isEmpty=0;
     list3[0].IdOrquesta=1;
-    list3[0].edad=25;
+    list3[0].edad=20;
     strcpy(list3[0].apellido,"Stomboli");
     strcpy(list3[0].nombre,"Carolina");
     strcpy(instrumentos[0].nombre,"Guitarra");
@@ -380,7 +381,7 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     list3[1].IdMusico =2;
     list3[1].isEmpty=0;
     list3[1].IdOrquesta=1;
-    list3[1].edad=30;
+    list3[1].edad=18;
     strcpy(list3[1].apellido,"Stomboli");
     strcpy(list3[1].nombre,"Alberto");
     strcpy(instrumentos[1].nombre,"Bateria");
@@ -399,8 +400,8 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
 
     list3[3].IdMusico=4;
     list3[3].isEmpty=0;
-    list3[3].IdOrquesta=3;
-    list3[3].edad=50;
+    list3[3].IdOrquesta=1;
+    list3[3].edad=17;
     strcpy(list3[3].apellido,"Sarubbi");
     strcpy(list3[3].nombre,"Marita");
     strcpy(instrumentos[3].nombre,"Flauta");

@@ -410,6 +410,35 @@ int fan_ordenar (Fantasma* list3,int length)
         }while(flag);
     }return retorno;
 }
+/*
+int promedioMusicoPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq)
+{
+    int retorno=-1;
+    int i;
+    float contadorMusicos=0;
+    float contadorOrquestas=0;
+    float promedio;
+
+    if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquesta != NULL && lengthOrq>0 ))
+    {
+        for(i=0;i<lengthMus;i++)
+        {
+            if(arrayMusicos[i].isEmpty==0)
+            {
+                contadorMusicos++;
+            }
+            if(arrayOrquesta[i].isEmpty==0)
+            {
+                contadorOrquestas++;
+            }
+        }retorno=0;
+    }
+    promedio=contadorMusicos/contadorOrquestas;
+    printf("El promedio de musico por Orquesta es: %.2f",promedio);
+    return retorno;
+}
+
+*/
 
 /** \brief La funcion muestra los datos hardcodeados.
  *

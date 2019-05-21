@@ -26,6 +26,10 @@ int fan_buscarPorId (Fantasma* list3,char *msg,char *msgError, int length, int *
 int fan_baja (Fantasma* list3, int length);
 int fan_mostrar(Fantasma* list3, int length);
 int fan_ordenar (Fantasma* list3,int length);
+
+///int promedioMusicoPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq);
+
+
 void fan_mock(Fantasma* list3, int length,int *contadorId);
 
 
