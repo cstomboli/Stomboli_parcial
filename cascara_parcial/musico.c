@@ -371,43 +371,62 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     list3[0].IdMusico =1;
     list3[0].isEmpty=0;
     list3[0].IdOrquesta=1;
-    list3[0].edad=20;
-    strcpy(list3[0].apellido,"Stomboli");
-    strcpy(list3[0].nombre,"Carolina");
+    list3[0].edad=30;
+    strcpy(list3[0].apellido,"Mus1");
+    strcpy(list3[0].nombre,"Mus1");
     strcpy(instrumentos[0].nombre,"Guitarra");
     instrumentos[0].tipo=3;
-    list3[0].IdInstrumento=1;
+    list3[0].IdInstrumento=2;
 
     list3[1].IdMusico =2;
     list3[1].isEmpty=0;
-    list3[1].IdOrquesta=1;
-    list3[1].edad=18;
-    strcpy(list3[1].apellido,"Stomboli");
-    strcpy(list3[1].nombre,"Alberto");
+    list3[1].IdOrquesta=2;
+    list3[1].edad=20;
+    strcpy(list3[1].apellido,"Mus2");
+    strcpy(list3[1].nombre,"Mus2");
     strcpy(instrumentos[1].nombre,"Bateria");
     instrumentos[1].tipo=3;
-    list3[1].IdInstrumento=1;
+    list3[1].IdInstrumento=5;
 
     list3[2].IdMusico=3;
     list3[2].isEmpty=0;
-    list3[2].IdOrquesta=1;
-    list3[2].edad=40;
-    strcpy(list3[2].apellido,"Stomboli");
-    strcpy(list3[2].nombre,"Soledad");
+    list3[2].IdOrquesta=4;
+    list3[2].edad=25;
+    strcpy(list3[2].apellido,"Mus3");
+    strcpy(list3[2].nombre,"Mus3");
     strcpy(instrumentos[2].nombre,"Flauta traversa");
     instrumentos[2].tipo=3;
-    list3[2].IdInstrumento=1;
+    list3[2].IdInstrumento=2;
 
     list3[3].IdMusico=4;
     list3[3].isEmpty=0;
-    list3[3].IdOrquesta=1;
-    list3[3].edad=17;
-    strcpy(list3[3].apellido,"Sarubbi");
-    strcpy(list3[3].nombre,"Marita");
+    list3[3].IdOrquesta=4;
+    list3[3].edad=27;
+    strcpy(list3[3].apellido,"Mus4");
+    strcpy(list3[3].nombre,"Mus4");
     strcpy(instrumentos[3].nombre,"Flauta");
     instrumentos[3].tipo=3;
     list3[3].IdInstrumento=1;
 
+    list3[4].IdMusico=5;
+    list3[4].isEmpty=0;
+    list3[4].IdOrquesta=1;
+    list3[4].edad=22;
+    strcpy(list3[4].apellido,"Mus5");
+    strcpy(list3[4].nombre,"Mus5");
+    strcpy(instrumentos[4].nombre,"Flauta");
+    instrumentos[4].tipo=4;
+    list3[4].IdInstrumento=3;
+
+    list3[5].IdMusico=6;
+    list3[5].isEmpty=0;
+    list3[5].IdOrquesta=3;
+    list3[5].edad=35;
+    strcpy(list3[5].apellido,"Mus6");
+    strcpy(list3[5].nombre,"Mus6");
+    strcpy(instrumentos[5].nombre,"Flauta");
+    instrumentos[5].tipo=4;
+    list3[5].IdInstrumento=4;
 }
 
 

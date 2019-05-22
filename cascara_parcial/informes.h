@@ -17,7 +17,8 @@ int inf_mostrarOrquesta(Orquesta* orquestas, int length);
 int inf_musicoMenor (Orquesta* orquestas, Instrumento* instrumentos, Musico* list3,int lengthOrq, int lengthIns, int lengthMus);
 int inf_orquestaMenosInte (Orquesta* arrayOrquesta,int lengthOrq);
 int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq);
-
+int inf_InsOrq (Instrumento* arrayInstr, Orquesta* arrayOrq, Musico* arrayMus, int lengthIns, int lengthOrq, int lengthMus);
+int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthMus, int length);
 
 
 

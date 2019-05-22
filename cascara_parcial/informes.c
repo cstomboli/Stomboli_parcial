@@ -20,7 +20,7 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
             {
                 while(seguir=='s')
                 {
-                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Listar Orquesta por lugar: \n2-Musicos menores de 25 años: \n3-Cantidad de Instrumentos: \n4-Cantidad de Musicos por Orquesta: \n5-Cantidad de Musicos por Tipo de Instrumento: \n6-Cantidad de Musicos y promedio de Edad: \n7-Ordenar: \n8-Salir: \n"))
+                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Listar Orquesta por lugar: \n2-Musicos menores de 25 años: \n3-Orquesta con menos de 6 musicos: \n4-Instrumentos de una orquesta determinada: \n5- \n6-Cantidad de Musicos y promedio de Edad: \n7-: \n8-Musicos que no tocan instrumento de viento: \n9-Salir: \n"))
                     {
                         case 1:
                             inf_mostrarOrquesta(orquestas,lengthOr);
@@ -35,16 +35,19 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
                             mus_cantidadPorOrquesta ( list3, lengthMus);
                             break;
                         case 5:
-                            mus_cantidadPorTipoInstrumento ( list3, lengthMus);
+                            inf_InsOrq(instrumentos,orquestas,list3,lengthIns,lengthOr,lengthMus);
                             break;
                         case 6:
                             mus_cantidadYpromedio ( list3,  lengthMus);
                             break;
-                        case 7:
-                            mus_ordenar (list3, lengthMus);
+                          case 7:
+                            mus_cantidadYpromedio ( list3,  lengthMus);
+                            break;
+                        case 8:
+                            inf_musNoViento(list3,instrumentos,lengthMus,lengthIns);
                             break;
 
-                        case 8:
+                        case 9:
                             seguir= 'n';
                             break;
                     }
@@ -123,7 +126,7 @@ int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrques
     int retorno=-1;
     int i;
     int contadorMusicos=0;
-    int acumuladorMus=0;
+    ///int acumuladorMus=0;
 
     if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquesta != NULL && lengthOrq>0 ))
     {
@@ -131,17 +134,106 @@ int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrques
         {
             if(arrayMusicos[i].isEmpty==0)
             {
-                if(arrayMusicos[i].IdOrquesta>0)
+                contadorMusicos++;
+                if(arrayMusicos[i].IdOrquesta==1 && contadorMusicos>2)
                 {
-                    for(i=0;i<2;i++)
-                    {
-                        printf("%d",arrayOrquesta[i].lugar);
-                    }
-                 }
+                    printf("%d",arrayMusicos[i].IdOrquesta);
+                    break;
+                }
             }
 
-
         }retorno=0;
+    }
+    return retorno;
+}
+
+int inf_InsOrq (Instrumento* arrayInstr, Orquesta* arrayOrq, Musico* arrayMus, int lengthIns, int lengthOrq, int lengthMus)
+{
+    int i;
+    int retorno=-1;
+    int buffer;
+    if((arrayInstr != NULL && lengthIns>0) && (arrayOrq != NULL && lengthOrq>0 ))
+    {
+        utn_getInt("ingrese id de la Orquesta","Error",1,100,2,&buffer);
+        for (i=0; i<lengthIns; i++)
+        {
+            if(arrayInstr[i].isEmpty==0)
+            {
+                if(arrayOrq[i].IdOrquesta==buffer && arrayMus[i].IdOrquesta==buffer)
+                {
+
+                    printf("\nNombre: %s",arrayMus[i].nombre);
+                    printf("\nNombre: %s",arrayInstr[i].nombre);
+                    switch(arrayInstr[i].tipo)
+                    {
+                        case 1:
+                            printf("\nTipo de instrumento: Cuerdas\n");
+                            break;
+                        case 2:
+                            printf("\nTipo de instrumento: Viento de Madera\n");
+                            break;
+                        case 3:
+                            printf("\nTipo de instrumento: Viento de Metal\n");
+                            break;
+                        case 4:
+                            printf("\nTipo de instrumento: Percusion\n");
+                            break;
+                    }
+                }
+
+
+
+                retorno=0;
+            }
+        }
+    }
+    return retorno;
+}
+
+/** \brief  Cuenta la cantidad de instrumentos.
+ *
+ * \param   Recibe la Estructura Instrumentos.
+ * \param   El tamaño de la misma.
+ * \return  -1 si no pudo contar, 0 Si pudo.
+ *
+ */
+int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthMus, int length)
+{
+    int i;
+    int retorno = -1;
+
+    if((instrumentos != NULL && length > 0) && (arrayMusicos != NULL && lengthMus > 0))
+    {
+        for(i=0; i<=length; i++)
+        {
+            if(instrumentos[i].isEmpty == 0 && arrayMusicos[i].isEmpty == 0)
+            {
+                if(arrayMusicos[i].IdInstrumento!=2 &&instrumentos[i].tipo!=3)
+                {
+                    mus_ordenar(arrayMusicos,length);
+                    printf("\nNombre: %s",arrayMusicos[i].nombre);
+                    printf("\nApellido: %s",arrayMusicos[i].apellido);
+                    printf("\nId Orquesta: %d",arrayMusicos[i].edad);
+                    printf("\nNombre del Instrumento: %s", instrumentos[i].nombre);
+                    switch(instrumentos[i].tipo)
+                    {
+                        case 1:
+                            printf("\nTipo de Instrumento: Cuerdas.\n");
+                            break;
+                        case 2:
+                            printf("\nTipo de Instrumento: Viento Madera.\n");
+                            break;
+                        case 3:
+                            printf("\nTipo de Instrumento: Viento Metal.\n");
+                            break;
+                        case 4:
+                            printf("\nTipo de Instrumento: Percusion.\n");
+                            break;
+                    }
+                }
+            }
+        }
+        retorno = 0;
     }
     return retorno;
 }
@@ -287,57 +379,7 @@ int informes_instrumentoMasUsado(Musico* arrayMusicos, InstrumentoAuxiliar array
 
 */
 
-/** \brief  Cuenta la cantidad de instrumentos.
- *
- * \param   Recibe la Estructura Instrumentos.
- * \param   El tamaño de la misma.
- * \return  -1 si no pudo contar, 0 Si pudo.
- *
- */
-int ins_cantidad (Instrumento* instrumentos, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorInstrumentos=0;
-    int contadorCuerdas=0;
-    int contadorMadera=0;
-    int contadorMetal=0;
-    int contadorPercusion=0;
 
-    if(instrumentos != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(instrumentos[i].isEmpty == 0)
-            {
-                contadorInstrumentos++;
-                if(instrumentos[i].tipo==1)
-                {
-                    contadorCuerdas++;
-                }
-                if(instrumentos[i].tipo==2)
-                {
-                    contadorMadera++;
-                }
-                if(instrumentos[i].tipo==3)
-                {
-                    contadorMetal++;
-                }
-                if(instrumentos[i].tipo==4)
-                {
-                    contadorPercusion++;
-                }
-            }
-        }
-        printf("Los Instrumentos cargados son: %d \n",contadorInstrumentos);
-        printf("Los Instrumentos de tipo Cuerdas son: %d \n",contadorCuerdas);
-        printf("Los Instrumentos cargados de tipo Viento Madera son: %d \n",contadorMadera);
-        printf("Los Instrumentos cargados de tipo Viento Metal son: %d \n",contadorMetal);
-        printf("Los Instrumentos cargados de tipo percusion son: %d \n",contadorPercusion);
-        retorno = 0;
-    }
-    return retorno;
-}
 
 
 ////////////////////////////////////////// INFORMES MUSICOS ////////////////////////////////////

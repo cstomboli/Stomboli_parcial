@@ -245,28 +245,28 @@ int orq_mostrar(Orquesta* orquestas, int length)
 void orq_mock(Orquesta* orquestas, int length)
 {
     orquestas[0].IdOrquesta=1;
-    orquestas[0].tipo =2;
+    orquestas[0].tipo =1;
     orquestas[0].isEmpty=0;
-    strcpy(orquestas[0].nombre,"Orquesta los vecinos");
-    strcpy(orquestas[0].lugar ,"Lomas");
+    strcpy(orquestas[0].nombre,"Orquesta1");
+    strcpy(orquestas[0].lugar ,"Lugar1");
 
     orquestas[1].IdOrquesta=2;
-    orquestas[1].tipo=3;
+    orquestas[1].tipo=2;
     orquestas[1].isEmpty=0;
-    strcpy(orquestas[1].nombre,"Orquesta los amigos");
-    strcpy(orquestas[1].lugar,"Banfield");
+    strcpy(orquestas[1].nombre,"Orquesta2");
+    strcpy(orquestas[1].lugar,"Lugar2");
 
     orquestas[2].IdOrquesta=3;
-    orquestas[2].tipo =1;
+    orquestas[2].tipo =3;
     orquestas[2].isEmpty=0;
-    strcpy(orquestas[2].nombre,"Orquesta los musicos");
-    strcpy(orquestas[2].lugar ,"Lomas Centro");
+    strcpy(orquestas[2].nombre,"Orquesta3");
+    strcpy(orquestas[2].lugar ,"Lugar3");
 
     orquestas[3].IdOrquesta=4;
-    orquestas[3].tipo=3;
+    orquestas[3].tipo=2;
     orquestas[3].isEmpty=0;
-    strcpy(orquestas[3].nombre,"Orquesta Avellaneda");
-    strcpy(orquestas[3].lugar,"Avellaneda");
+    strcpy(orquestas[3].nombre,"Orquesta4");
+    strcpy(orquestas[3].lugar,"Lugar4");
 
 
 

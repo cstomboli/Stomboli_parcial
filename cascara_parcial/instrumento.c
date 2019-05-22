@@ -249,23 +249,28 @@ int ins_mostrar(Instrumento* instrumentos, int length)
 void ins_mock(Instrumento* instrumentos, int length)
 {
     instrumentos[0].IdInstrumento =1;
-    strcpy(instrumentos[0].nombre,"Guitarra");
-    instrumentos[0].tipo= 3;
+    strcpy(instrumentos[0].nombre,"Inst1");
+    instrumentos[0].tipo=1;
     instrumentos[0].isEmpty=0;
 
     instrumentos[1].IdInstrumento =2;
-    strcpy(instrumentos[1].nombre,"Flauta");
-    instrumentos[1].tipo= 3;
+    strcpy(instrumentos[1].nombre,"Inst2");
+    instrumentos[1].tipo=2;
     instrumentos[1].isEmpty=0;
 
     instrumentos[2].IdInstrumento =3;
-    strcpy(instrumentos[2].nombre,"Falutin");
-    instrumentos[2].tipo= 3;
+    strcpy(instrumentos[2].nombre,"Inst3");
+    instrumentos[2].tipo=2;
     instrumentos[2].isEmpty=0;
 
     instrumentos[3].IdInstrumento=4;
-    strcpy(instrumentos[3].nombre,"Bateria");
-    instrumentos[3].tipo= 3;
+    strcpy(instrumentos[3].nombre,"Inst4");
+    instrumentos[3].tipo=3;
+    instrumentos[3].isEmpty=0;
+
+    instrumentos[3].IdInstrumento=5;
+    strcpy(instrumentos[3].nombre,"Inst5");
+    instrumentos[3].tipo=4;
     instrumentos[3].isEmpty=0;
 }
 
