@@ -64,7 +64,7 @@ int inf_mostrarOrquesta(Orquesta* orquestas, int length)
     char buffer[30];
 
     utn_getName("Ingrese lugar Orquesta","Error",2,30,2,buffer);
-    printf("buffer");
+    printf("%s",buffer);
     for (i=0; i<length; i++)
     {
         if(orquestas[i].isEmpty==0)
@@ -155,6 +155,7 @@ int inf_InsOrq (Instrumento* arrayInstr, Orquesta* arrayOrq, Musico* arrayMus, i
     if((arrayInstr != NULL && lengthIns>0) && (arrayOrq != NULL && lengthOrq>0 ))
     {
         utn_getInt("ingrese id de la Orquesta","Error",1,100,2,&buffer);
+
         for (i=0; i<lengthIns; i++)
         {
             if(arrayInstr[i].isEmpty==0)

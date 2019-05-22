@@ -173,7 +173,7 @@
 
 1558474719 d:\stomboli\stomboli_parcial\cascara_parcial\utn.h
 
-1558474719 source:d:\stomboli\stomboli_parcial\cascara_parcial\instrumento.c
+1558483208 source:d:\stomboli\stomboli_parcial\cascara_parcial\instrumento.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -202,9 +202,9 @@
 	"instrumento.h"
 	"orquesta.h"
 
-1558481575 d:\stomboli\stomboli_parcial\cascara_parcial\informes.h
+1558483037 d:\stomboli\stomboli_parcial\cascara_parcial\informes.h
 
-1558478763 source:d:\stomboli\stomboli_parcial\cascara_parcial\musico.c
+1558483614 source:d:\stomboli\stomboli_parcial\cascara_parcial\musico.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -213,7 +213,7 @@
 	"orquesta.h"
 	"utn.h"
 
-1558478763 source:d:\stomboli\stomboli_parcial\cascara_parcial\orquesta.c
+1558486229 source:d:\stomboli\stomboli_parcial\cascara_parcial\orquesta.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -228,7 +228,7 @@
 	<ctype.h>
 	"utn.h"
 
-1558479704 source:d:\stomboli\stomboli_parcial\cascara_parcial\informes.c
+1558486112 source:d:\stomboli\stomboli_parcial\cascara_parcial\informes.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
