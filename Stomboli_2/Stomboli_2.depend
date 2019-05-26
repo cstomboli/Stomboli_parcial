@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1558884189 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\informes.c
+1558886830 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\informes.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -49,7 +49,7 @@
 	"orquesta.h"
 	"utn.h"
 
-1558884189 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\orquesta.c
+1558886101 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\orquesta.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>

@@ -254,7 +254,7 @@ void orq_mock(Orquesta* orquestas, int length)
     orquestas[1].tipo=2;
     orquestas[1].isEmpty=0;
     strcpy(orquestas[1].nombre,"Orquesta2");
-    strcpy(orquestas[1].lugar,"LugarUno");
+    strcpy(orquestas[1].lugar,"LugarDos");
 
     orquestas[2].IdOrquesta=3;
     orquestas[2].tipo =3;

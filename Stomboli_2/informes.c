@@ -20,13 +20,13 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
             {
                 while(seguir=='s')
                 {
-                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Listar Orquesta por lugar: \n2-Musicos menores de 25: \n3-Orquesta con menos de 6 musicos: \n4-Instrumentos de una orquesta determinada: \n5- \n6-Cantidad de Musicos y promedio de Edad: \n7-: \n8-Musicos que no tocan instrumento de viento: \n9-Salir: \n"))
+                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Listar Orquesta por lugar: \n2-Musicos menores de 25: \n3-Orquesta con menos de 6 musicos: \n5-Instrumentos de una orquesta determinada: \n5- \n6-Cantidad de Musicos y promedio de Edad: \n7-: \n8-Musicos que no tocan instrumento de viento: \n9-Salir: \n"))
                     {
                         case 1:
-                            inf_mostrarOrquesta(orquestas,lengthOr);
+                            inf_mostrarOrquesta(orquestas,lengthOr);    ///ANDA PERFECTO
                             break;
                         case 2:
-                            inf_musicoMenor(orquestas,instrumentos,list3,lengthOr,lengthIns,lengthMus);
+                            inf_musicoMenor(orquestas,instrumentos,list3,lengthOr,lengthIns,lengthMus);     ///tira basura
                             break;
                         case 3:
                             inf_menosIntegrantesPorOrquesta(list3,orquestas,lengthMus,lengthOr);
@@ -127,6 +127,7 @@ int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrques
     int retorno=-1;
     int i;
     int contadorMusicos=0;
+    int buffer;
     ///int acumuladorMus=0;
 
     if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquesta != NULL && lengthOrq>0 ))
@@ -135,14 +136,25 @@ int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrques
         {
             if(arrayMusicos[i].isEmpty==0)
             {
-                contadorMusicos++;
-                if(arrayMusicos[i].IdOrquesta==1 && contadorMusicos>2)
+                buffer=arrayMusicos[i].IdOrquesta;
+
+                if(arrayMusicos[i].IdOrquesta==arrayMusicos[i].IdOrquesta)
                 {
-                    printf("%d",arrayMusicos[i].IdOrquesta);
-                    break;
-                }
+                    contadorMusicos+2;
+                    printf("%da",contadorMusicos);
+                    printf("%db",arrayMusicos[i].IdOrquesta);
+                    continue;
+
+                 }
             }
 
+        }
+        if(contadorMusicos>2)
+        {    for(i=0;i<lengthMus;i++)
+                {
+                    printf("\n%dc",arrayMusicos[i].IdOrquesta);
+                    printf("\n%sd",arrayOrquesta[i].nombre);
+                }
         }retorno=0;
     }
     return retorno;
