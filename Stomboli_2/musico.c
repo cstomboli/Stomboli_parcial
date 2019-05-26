@@ -425,7 +425,7 @@ void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthIn
     strcpy(list3[5].apellido,"Mus6");
     strcpy(list3[5].nombre,"Mus6");
     strcpy(instrumentos[5].nombre,"Flauta");
-    instrumentos[5].tipo=4;
+    instrumentos[5].tipo=3;
     list3[5].IdInstrumento=4;
 }
 

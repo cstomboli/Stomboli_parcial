@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1558804557 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\informes.c
+1558884189 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\informes.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -9,28 +9,28 @@
 	"utn.h"
 	"informes.h"
 
-1558803279 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\musico.h
+1558884189 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\musico.h
 	"instrumento.h"
 	"orquesta.h"
 
-1558803279 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\instrumento.h
+1558884189 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\instrumento.h
 
-1558803279 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\orquesta.h
+1558884189 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\orquesta.h
 	"instrumento.h"
 	"orquesta.h"
 
-1558803279 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\utn.h
+1558884189 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\utn.h
 
-1558803279 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\informes.h
+1558884189 c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\informes.h
 
-1558803745 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\instrumento.c
+1558884189 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\instrumento.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"instrumento.h"
 	"utn.h"
 
-1558803769 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\main.c
+1558884189 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -40,7 +40,7 @@
 	"utn.h"
 	"informes.h"
 
-1558804341 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\musico.c
+1558884486 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\musico.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -49,7 +49,7 @@
 	"orquesta.h"
 	"utn.h"
 
-1558803279 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\orquesta.c
+1558884189 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\orquesta.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -57,7 +57,7 @@
 	"instrumento.h"
 	"utn.h"
 
-1558803279 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\utn.c
+1558884189 source:c:\users\maría del carmen\desktop\parcial 2da parte\stomboli_parcial\stomboli_2\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

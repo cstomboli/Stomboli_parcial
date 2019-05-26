@@ -44,7 +44,7 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
                             mus_cantidadYpromedio ( list3,  lengthMus);
                             break;
                         case 8:
-                            inf_musNoViento(list3,instrumentos,lengthMus,lengthIns);
+                            inf_musNoViento(list3,instrumentos,lengthMus,lengthIns);    ///ANDA PERFECTO
                             break;
 
                         case 9:
@@ -210,9 +210,9 @@ int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthM
         {
             if(instrumentos[i].isEmpty == 0 && arrayMusicos[i].isEmpty == 0)
             {
-                if(arrayMusicos[i].IdInstrumento!=2 &&instrumentos[i].tipo!=3)
+                if(instrumentos[i].tipo!=2 &&instrumentos[i].tipo!=3)
                 {
-                    mus_ordenar(arrayMusicos,length);
+                    ///mus_ordenar(arrayMusicos,length);
                     printf("\nNombre: %s",arrayMusicos[i].nombre);
                     printf("\nApellido: %s",arrayMusicos[i].apellido);
                     printf("\nId Orquesta: %d",arrayMusicos[i].edad);
@@ -232,6 +232,11 @@ int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthM
                             printf("\nTipo de Instrumento: Percusion.\n");
                             break;
                     }
+                }
+                else
+                {
+                    printf("\nNo hay musicos que no toquen instrumentos de Vientos");
+                    break;
                 }
             }
         }
