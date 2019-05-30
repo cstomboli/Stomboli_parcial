@@ -9,42 +9,50 @@
 #include "utn.h"
 #include "informes.h"
 
-void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int lengthIns, Musico* list3, int lengthMus)
+/** \brief La funcion muestra el menu de informes
+ *
+ * \param   Recibe la estructura Instrumento y su tamaño.
+ * \param   Recibe la estructura Orquesta y su tamaño.
+ * \param   Recibe la estructura Musico y su tamaño.
+ * \return
+ *
+ */
+void informes (Orquesta* arrayOrquestas, int lengthOrq, Instrumento* arrayInstrumentos, int lengthIns, Musico* arrayMusicos, int lengthMus)
 {
     char seguir='s';
-    if(orquestas != NULL && lengthOr > 0)
+    if(arrayOrquestas != NULL && lengthOrq > 0)
     {
-        if(instrumentos != NULL && lengthIns > 0)
+        if(arrayInstrumentos != NULL && lengthIns > 0)
         {
-            if(list3 != NULL && lengthMus > 0)
+            if(arrayMusicos != NULL && lengthMus > 0)
             {
                 while(seguir=='s')
                 {
-                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Listar Orquesta por lugar: \n2-Musicos menores de 25: \n3-Orquesta con menos de 6 musicos: \n5-Instrumentos de una orquesta determinada: \n5- \n6-Cantidad de Musicos y promedio de Edad: \n7-: \n8-Musicos que no tocan instrumento de viento: \n9-Salir: \n"))
+                    switch (utn_getInSimple("\nIngrese una opcion:\n1-Listar Orquesta por lugar: \n2-Musicos menores de 25: \n3-Orquesta con menos de 6 musicos: \n4-Instrumentos de una orquesta determinada: \n5- Orquesta completa \n6- Orquesta con menos musicos: \n7-Promedio de Instrumentos por Orquesta: \n8-Musicos que no tocan instrumento de viento: \n9-Salir: \n"))
                     {
                         case 1:
-                            inf_mostrarOrquesta(orquestas,lengthOr);    ///ANDA PERFECTO
+                            inf_OrquestaPorLugar(arrayOrquestas,lengthOrq);  /// 1-Listar Orquesta por lugar: ///ANDA PERFECTO
                             break;
                         case 2:
-                            inf_musicoMenor(orquestas,instrumentos,list3,lengthOr,lengthIns,lengthMus);     ///tira basura
+                            inf_musicoMenor(arrayOrquestas,arrayInstrumentos,arrayMusicos,lengthOrq,lengthIns,lengthMus);      ///2-Musicos menores de 25:  ///ANDA PERFECTO
                             break;
                         case 3:
-                            inf_menosIntegrantesPorOrquesta(list3,orquestas,lengthMus,lengthOr);
+                            inf_menosIntegrantesPorOrquesta(arrayMusicos,arrayOrquestas,lengthMus,lengthOrq);       /// 3-Orquesta con menos de 6 musicos: ///ANDA PERFECTO
                             break;
                          case 4:
-                            mus_cantidadPorOrquesta ( list3, lengthMus);
+                            inf_InstrumentosOrq(arrayInstrumentos,arrayOrquestas,arrayMusicos,lengthIns,lengthOrq,lengthMus);           ///4-Instrumentos de una orquesta determinada: ///ANDA PERFECTO
                             break;
                         case 5:
-                            inf_InsOrq(instrumentos,orquestas,list3,lengthIns,lengthOr,lengthMus);
+                             inf_orquestaCompleta(arrayInstrumentos, arrayOrquestas,arrayMusicos, lengthIns,lengthOrq,lengthMus)   ;  /// Orquesta completa
                             break;
                         case 6:
-                            mus_cantidadYpromedio ( list3,  lengthMus);
+                            inf_menosMusicosPorOrquesta(arrayMusicos,arrayOrquestas,lengthMus,lengthOrq);       /// 6- Orquesta con menos musicos:
                             break;
                           case 7:
-                            mus_cantidadYpromedio ( list3,  lengthMus);
+                            inf_promedioPorInstrumento (arrayOrquestas,arrayMusicos,lengthOrq,lengthMus);         ///7-Promedio de arrayInstrumentos por Orquesta: ///ANDA PERFECTO
                             break;
                         case 8:
-                            inf_musNoViento(list3,instrumentos,lengthMus,lengthIns);    ///ANDA PERFECTO
+                            inf_musNoViento(arrayMusicos,arrayInstrumentos,lengthMus,lengthIns);   ///8-Musicos que no tocan instrumento de ///ANDA PERFECTO
                             break;
 
                         case 9:
@@ -57,7 +65,14 @@ void informes (Orquesta* orquestas, int lengthOr, Instrumento* instrumentos, int
     }
 }
 
-int inf_mostrarOrquesta(Orquesta* orquestas, int length)
+/** \brief
+ *
+ * \param arrayOrquestas Orquesta*
+ * \param length int
+ * \return int
+ *
+ */
+int inf_OrquestaPorLugar(Orquesta* arrayOrquestas, int length)
 {
     int i;
     int retorno=-1;
@@ -66,15 +81,15 @@ int inf_mostrarOrquesta(Orquesta* orquestas, int length)
     utn_getName("\nIngrese lugar Orquesta","Error",2,30,2,buffer);
     for (i=0; i<length; i++)
     {
-        if(orquestas[i].isEmpty==0)
+        if(arrayOrquestas[i].isEmpty==0)
         {
-            if(strncmp(orquestas[i].lugar,buffer,length)==0)
+            if(strncmp(arrayOrquestas[i].lugar,buffer,length)==0)
             {
-                printf("\n Id de la orquesta: %d",orquestas[i].IdOrquesta);
-                printf("\n Nombre: %s",orquestas[i].nombre);
-                printf("\n Nombre: %s",orquestas[i].lugar);
+                printf("\n Id de la orquesta: %d",arrayOrquestas[i].IdOrquesta);
+                printf("\n Nombre: %s",arrayOrquestas[i].nombre);
+                printf("\n Nombre: %s",arrayOrquestas[i].lugar);
 
-                switch(orquestas[i].tipo)
+                switch(arrayOrquestas[i].tipo)
                 {
                     case 1:
                         printf("\n Tipo: Sinfonica\n");
@@ -94,27 +109,35 @@ int inf_mostrarOrquesta(Orquesta* orquestas, int length)
     return retorno;
 }
 
-int inf_musicoMenor (Orquesta* orquestas, Instrumento* instrumentos, Musico* list3,int lengthOrq, int lengthIns, int lengthMus)
+/** \brief
+ *
+ * \param   Recibe la estructura Instrumento y su tamaño.
+ * \param   Recibe la estructura Orquesta y su tamaño.
+ * \param   Recibe la estructura Musico y su tamaño.
+ * \return
+ *
+ */
+int inf_musicoMenor (Orquesta* arrayOrquestas, Instrumento* arrayInstrumentos, Musico* musicos,int lengthOrq, int lengthIns, int lengthMus)
 {
     int i;
     int retorno=-1;
 
-    if((list3 != NULL && lengthMus > 0) && (orquestas != NULL && lengthOrq > 0) && (instrumentos != NULL && lengthIns> 0))
+    if((musicos != NULL && lengthMus > 0) && (arrayOrquestas != NULL && lengthOrq > 0) && (arrayInstrumentos != NULL && lengthIns> 0))
     {
-        for(i=0; i<=10; i++)
+        for(i=0; i<=lengthMus; i++)
         {
-            if(list3[i].isEmpty == 0)
+            if((musicos[i].isEmpty == 0) && (arrayInstrumentos[i].isEmpty == 0) && (arrayOrquestas[i].isEmpty == 0))
             {
-                if(list3[i].edad<25)
+                if(musicos[i].edad<25)
                 {
                     ///fflush (stdin);
                     /// __fopurgue(stdin)  PARA LINUX
-                    printf("\n\nId de musico: %d",list3[i].IdMusico);
-                    printf("\nNombre: %s",list3[i].nombre);
-                    printf("\nApellido: %s",list3[i].apellido);
-                    printf("\nEdad: %d",list3[i].edad);
-                    printf("\nNombre del Instrumento: %s", instrumentos[i].nombre);
-                    printf("\nNombre de la Orquesta: %s\n", orquestas[i].nombre); ///tira basura
+                    printf("\n\nId de musico: %d",musicos[i].IdMusico);
+                    printf("\nNombre: %s",musicos[i].nombre);
+                    printf("\nApellido: %s",musicos[i].apellido);
+                    printf("\nEdad: %d",musicos[i].edad);
+                    printf("\nNombre del Instrumento: %s", arrayInstrumentos[i].nombre);
+                    printf("\nNombre de la Orquesta: %s \n", arrayOrquestas[i].nombre); ///tira basura
                 }
             }
         }retorno=0;
@@ -122,45 +145,61 @@ int inf_musicoMenor (Orquesta* orquestas, Instrumento* instrumentos, Musico* lis
     return retorno;
 }
 
-int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq)
+/** \brief La funcion lista las orquestas que tienen menos de 6 musicos
+ *
+ * \param Recibe la estructura Instrumento y su tamaño.
+ * \param Recibe la estructura Orquesta y su tamaño.
+ * \return
+ *
+ */
+int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquestas,int lengthMus, int lengthOrq)
 {
     int retorno=-1;
     int i;
+    int j;
     int contadorMusicos=0;
     int buffer;
     ///int acumuladorMus=0;
 
-    if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquesta != NULL && lengthOrq>0 ))
+    if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquestas != NULL && lengthOrq>0 ))
     {
-        for(i=0;i<lengthMus;i++)
+        for(i=0;i<lengthOrq;i++)
         {
-            if(arrayMusicos[i].isEmpty==0)
+            if(arrayOrquestas[i].isEmpty==0)
             {
-                buffer=arrayMusicos[i].IdOrquesta;
-
-                if(arrayMusicos[i].IdOrquesta==arrayMusicos[i].IdOrquesta)
+                buffer=arrayOrquestas[i].IdOrquesta;
+                for(j=0;j<lengthMus;j++)
                 {
-                    contadorMusicos+2;
-                    printf("%da",contadorMusicos);
-                    printf("%db",arrayMusicos[i].IdOrquesta);
-                    continue;
+                    if(arrayMusicos[j].isEmpty==0)
+                    {
+                        if(arrayMusicos[j].IdOrquesta==buffer)
+                        {
+                            contadorMusicos++;
+                        }
+                        if(contadorMusicos>6)
+                        {
+                            printf("\nEl id de la orquesta que tiene mas de 6 integrantes es: %d",arrayMusicos[i].IdOrquesta);
+                            printf("\nEl nombre de la orquesta que tiene mas de 6 integrantes es: %s",arrayOrquestas[i].nombre);
+                            break;
+                        }
+                    }
 
-                 }
-            }
-
-        }
-        if(contadorMusicos>2)
-        {    for(i=0;i<lengthMus;i++)
-                {
-                    printf("\n%dc",arrayMusicos[i].IdOrquesta);
-                    printf("\n%sd",arrayOrquesta[i].nombre);
-                }
-        }retorno=0;
+                }retorno=0;
+            }   contadorMusicos=0;
+         }
     }
     return retorno;
 }
 
-int inf_InsOrq (Instrumento* arrayInstr, Orquesta* arrayOrq, Musico* arrayMus, int lengthIns, int lengthOrq, int lengthMus)
+/** \brief La funcion pide el Id de una orquesta y Lista el nombre del musico, el nombre y tipo del instrumento.
+ *
+ * \param Recibe la estructura Instrumento y su tamaño.
+ * \param Recibe la estructura Orquesta y su tamaño.
+ * \param Recibe la estructura Musico y su tamaño.
+ * \return  Devuelve menos 1, si no puede encontrar el id y listar los datos. = si puede.
+ *
+ */
+int inf_InstrumentosOrq (Instrumento* arrayInstr, Orquesta* arrayOrq, Musico* arrayMus, int lengthIns, int lengthOrq, int lengthMus)
 {
     int i;
     int retorno=-1;
@@ -204,32 +243,184 @@ int inf_InsOrq (Instrumento* arrayInstr, Orquesta* arrayOrq, Musico* arrayMus, i
     return retorno;
 }
 
-/** \brief  Cuenta la cantidad de instrumentos.
+/** \brief  La funcion lista la orquesta completa.
  *
- * \param   Recibe la Estructura Instrumentos.
- * \param   El tamaño de la misma.
+ * \param   Estructura Musico y el tamaño de la misma
+ * \param   Estructura Orquesta y el tamaño de la misma
+ * \return  0 si pudo recorrer y contar los tipo de instrumentos.-1 si no pudo
+ *
+ */
+int inf_orquestaCompleta (Instrumento* arrayInstrumentos, Orquesta* listOrq, Musico* arrayMusicos,int lengthIns, int lengthOrq, int lengthMus)
+{
+    int i;
+    int j;
+    int retorno = -1;
+    int contadorCuerdas;
+    int contadorViento;
+    int contadorPercusion;
+
+    if((arrayMusicos != NULL && lengthMus > 0) && (listOrq != NULL && lengthOrq > 0))
+    {
+        for(i=0; i<=lengthMus; i++)
+        {
+            contadorCuerdas=0;
+            contadorViento=0;
+            contadorPercusion=0;
+            if(arrayMusicos[i].isEmpty== 0)
+            {
+                switch(arrayInstrumentos[i].tipo)
+                {
+                    case 1:
+                        contadorCuerdas++;
+                        break;
+                    case 2:
+                        contadorViento++;
+                        break;
+                    case 3:
+                        contadorViento++;
+                        break;
+                    case 4:
+                        contadorPercusion++;
+                        break;
+                }
+                printf("Contador: %d", contadorCuerdas);printf("%d", contadorPercusion);printf("%d \n", contadorViento);
+
+                for(j=0; j<=lengthOrq; j++)
+                {
+                    if(listOrq[j].isEmpty== 0)
+                    {
+                        if(contadorCuerdas>=4 && contadorViento>=4 && contadorPercusion>=1)
+                        {
+                            printf("%d", listOrq[i].IdOrquesta);
+                        }
+                        retorno = 0;
+                    }
+
+                }
+             }
+
+        }
+    }
+    return retorno;
+}
+
+
+/** \brief La funcion informa el Id de la orquesta que tiene menos musicos.
+ *
+ * \param   Estructura Musico y el tamaño de la misma
+ * \param   Estructura Orquesta y el tamaño de la misma
+ * \return  o si encontro y pudo listarla o -1 si no pudo.
+ *
+ */
+int inf_menosMusicosPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquestas,int lengthMus, int lengthOrq)
+{
+    int retorno=-1;
+    int i;
+    int j;
+    int contadorMusicos=0;
+    int buffer;
+    int bufferMin=1000;
+    int bufferMax=0;
+
+    if((arrayMusicos != NULL && lengthMus>0) && (arrayOrquestas != NULL && lengthOrq>0 ))
+    {
+        for(i=0;i<lengthOrq;i++)
+        {
+            if(arrayOrquestas[i].isEmpty==0)
+            {
+                buffer=arrayOrquestas[i].IdOrquesta;
+                for(j=0;j<lengthMus;j++)
+                {
+                    if(arrayMusicos[j].isEmpty==0)
+                    {
+                        if(arrayMusicos[j].IdOrquesta==buffer)
+                        {
+                            contadorMusicos++;
+                        }
+                    }
+                }
+                if(contadorMusicos>bufferMax)
+                {
+                    bufferMax=contadorMusicos;
+                }
+                else if(contadorMusicos<=bufferMin)
+                {
+                    bufferMin=contadorMusicos;
+                    printf("\nEl id de la orquesta que tiene menos integrantes es: %d",arrayOrquestas[i].IdOrquesta);
+                    retorno=0;
+                }
+                contadorMusicos=0;
+            }
+
+         }
+    }
+    return retorno;
+}
+
+/** \brief  Cuenta la Cantidad de musicos y saca el promedio por Orquesta.
+ *
+ * \param   Estructura Musico y el tamaño de la misma
+ * \param   Estructura Orquesta y el tamaño de la misma
  * \return  -1 si no pudo contar, 0 Si pudo.
  *
  */
-int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthMus, int length)
+int inf_promedioPorInstrumento (Orquesta* arrayOrquestas, Musico* musicos, int lengthOrq, int lengthMus)
+{
+    int i;
+    int retorno = -1;
+    float contadorInstrumentos=0;
+    float contadorOrquestas=0;
+    float promedio;
+
+    if((musicos != NULL && lengthMus > 0) && (arrayOrquestas != NULL && lengthOrq > 0))
+    {
+        for(i=0; i<=lengthMus; i++)
+        {
+            if(musicos[i].isEmpty == 0)
+            {
+                contadorInstrumentos++;
+            }
+        }
+        for(i=0; i<=lengthOrq; i++)
+        {
+            if(arrayOrquestas[i].isEmpty == 0)
+            {
+                contadorOrquestas++;
+            }
+        }
+        retorno=0;
+    }
+    promedio=contadorInstrumentos/contadorOrquestas;
+    printf("El promedio de musicos por Orquesta es: %.2f \n",promedio);
+    return retorno;
+}
+
+/** \brief  La funcion busca los musicos que tocan Instrumentos de Viento.
+ *
+ * \param   Recibe la Estructura Musico y el tamaño de la misma.
+ * \param   Recibe la Estructura Instrumento y el tamaño de la misma.
+ * \return  -1 si no pudo contar, 0 Si pudo.
+ *
+ */
+int inf_musNoViento (Musico* arrayMusicos, Instrumento* arrayInstrumentos,int lengthMus, int length)
 {
     int i;
     int retorno = -1;
 
-    if((instrumentos != NULL && length > 0) && (arrayMusicos != NULL && lengthMus > 0))
+    if((arrayInstrumentos != NULL && length > 0) && (arrayMusicos != NULL && lengthMus > 0))
     {
         for(i=0; i<=length; i++)
         {
-            if(instrumentos[i].isEmpty == 0 && arrayMusicos[i].isEmpty == 0)
+            if(arrayInstrumentos[i].isEmpty == 0 && arrayMusicos[i].isEmpty == 0)
             {
-                if(instrumentos[i].tipo!=2 &&instrumentos[i].tipo!=3)
+                if(arrayInstrumentos[i].tipo!=2 &&arrayInstrumentos[i].tipo!=3)
                 {
                     ///mus_ordenar(arrayMusicos,length);
                     printf("\nNombre: %s",arrayMusicos[i].nombre);
                     printf("\nApellido: %s",arrayMusicos[i].apellido);
                     printf("\nId Orquesta: %d",arrayMusicos[i].edad);
-                    printf("\nNombre del Instrumento: %s", instrumentos[i].nombre);
-                    switch(instrumentos[i].tipo)
+                    printf("\nNombre del Instrumento: %s", arrayInstrumentos[i].nombre);
+                    switch(arrayInstrumentos[i].tipo)
                     {
                         case 1:
                             printf("\nTipo de Instrumento: Cuerdas.\n");
@@ -247,7 +438,7 @@ int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthM
                 }
                 else
                 {
-                    printf("\nNo hay musicos que no toquen instrumentos de Vientos");
+                    printf("\nNo hay musicos que no toquen arrayInstrumentos de Vientos");
                     break;
                 }
             }
@@ -256,344 +447,5 @@ int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthM
     }
     return retorno;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////// INFORMES ORQUESTAS ////////////////////////////////////
-
-/** \brief  Cantidad de orquestas por tipo.
- *
- * \param   Estructura Orquesta
- * \param   Tamaño de la misma
- * \return  -1 si no pudo ejecutarse, 0 si pudo.
- *
- */
-int orq_cantidadTipo (Orquesta* orquestas, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorSinfonica=0;
-    int contadorFiloarmonica=0;
-    int contadorCamara=0;
-
-    if(orquestas != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(orquestas[i].isEmpty== 0)
-            {
-                switch(orquestas[i].tipo)
-                {
-                    case 1:
-                        contadorSinfonica++;
-                        break;
-                    case 2:
-                        contadorFiloarmonica++;
-                        break;
-                    case 3:
-                        contadorCamara++;
-                        break;
-                }
-            }
-        }
-
-        printf("Orquesta tipo Sinfonica: %d \n",contadorSinfonica);
-        printf("Orquesta tipo Filoarmonica: %d \n",contadorFiloarmonica);
-        printf("Orquesta tipo Camara: %d \n",contadorCamara);
-        retorno = 0;
-    }
-    return retorno;
-}
-
-/** \brief  Cuenta la cantidad de Orquestas.
- *
- * \param   Recibe la Estructura Orquesta.
- * \param   El tamaño de la misma.
- * \return  -1 si no pudo contar, 0 Si pudo.
- *
- */
-int orq_cantidad (Orquesta* orquestas, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorOrquestas=0;
-
-    if(orquestas != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(orquestas[i].isEmpty== 0)
-            {
-                contadorOrquestas++;
-            }
-        }
-        printf("Las orquestas son: %d \n",contadorOrquestas);
-        retorno = 0;
-    }
-    return retorno;
-}
-
-////////////////////////////////////////// INFORMES INSTRUMENTOS ////////////////////////////////////
-
-/** \brief Informa el instrumento mas solicitado
- *
- * \param arrayMusicos Musico*
- * \param arrayAux[] InstrumentoAuxiliar
- * \param arrayInstrumento Instrumento*
- * \param sizeArray int
- * \return int
- *
- */
-
- /*
-int informes_instrumentoMasUsado(Musico* arrayMusicos, InstrumentoAuxiliar arrayAux[], Instrumento* arrayInstrumento, int sizeArray)
-{
-    int retorno=-1;
-    int i,j;
-    int posicionAuxiliar = 0;
-    if(arrayMusicos!= NULL && sizeArray>=0 && arrayAux != NULL && arrayInstrumento != NULL)
-    {
-        informes_initInstrmentoAuxiliar(arrayAux, sizeArray);
-        for(i=0;i<sizeArray;i++)
-        {
-            if(arrayMusicos[i].isEmpty==1)
-                continue;
-            else
-            {
-                arrayAux[posicionAuxiliar].idInstrumento = arrayMusicos[i].idInstrumento;
-                arrayAux[posicionAuxiliar].isEmpty = 0;
-                for(j=0;j<20;j++)
-                {
-                    if(arrayAux[posicionAuxiliar].idInstrumento == arrayInstrumento[j].idInstrumento)
-                    {
-                        strcpy (arrayAux[posicionAuxiliar].nombre, arrayInstrumento[j].nombre);
-                        arrayAux[posicionAuxiliar].tipo = arrayInstrumento[j].tipo;
-                        break;
-                    }
-                }
-                posicionAuxiliar++;
-            }
-        }
-        retorno =0;
-    }
-}
-
-*/
-
-
-
-
-////////////////////////////////////////// INFORMES MUSICOS ////////////////////////////////////
-
-/** \brief  Cuenta la Cantidad de musicos por
- *          tipo de Orquesta.
- * \param   Estructura Musico
- * \param   Tamaño de la misma
- * \return  -1 si no pudo contar, 0 Si pudo.
- *
- */
-int mus_cantidadPorOrquesta (Musico* list3, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorSinfonica=0;
-    int contadorFiloarmonica=0;
-    int contadorCamara=0;
-
-    if(list3 != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(list3[i].isEmpty== 0)
-            {
-
-                switch(list3[i].IdOrquesta)
-                {
-                    case 1:
-                        contadorSinfonica++;
-                        break;
-                    case 2:
-                        contadorFiloarmonica++;
-                        break;
-                    case 3:
-                        contadorCamara++;
-                        break;
-                }
-
-            }
-        }
-        printf("Los musicos de la Orquesta Sinfonica son: %d \n",contadorSinfonica);
-        printf("Los musicos de la Orquesta Filoarmonica son: %d \n",contadorFiloarmonica);
-        printf("Los musicos de la Orquesta Camara son: %d \n",contadorCamara);
-        retorno = 0;
-    }
-    return retorno;
-}
-
-/** \brief  Cuenta la Cantidad de musicos por
- *          tipo de Instrumento.
- * \param   Estructura Musico
- * \param   Tamaño de la misma
- * \return  -1 si no pudo contar, 0 Si pudo.
- *
- */
-int mus_cantidadPorTipoInstrumento (Musico* list3, int length)
-{
-    int i;
-    int retorno = -1;
-    int contadorCuerdas=0;
-    int contadorMadera=0;
-    int contadorMetal=0;
-    int contadorPercusion=0;
-
-    if(list3 != NULL && length > 0)
-    {
-        for(i=0; i<=length; i++)
-        {
-            if(list3[i].isEmpty== 0)
-            {
-
-                switch(list3[i].IdInstrumento)
-                {
-                    case 1:
-                        contadorCuerdas++;
-                        break;
-                    case 2:
-                        contadorMadera++;
-                        break;
-                    case 3:
-                        contadorMetal++;
-                        break;
-                    case 4:
-                        contadorPercusion++;
-                        break;
-                }
-
-            }
-        }
-        printf("Los musicos que tocan un instrumentos de tipo Cuerdas son: %d \n",contadorCuerdas);
-        printf("Los musicos que tocan un instrumentos de tipo Viento Madera son: %d \n",contadorMadera);
-        printf("Los musicos que tocan un instrumentos de tipo Viento Metal son: %d \n",contadorMetal);
-        printf("Los musicos que tocan un instrumentos de tipo percusion son: %d \n",contadorPercusion);
-        retorno = 0;
-    }
-    return retorno;
-}
-
-/** \brief Cuenta la cantidad de musicos que hay.
- *          y calcula el promedio de edades.
- * \param   Recibe la Estructura Musicos
- * \param   El tamaño de la misma.
- * \return  -1 si no pudo contar, 0 Si pudo.
- *
- */
-int mus_cantidadYpromedio (Musico* list3, int length)
-{
-    int i;
-    int retorno = -1;
-    float contadorMusicos=0;
-    float acumuladorEdad=0;
-    int contadorSuperan=0;
-    float promedio;
-
-    if(list3 != NULL && length > 0)
-    {
-
-        for(i=0; i<=length; i++)
-        {
-            if(list3[i].isEmpty == 0)
-            {
-                contadorMusicos++;
-                acumuladorEdad+= list3[i].edad;
-                retorno=0;
-            }
-        }
-        promedio=acumuladorEdad/contadorMusicos;
-        for(i=0; i<=length; i++)
-        {
-            if(list3[i].isEmpty == 0 && list3[i].edad>promedio)
-            {
-                contadorSuperan++;
-            }
-        }
-        printf("Los musicos son: %.2f \n",contadorMusicos);
-        printf("El promedio de edad de los musicos es: %.2f \n",promedio);
-        printf("Supera el promedio de edad de los musicos : %d \n",contadorSuperan);
-        retorno = 0;
-    }
-    return retorno;
-}
-
-/** \brief Ordena por 2 criterios
- *
- * \param  Recibe la Estructura
- * \param El tamaño de la misma
- * \return  -1 si no pudo Ordenar, 0 Si pudo.
- *
- */
-int mus_ordenar (Musico* list3,int length)
-{
-    int j;
-    int flag;
-    Musico buffer;
-    int retorno=-1;
-
-    if(list3 != NULL && length > 0)
-    {
-        do
-        {
-            flag=0;
-            for(j=0;j<length-1;j++)
-            {
-                if(list3[j].isEmpty == 0)
-                {
-                    if(strncmp(list3[j].apellido,list3[j+1].apellido,length) > 0)
-                    {
-                        buffer=list3[j];
-                        list3[j]=list3[j+1];
-                        list3[j+1]=buffer;
-                        flag=1;
-                        break;
-                    }
-
-                    else if(strncmp(list3[j].apellido,list3[j+1].apellido,length) == 0)
-                    {
-                        if(strncmp(list3[j].nombre,list3[j+1].nombre,length) > 0)
-                        {
-                            buffer=list3[j];
-                            list3[j]=list3[j+1];
-                            list3[j+1]=buffer;
-                            flag=1;
-                            break;
-                        }
-                    }
-                }
-            }
-
-        }while(flag);
-        retorno=0;
-    }
-    return retorno;
-}
-
-
 
 #endif // INFORMES_C_INCLUDED

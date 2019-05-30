@@ -32,14 +32,14 @@ static int generarId(void)
  * \return  0 si pudo dar de baja, -1 si no pudo.
  *
  */
-int mus_empty (Musico *list3, int length)
+int mus_empty (Musico *arrayMus, int lengthMus)
 {
     int i;
     int retorno=-1;
 
-    for(i=0;i<length;i++)
+    for(i=0;i<lengthMus;i++)
     {
-        if(list3[i].isEmpty==0)
+        if(arrayMus[i].isEmpty==0)
         {
              retorno=0;
             break;
@@ -60,14 +60,14 @@ int mus_empty (Musico *list3, int length)
  * \return  0 si pudo. -1 si no pudo.
  *
  */
-int mus_inicializar(Musico* list3, int length)
+int mus_inicializar(Musico* arrayMus, int lengthMus)
 {
     int i;
     int retorno=-1;
 
-    for(i=0;i<length;i++)
+    for(i=0;i<lengthMus;i++)
     {
-        list3[i].isEmpty=1;
+        arrayMus[i].isEmpty=1;
         retorno=0;
     }
     return retorno;
@@ -82,7 +82,7 @@ int mus_inicializar(Musico* list3, int length)
  * \return  0 si pudo dar de alta, -1 si no pudo.
  *
  */
-int mus_alta(Orquesta* listado, Instrumento* list2, Musico* list3, char *msgError,int length3, int length2,int length)
+int mus_alta(Orquesta* arrayOrq, Instrumento* arrayIns, Musico* arrayMus, char *msgError,int lengthOrq, int lengthIns,int lengthMus)
 {
     char bufferName [51];
     char bufferLastName [51];
@@ -93,7 +93,7 @@ int mus_alta(Orquesta* listado, Instrumento* list2, Musico* list3, char *msgErro
     int posLibre;
     int retorno=-1;
 
-    if(!mus_lugarLibre(list3,length,&posLibre))
+    if(!mus_lugarLibre(arrayMus,lengthMus,&posLibre))
     {
         if(!utn_getName("Nombre:\n","Invalido, reingrese:\n",2,20,2,bufferName))
         {
@@ -101,21 +101,21 @@ int mus_alta(Orquesta* listado, Instrumento* list2, Musico* list3, char *msgErro
             {
                 if(!utn_getInt("Ingrese Edad:\n","Invalido, reingrese:\n",1,100,2,&bufferEdad))
                 {
-                    if(!orq_buscarPorId(listado,"Ingrese id de la orquesta\n","Error",length3,&bufferIndiceOrquesta))
+                    if(!orq_buscarPorId(arrayOrq,"Ingrese id de la orquesta\n","Error",lengthOrq,&bufferIndiceOrquesta))
                     {
-                        if(!ins_buscarPorId(list2,"Ingrese instrumento:\n1- Cuerdas \n2- Viento Madera \n3- Viento Metal \n4- Percusion\n","Invalido, reingrese:\n",length2,&bufferIdInstrumento))
+                        if(!ins_buscarPorId(arrayIns,"Ingrese instrumento:\n1- Cuerdas \n2- Viento Madera \n3- Viento Metal \n4- Percusion\n","Invalido, reingrese:\n",lengthIns,&bufferIdInstrumento))
                         {
                                 ///if(buscar orquesta por id)
-                                bufferIdOrquesta=listado[bufferIndiceOrquesta].IdOrquesta;
-                                strncpy(list3[posLibre].nombre,bufferName,sizeof(bufferName));
-                                strncpy(list3[posLibre].apellido,bufferLastName,sizeof(bufferLastName));
-                                list3[posLibre].edad=bufferEdad;
-                                list3[posLibre].IdOrquesta=bufferIdOrquesta;
-                                list3[posLibre].IdInstrumento=bufferIdInstrumento;
-                                list3[posLibre].IdMusico=generarId();
-                                list3[posLibre].isEmpty=0;
+                                bufferIdOrquesta=arrayOrq[bufferIndiceOrquesta].IdOrquesta;
+                                strncpy(arrayMus[posLibre].nombre,bufferName,sizeof(bufferName));
+                                strncpy(arrayMus[posLibre].apellido,bufferLastName,sizeof(bufferLastName));
+                                arrayMus[posLibre].edad=bufferEdad;
+                                arrayMus[posLibre].IdOrquesta=bufferIdOrquesta;
+                                arrayMus[posLibre].IdInstrumento=bufferIdInstrumento;
+                                arrayMus[posLibre].IdMusico=generarId();
+                                arrayMus[posLibre].isEmpty=0;
                                 retorno=0;
-                                printf("\nAlta correcta Id Musico: %d\n", list3[posLibre].IdMusico);
+                                printf("\nAlta correcta Id Musico: %d\n", arrayMus[posLibre].IdMusico);
 
                         }
                     }
@@ -138,13 +138,13 @@ int mus_alta(Orquesta* listado, Instrumento* list2, Musico* list3, char *msgErro
  * \return  0 encontro lugar libre, -1 si no.
  *
  */
-int mus_lugarLibre (Musico* list3, int length, int *posLibre)
+int mus_lugarLibre (Musico* arrayMus, int lengthMus, int *posLibre)
 {
     int retorno=-1;
     int i;
-    for(i=0; i<length;i++)
+    for(i=0; i<lengthMus;i++)
     {
-        if(list3[i].isEmpty==1)
+        if(arrayMus[i].isEmpty==1)
         {
             *posLibre=i;
             retorno=0;
@@ -162,22 +162,22 @@ int mus_lugarLibre (Musico* list3, int length, int *posLibre)
  * \return  0 si pudo modificar, -1 si no pudo.
  *
  */
-int mus_modificar (Instrumento* instrumentos, Musico* list3, int length, int lengthInstru,int*id)
+int mus_modificar (Instrumento* arrayIns, Musico* arrayMus, int lengthMus, int lengthIns,int*id)
 {
     int retorno=-1;
     int bufferEdad;
     int bufferIdOrquesta;
     int bufferId;
-    mus_mostrar(instrumentos,list3,length,lengthInstru);
+    mus_mostrar(arrayIns,arrayMus,lengthMus,lengthIns);
 
-        if(mus_buscarPorId(list3,"\nIngrese Id a modificar\n", "Error id invalido\n",length,&bufferId)==0)
+        if(mus_buscarPorId(arrayMus,"\nIngrese Id a modificar\n", "Error id invalido\n",lengthMus,&bufferId)==0)
         {
             switch(utn_getInSimple("\nMENU DE MODIFICACION\nIngrese opcion a modificar \n1- Edad - \n2- Id de la Orquesta - \n3- Salir \n"))
             {
                 case 1:
                     if(!utn_getInt("Ingrese Edad:\n","Invalido, reingrese:\n",1,100,2,&bufferEdad))
                     {
-                        list3[bufferId].edad=bufferEdad;
+                        arrayMus[bufferId].edad=bufferEdad;
                         printf("Edad modificado correctamente.\n");
                     }
                     break;
@@ -185,7 +185,7 @@ int mus_modificar (Instrumento* instrumentos, Musico* list3, int length, int len
                 case 2:
                     if(!utn_getInt("Ingrese Id de Orquesta:\n","Invalido, reingrese:\n",1,20,2,&bufferIdOrquesta))
                         {
-                            list3[bufferId].IdOrquesta =bufferIdOrquesta;
+                            arrayMus[bufferId].IdOrquesta =bufferIdOrquesta;
                             printf("Id de orquesta modificado correctamente.\n");
                         }
                     break;
@@ -218,14 +218,14 @@ int mus_modificar (Instrumento* instrumentos, Musico* list3, int length, int len
  * \return  0 si lo encontro, -1 si no.
  *
  */
-int mus_buscarPorId (Musico* list3,char *msg,char *msgError, int length, int *id)
+int mus_buscarPorId (Musico* arrayMus,char *msg,char *msgError, int lengthMus, int *id)
 {
     int retorno=-1;
     int i;
     utn_getInt(msg,msgError,1,3,2,id);
-    for(i=0; i<length; i++)
+    for(i=0; i<lengthMus; i++)
     {
-        if (list3[i].IdMusico==*id)
+        if (arrayMus[i].IdMusico==*id)
         {
             retorno=0;
             *id=i;
@@ -243,15 +243,15 @@ int mus_buscarPorId (Musico* list3,char *msg,char *msgError, int length, int *id
  * \return  0 si pudo dar de baja, -1 si no pudo.
  *
  */
-int mus_baja (Instrumento* instrumentos,Musico* list3, int length, int lengthIns)
+int mus_baja (Instrumento* arrayIns,Musico* arrayMus, int lengthMus, int lengthIns)
 {
     int buffer;
     int retorno=-1;
-    mus_mostrar(instrumentos,list3,length,lengthIns);
+    mus_mostrar(arrayIns,arrayMus,lengthMus,lengthIns);
 
-    if(mus_buscarPorId(list3,"\nIngrese Id a dar de baja\n","\nId incorrecto\n",length,&buffer)==0)
+    if(mus_buscarPorId(arrayMus,"\nIngrese Id a dar de baja\n","\nId incorrecto\n",lengthMus,&buffer)==0)
     {
-        list3[buffer].isEmpty=2;
+        arrayMus[buffer].isEmpty=2;
         retorno=0;
         printf("Musico Eliminado correctamente");
     }
@@ -270,17 +270,17 @@ int mus_baja (Instrumento* instrumentos,Musico* list3, int length, int lengthIns
  * \return  0 si lo encontro, -1 si no.
  *
  */
-int mus_bajaPorOrquesta(Musico* list3, int length, int *id)
+int mus_bajaPorOrquesta(Musico* arrayMus, int lengthMus, int *id)
 {
     int retorno=-1;
     int i;
 
 
-         if(mus_buscarPorIddeBaja(list3,length,id)==0)
+         if(mus_buscarPorIddeBaja(arrayMus,lengthMus,id)==0)
         {
-            for(i=0;i<length;i++)
+            for(i=0;i<lengthMus;i++)
             {
-                list3[i].isEmpty=2;
+                arrayMus[i].isEmpty=2;
                 retorno=0;
             }
         }
@@ -296,13 +296,13 @@ int mus_bajaPorOrquesta(Musico* list3, int length, int *id)
  * \return  0 si lo encontro, -1 si no.
  *
  */
-int mus_buscarPorIddeBaja (Musico* list3, int length, int *id)
+int mus_buscarPorIddeBaja (Musico* arrayMus, int lengthMus, int *id)
 {
     int retorno=-1;
     int i;
-    for(i=0; i<length; i++)
+    for(i=0; i<lengthMus; i++)
     {
-        if (list3[i].IdOrquesta==*id)
+        if (arrayMus[i].IdOrquesta==*id)
         {
             retorno=0;
             *id=i;
@@ -316,27 +316,27 @@ int mus_buscarPorIddeBaja (Musico* list3, int length, int *id)
 
 /** \brief Muestra todos los campos indicados
  *
- * \param list3 Musico* Recibe la Estructura
- * \param length Tamaño de la misma
+ * \param arrayMus Musico* Recibe la Estructura
+ * \param lengthMus Tamaño de la misma
  * \return int 0 si pudo mostrar, -1 si no pudo.
  *
  */
-int mus_mostrar(Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume)
+int mus_mostrar(Instrumento* arrayIns, Musico* arrayMus,int lengthIns, int lengthMus)
 {
     int i;
     int retorno=-1;
 
-    for (i=0; i<length; i++)
+    for (i=0; i<lengthMus; i++)
     {
-        if(list3[i].isEmpty==0)
+        if(arrayMus[i].isEmpty==0)
         {
-            printf("\nCodigo de musico: %d",list3[i].IdMusico);
-            printf("\nNombre: %s",list3[i].nombre);
-            printf("\nApellido: %s",list3[i].apellido);
-            printf("\nId Orquesta: %d",list3[i].edad);
-            printf("\nId Orquesta: %d",list3[i].IdOrquesta);
-            printf("\nNombre del Instrumento: %s", instrumentos[i].nombre);
-            switch(instrumentos[i].tipo)
+            printf("\nCodigo de musico: %d",arrayMus[i].IdMusico);
+            printf("\nNombre: %s",arrayMus[i].nombre);
+            printf("\nApellido: %s",arrayMus[i].apellido);
+            printf("\nEdad: %d",arrayMus[i].edad);
+            printf("\nId Orquesta: %d",arrayMus[i].IdOrquesta);
+            printf("\nNombre del Instrumento: %s", arrayIns[i].nombre);
+            switch(arrayIns[i].tipo)
             {
                 case 1:
                     printf("\nTipo de Instrumento: Cuerdas.\n");
@@ -366,67 +366,150 @@ int mus_mostrar(Instrumento* instrumentos, Musico* list3, int length, int length
  * \return no retorna nada.
  *
  */
-void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume)
+void mus_mock(Instrumento* arrayIns, Musico* arrayMus, int lengthIns, int lengthMus)
 {
-    list3[0].IdMusico =1;
-    list3[0].isEmpty=0;
-    list3[0].IdOrquesta=1;
-    list3[0].edad=30;
-    strcpy(list3[0].apellido,"Mus1");
-    strcpy(list3[0].nombre,"Mus1");
-    strcpy(instrumentos[0].nombre,"Guitarra");
-    instrumentos[0].tipo=3;
-    list3[0].IdInstrumento=2;
 
-    list3[1].IdMusico =2;
-    list3[1].isEmpty=0;
-    list3[1].IdOrquesta=2;
-    list3[1].edad=20;
-    strcpy(list3[1].apellido,"Mus2");
-    strcpy(list3[1].nombre,"Mus2");
-    strcpy(instrumentos[1].nombre,"Bateria");
-    instrumentos[1].tipo=3;
-    list3[1].IdInstrumento=5;
+    arrayMus[0].IdMusico =1;
+    arrayMus[0].isEmpty=0;
+    arrayMus[0].IdOrquesta=1;
+    arrayMus[0].edad=30;
+    strcpy(arrayMus[0].apellido,"Mus1");
+    strcpy(arrayMus[0].nombre,"Mus1");
+    strcpy(arrayIns[0].nombre,"Guitarra");
+    arrayIns[0].tipo=3;
+    arrayMus[0].IdInstrumento=2;
 
-    list3[2].IdMusico=3;
-    list3[2].isEmpty=0;
-    list3[2].IdOrquesta=4;
-    list3[2].edad=25;
-    strcpy(list3[2].apellido,"Mus3");
-    strcpy(list3[2].nombre,"Mus3");
-    strcpy(instrumentos[2].nombre,"Flauta traversa");
-    instrumentos[2].tipo=3;
-    list3[2].IdInstrumento=2;
+    arrayMus[1].IdMusico =2;
+    arrayMus[1].isEmpty=0;
+    arrayMus[1].IdOrquesta=2;
+    arrayMus[1].edad=20;
+    strcpy(arrayMus[1].apellido,"Mus2");
+    strcpy(arrayMus[1].nombre,"Mus2");
+    strcpy(arrayIns[1].nombre,"Bateria");
+    arrayIns[1].tipo=3;
+    arrayMus[1].IdInstrumento=5;
 
-    list3[3].IdMusico=4;
-    list3[3].isEmpty=0;
-    list3[3].IdOrquesta=4;
-    list3[3].edad=27;
-    strcpy(list3[3].apellido,"Mus4");
-    strcpy(list3[3].nombre,"Mus4");
-    strcpy(instrumentos[3].nombre,"Flauta");
-    instrumentos[3].tipo=3;
-    list3[3].IdInstrumento=1;
+    arrayMus[2].IdMusico=3;
+    arrayMus[2].isEmpty=0;
+    arrayMus[2].IdOrquesta=4;
+    arrayMus[2].edad=22;
+    strcpy(arrayMus[2].apellido,"Mus3");
+    strcpy(arrayMus[2].nombre,"Mus3");
+    strcpy(arrayIns[2].nombre,"Flauta traversa");
+    arrayIns[2].tipo=3;
+    arrayMus[2].IdInstrumento=2;
 
-    list3[4].IdMusico=5;
-    list3[4].isEmpty=0;
-    list3[4].IdOrquesta=1;
-    list3[4].edad=22;
-    strcpy(list3[4].apellido,"Mus5");
-    strcpy(list3[4].nombre,"Mus5");
-    strcpy(instrumentos[4].nombre,"Flauta");
-    instrumentos[4].tipo=4;
-    list3[4].IdInstrumento=3;
+    arrayMus[3].IdMusico=4;
+    arrayMus[3].isEmpty=0;
+    arrayMus[3].IdOrquesta=4;
+    arrayMus[3].edad=27;
+    strcpy(arrayMus[3].apellido,"Mus4");
+    strcpy(arrayMus[3].nombre,"Mus4");
+    strcpy(arrayIns[3].nombre,"Flauta");
+    arrayIns[3].tipo=3;
+    arrayMus[3].IdInstrumento=1;
 
-    list3[5].IdMusico=6;
-    list3[5].isEmpty=0;
-    list3[5].IdOrquesta=3;
-    list3[5].edad=15;
-    strcpy(list3[5].apellido,"Mus6");
-    strcpy(list3[5].nombre,"Mus6");
-    strcpy(instrumentos[5].nombre,"Flauta");
-    instrumentos[5].tipo=3;
-    list3[5].IdInstrumento=4;
+    arrayMus[4].IdMusico=5;
+    arrayMus[4].isEmpty=0;
+    arrayMus[4].IdOrquesta=1;
+    arrayMus[4].edad=22;
+    strcpy(arrayMus[4].apellido,"Mus5");
+    strcpy(arrayMus[4].nombre,"Mus5");
+    strcpy(arrayIns[4].nombre,"Flauta");
+    arrayIns[4].tipo=4;
+    arrayMus[4].IdInstrumento=3;
+
+    arrayMus[5].IdMusico=6;
+    arrayMus[5].isEmpty=0;
+    arrayMus[5].IdOrquesta=3;
+    arrayMus[5].edad=30;
+    strcpy(arrayMus[5].apellido,"Mus6");
+    strcpy(arrayMus[5].nombre,"Mus6");
+    strcpy(arrayIns[5].nombre,"Flauta");
+    arrayIns[5].tipo=3;
+    arrayMus[5].IdInstrumento=4;
+
+
+    strcpy(arrayMus[6].nombre,"Mus7");
+    strcpy(arrayMus[6].apellido,"Amus7");
+    arrayMus[6].edad=31;
+    arrayMus[6].IdInstrumento=2;
+    arrayMus[6].IdOrquesta=1;
+    arrayMus[6].isEmpty=0;
+    arrayMus[6].IdMusico=7;
+
+    strcpy(arrayMus[7].nombre,"Mus8");
+    strcpy(arrayMus[7].apellido,"Amus8");
+    arrayMus[7].edad=32;
+    arrayMus[7].IdInstrumento=3;
+    arrayMus[7].IdOrquesta=1;
+    arrayMus[7].isEmpty=0;
+    arrayMus[7].IdMusico=8;
+
+    strcpy(arrayMus[8].nombre,"Mus9");
+    strcpy(arrayMus[8].apellido,"Amus9");
+    arrayMus[8].edad=33;
+    arrayMus[8].IdInstrumento=5;
+    arrayMus[8].IdOrquesta=1;
+    arrayMus[8].isEmpty=0;
+    arrayMus[8].IdMusico=9;
+
+    strcpy(arrayMus[9].nombre,"Mus10");
+    strcpy(arrayMus[9].apellido,"Amus10");
+    arrayMus[9].edad=34;
+    arrayMus[9].IdInstrumento=1;
+    arrayMus[9].IdOrquesta=1;
+    arrayMus[9].isEmpty=0;
+    arrayMus[9].IdMusico=10;
+
+    strcpy(arrayMus[10].nombre,"Mus11");
+    strcpy(arrayMus[10].apellido,"Amus11");
+    arrayMus[10].edad=35;
+    arrayMus[10].IdInstrumento=5;
+    arrayMus[10].IdOrquesta=1;
+    arrayMus[10].isEmpty=0;
+    arrayMus[10].IdMusico=11;
+
+    strcpy(arrayMus[11].nombre,"Mus12");
+    strcpy(arrayMus[11].apellido,"Amus12");
+    arrayMus[11].edad=36;
+    arrayMus[11].IdInstrumento=1;
+    arrayMus[11].IdOrquesta=1;
+    arrayMus[11].isEmpty=0;
+    arrayMus[11].IdMusico=12;
+
+    strcpy(arrayMus[12].nombre,"Mus13");
+    strcpy(arrayMus[12].apellido,"Amus13");
+    arrayMus[12].edad=37;
+    arrayMus[12].IdInstrumento=5;
+    arrayMus[12].IdOrquesta=1;
+    arrayMus[12].isEmpty=0;
+    arrayMus[12].IdMusico=13;
+
+
+    strcpy(arrayMus[13].nombre,"Mus14");
+    strcpy(arrayMus[13].apellido,"Amus14");
+    arrayMus[13].edad=38;
+    arrayMus[13].IdInstrumento=1;
+    arrayMus[13].IdOrquesta=1;
+    arrayMus[13].isEmpty=0;
+    arrayMus[13].IdMusico=14;
+
+    strcpy(arrayMus[14].nombre,"Mus15");
+    strcpy(arrayMus[14].apellido,"Amus15");
+    arrayMus[14].edad=39;
+    arrayMus[14].IdInstrumento=5;
+    arrayMus[14].IdOrquesta=1;
+    arrayMus[14].isEmpty=0;
+    arrayMus[14].IdMusico=15;
+
+    strcpy(arrayMus[15].nombre,"Mus16");
+    strcpy(arrayMus[15].apellido,"Amus16");
+    arrayMus[15].edad=40;
+    arrayMus[15].IdInstrumento=1;
+    arrayMus[15].IdOrquesta=1;
+    arrayMus[15].isEmpty=0;
+    arrayMus[15].IdMusico=16;
 }
 
 

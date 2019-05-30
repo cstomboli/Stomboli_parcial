@@ -24,8 +24,8 @@ int mus_bajaPorOrquesta(Musico* list3, int length, int *id);
 int mus_buscarPorIddeBaja (Musico* list3, int length, int *id);
 int mus_buscarPorId (Musico* list3,char *msg,char *msgError, int length, int *id);
 int mus_baja (Instrumento* instrumentos,Musico* list3, int length, int lengthIns);
-int mus_mostrar(Instrumento*intrumentos, Musico* list3, int length, int lengthInstrume);
-void mus_mock(Instrumento* instrumentos, Musico* list3, int length, int lengthInstrume);
+int mus_mostrar(Instrumento* arrayIns, Musico* arrayMus,int lengthIns, int lengthMus);
+void mus_mock(Instrumento* arrayIns, Musico* arrayMus, int lengthIns, int lengthMus);
 
 
 #endif // MUSICO_H_INCLUDED

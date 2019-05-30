@@ -267,10 +267,10 @@ void ins_mock(Instrumento* instrumentos, int length)
     instrumentos[3].tipo=3;
     instrumentos[3].isEmpty=0;
 
-    instrumentos[3].IdInstrumento=5;
-    strcpy(instrumentos[3].nombre,"Inst5");
-    instrumentos[3].tipo=4;
-    instrumentos[3].isEmpty=0;
+    instrumentos[4].IdInstrumento=5;
+    strcpy(instrumentos[4].nombre,"Inst5");
+    instrumentos[4].tipo=4;
+    instrumentos[4].isEmpty=0;
 }
 
 
