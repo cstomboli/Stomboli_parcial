@@ -350,7 +350,13 @@ int inf_menosMusicosPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquestas,
                 {
                     bufferMin=contadorMusicos;
                     printf("\nEl id de la orquesta que tiene menos integrantes es: %d",arrayOrquestas[i].IdOrquesta);
+                    printf("\nCon %d integrantes es: ",contadorMusicos);
+                    printf("\nEl id de la orquesta que tiene menos integrantes es: %d",arrayOrquestas[i].nombre);
+                    printf("\nEl id de la orquesta que tiene menos integrantes es: %d",arrayOrquestas[i].lugar);
+
                     retorno=0;
+
+
                 }
                 contadorMusicos=0;
             }
