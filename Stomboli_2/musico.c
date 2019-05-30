@@ -368,45 +368,36 @@ int mus_mostrar(Instrumento* arrayIns, Musico* arrayMus,int lengthIns, int lengt
  */
 void mus_mock(Instrumento* arrayIns, Musico* arrayMus, int lengthIns, int lengthMus)
 {
-
     arrayMus[0].IdMusico =1;
     arrayMus[0].isEmpty=0;
     arrayMus[0].IdOrquesta=1;
     arrayMus[0].edad=30;
-    strcpy(arrayMus[0].apellido,"Mus1");
-    strcpy(arrayMus[0].nombre,"Mus1");
-    strcpy(arrayIns[0].nombre,"Guitarra");
-    arrayIns[0].tipo=3;
+    strcpy(arrayMus[0].apellido,"UnoMus");
+    strcpy(arrayMus[0].nombre,"UnoMus1");
     arrayMus[0].IdInstrumento=2;
 
     arrayMus[1].IdMusico =2;
     arrayMus[1].isEmpty=0;
     arrayMus[1].IdOrquesta=2;
     arrayMus[1].edad=20;
-    strcpy(arrayMus[1].apellido,"Mus2");
-    strcpy(arrayMus[1].nombre,"Mus2");
-    strcpy(arrayIns[1].nombre,"Bateria");
-    arrayIns[1].tipo=3;
+    strcpy(arrayMus[1].apellido,"DosMus2");
+    strcpy(arrayMus[1].nombre,"DosMus2");
     arrayMus[1].IdInstrumento=5;
 
     arrayMus[2].IdMusico=3;
     arrayMus[2].isEmpty=0;
     arrayMus[2].IdOrquesta=4;
-    arrayMus[2].edad=22;
+    arrayMus[2].edad=25;
     strcpy(arrayMus[2].apellido,"Mus3");
     strcpy(arrayMus[2].nombre,"Mus3");
-    strcpy(arrayIns[2].nombre,"Flauta traversa");
-    arrayIns[2].tipo=3;
     arrayMus[2].IdInstrumento=2;
 
     arrayMus[3].IdMusico=4;
     arrayMus[3].isEmpty=0;
     arrayMus[3].IdOrquesta=4;
     arrayMus[3].edad=27;
-    strcpy(arrayMus[3].apellido,"Mus4");
-    strcpy(arrayMus[3].nombre,"Mus4");
-    strcpy(arrayIns[3].nombre,"Flauta");
-    arrayIns[3].tipo=3;
+    strcpy(arrayMus[3].apellido,"CuatroMus4");
+    strcpy(arrayMus[3].nombre,"CuatroMus4");
     arrayMus[3].IdInstrumento=1;
 
     arrayMus[4].IdMusico=5;
@@ -415,101 +406,135 @@ void mus_mock(Instrumento* arrayIns, Musico* arrayMus, int lengthIns, int length
     arrayMus[4].edad=22;
     strcpy(arrayMus[4].apellido,"Mus5");
     strcpy(arrayMus[4].nombre,"Mus5");
-    strcpy(arrayIns[4].nombre,"Flauta");
-    arrayIns[4].tipo=4;
     arrayMus[4].IdInstrumento=3;
 
     arrayMus[5].IdMusico=6;
     arrayMus[5].isEmpty=0;
     arrayMus[5].IdOrquesta=3;
-    arrayMus[5].edad=30;
+    arrayMus[5].edad=35;
     strcpy(arrayMus[5].apellido,"Mus6");
     strcpy(arrayMus[5].nombre,"Mus6");
-    strcpy(arrayIns[5].nombre,"Flauta");
-    arrayIns[5].tipo=3;
     arrayMus[5].IdInstrumento=4;
 
+    /////////////////////////////////////////////////////////
+/*
+    ///Utilizar para probar orquestas completas
+    strcpy(arrayMusico[6].nombre,"Mus7");
+    strcpy(arrayMusico[6].apellido,"Amus7");
+    arrayMusico[6].edad=31;
+    arrayMusico[6].idInstrumento=2;
+    arrayMusico[6].idOrquesta=1;
+    arrayMusico[6].isEmpty=0;
+    arrayMusico[6].idMusico=7;
 
-    strcpy(arrayMus[6].nombre,"Mus7");
-    strcpy(arrayMus[6].apellido,"Amus7");
-    arrayMus[6].edad=31;
-    arrayMus[6].IdInstrumento=2;
-    arrayMus[6].IdOrquesta=1;
-    arrayMus[6].isEmpty=0;
-    arrayMus[6].IdMusico=7;
+    strcpy(arrayMusico[7].nombre,"Mus8");
+    strcpy(arrayMusico[7].apellido,"Amus8");
+    arrayMusico[7].edad=32;
+    arrayMusico[7].idInstrumento=3;
+    arrayMusico[7].idOrquesta=1;
+    arrayMusico[7].isEmpty=0;
+    arrayMusico[7].idMusico=8;
 
-    strcpy(arrayMus[7].nombre,"Mus8");
-    strcpy(arrayMus[7].apellido,"Amus8");
-    arrayMus[7].edad=32;
-    arrayMus[7].IdInstrumento=3;
-    arrayMus[7].IdOrquesta=1;
-    arrayMus[7].isEmpty=0;
-    arrayMus[7].IdMusico=8;
+    strcpy(arrayMusico[8].nombre,"Mus9");
+    strcpy(arrayMusico[8].apellido,"Amus9");
+    arrayMusico[8].edad=33;
+    arrayMusico[8].idInstrumento=5;
+    arrayMusico[8].idOrquesta=1;
+    arrayMusico[8].isEmpty=0;
+    arrayMusico[8].idMusico=9;
 
-    strcpy(arrayMus[8].nombre,"Mus9");
-    strcpy(arrayMus[8].apellido,"Amus9");
-    arrayMus[8].edad=33;
-    arrayMus[8].IdInstrumento=5;
-    arrayMus[8].IdOrquesta=1;
-    arrayMus[8].isEmpty=0;
-    arrayMus[8].IdMusico=9;
+    strcpy(arrayMusico[9].nombre,"Mus10");
+    strcpy(arrayMusico[9].apellido,"Amus10");
+    arrayMusico[9].edad=34;
+    arrayMusico[9].idInstrumento=1;
+    arrayMusico[9].idOrquesta=1;
+    arrayMusico[9].isEmpty=0;
+    arrayMusico[9].idMusico=10;
 
-    strcpy(arrayMus[9].nombre,"Mus10");
-    strcpy(arrayMus[9].apellido,"Amus10");
-    arrayMus[9].edad=34;
-    arrayMus[9].IdInstrumento=1;
-    arrayMus[9].IdOrquesta=1;
-    arrayMus[9].isEmpty=0;
-    arrayMus[9].IdMusico=10;
+    strcpy(arrayMusico[10].nombre,"Mus11");
+    strcpy(arrayMusico[10].apellido,"Amus11");
+    arrayMusico[10].edad=35;
+    arrayMusico[10].idInstrumento=1;
+    arrayMusico[10].idOrquesta=1;
+    arrayMusico[10].isEmpty=0;
+    arrayMusico[10].idMusico=11;
 
-    strcpy(arrayMus[10].nombre,"Mus11");
-    strcpy(arrayMus[10].apellido,"Amus11");
-    arrayMus[10].edad=35;
-    arrayMus[10].IdInstrumento=5;
-    arrayMus[10].IdOrquesta=1;
-    arrayMus[10].isEmpty=0;
-    arrayMus[10].IdMusico=11;
+    strcpy(arrayMusico[11].nombre,"Mus12");
+    strcpy(arrayMusico[11].apellido,"Amus12");
+    arrayMusico[11].edad=36;
+    arrayMusico[11].idInstrumento=1;
+    arrayMusico[11].idOrquesta=1;
+    arrayMusico[11].isEmpty=0;
+    arrayMusico[11].idMusico=12;
 
-    strcpy(arrayMus[11].nombre,"Mus12");
-    strcpy(arrayMus[11].apellido,"Amus12");
-    arrayMus[11].edad=36;
-    arrayMus[11].IdInstrumento=1;
-    arrayMus[11].IdOrquesta=1;
-    arrayMus[11].isEmpty=0;
-    arrayMus[11].IdMusico=12;
+    strcpy(arrayMusico[12].nombre,"Mus13");
+    strcpy(arrayMusico[12].apellido,"Amus13");
+    arrayMusico[12].edad=37;
+    arrayMusico[12].idInstrumento=1;
+    arrayMusico[12].idOrquesta=1;
+    arrayMusico[12].isEmpty=0;
+    arrayMusico[12].idMusico=13;
 
-    strcpy(arrayMus[12].nombre,"Mus13");
-    strcpy(arrayMus[12].apellido,"Amus13");
-    arrayMus[12].edad=37;
-    arrayMus[12].IdInstrumento=5;
-    arrayMus[12].IdOrquesta=1;
-    arrayMus[12].isEmpty=0;
-    arrayMus[12].IdMusico=13;
+    ///segunda orquesta completa ******
+    strcpy(arrayMusico[13].nombre,"Mus14");
+    strcpy(arrayMusico[13].apellido,"Amus14");
+    arrayMusico[13].edad=38;
+    arrayMusico[13].idInstrumento=1;
+    arrayMusico[13].idOrquesta=4;
+    arrayMusico[13].isEmpty=0;
+    arrayMusico[13].idMusico=14;
+
+    strcpy(arrayMusico[14].nombre,"Mus15");
+    strcpy(arrayMusico[14].apellido,"Amus15");
+    arrayMusico[14].edad=39;
+    arrayMusico[14].idInstrumento=1;
+    arrayMusico[14].idOrquesta=4;
+    arrayMusico[14].isEmpty=0;
+    arrayMusico[14].idMusico=15;
+
+    strcpy(arrayMusico[15].nombre,"Mus16");
+    strcpy(arrayMusico[15].apellido,"Amus16");
+    arrayMusico[15].edad=40;
+    arrayMusico[15].idInstrumento=1;
+    arrayMusico[15].idOrquesta=4;
+    arrayMusico[15].isEmpty=0;
+    arrayMusico[15].idMusico=16;
+
+    strcpy(arrayMusico[16].nombre,"Mus17");
+    strcpy(arrayMusico[16].apellido,"Amus17");
+    arrayMusico[16].edad=41;
+    arrayMusico[16].idInstrumento=2;
+    arrayMusico[16].idOrquesta=4;
+    arrayMusico[16].isEmpty=0;
+    arrayMusico[16].idMusico=17;
+
+    strcpy(arrayMusico[17].nombre,"Mus18");
+    strcpy(arrayMusico[17].apellido,"Amus18");
+    arrayMusico[17].edad=42;
+    arrayMusico[17].idInstrumento=5;
+    arrayMusico[17].idOrquesta=4;
+    arrayMusico[17].isEmpty=0;
+    arrayMusico[17].idMusico=18;
+
+    strcpy(arrayMusico[18].nombre,"Mus19");
+    strcpy(arrayMusico[18].apellido,"Amus19");
+    arrayMusico[18].edad=43;
+    arrayMusico[18].idInstrumento=2;
+    arrayMusico[18].idOrquesta=4;
+    arrayMusico[18].isEmpty=0;
+    arrayMusico[18].idMusico=19;
+
+    strcpy(arrayMusico[19].nombre,"Mus20");
+    strcpy(arrayMusico[19].apellido,"Amus20");
+    arrayMusico[19].edad=44;
+    arrayMusico[19].idInstrumento=2;
+    arrayMusico[19].idOrquesta=4;
+    arrayMusico[19].isEmpty=0;
+    arrayMusico[19].idMusico=20;
+
+*/
 
 
-    strcpy(arrayMus[13].nombre,"Mus14");
-    strcpy(arrayMus[13].apellido,"Amus14");
-    arrayMus[13].edad=38;
-    arrayMus[13].IdInstrumento=1;
-    arrayMus[13].IdOrquesta=1;
-    arrayMus[13].isEmpty=0;
-    arrayMus[13].IdMusico=14;
-
-    strcpy(arrayMus[14].nombre,"Mus15");
-    strcpy(arrayMus[14].apellido,"Amus15");
-    arrayMus[14].edad=39;
-    arrayMus[14].IdInstrumento=5;
-    arrayMus[14].IdOrquesta=1;
-    arrayMus[14].isEmpty=0;
-    arrayMus[14].IdMusico=15;
-
-    strcpy(arrayMus[15].nombre,"Mus16");
-    strcpy(arrayMus[15].apellido,"Amus16");
-    arrayMus[15].edad=40;
-    arrayMus[15].IdInstrumento=1;
-    arrayMus[15].IdOrquesta=1;
-    arrayMus[15].isEmpty=0;
-    arrayMus[15].IdMusico=16;
 }
 
 

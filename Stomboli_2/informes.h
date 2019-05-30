@@ -20,5 +20,7 @@ int inf_orquestaCompleta(Instrumento* arrayInstrumentos,Orquesta* arrayOrquestas
 int inf_menosMusicosPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquesta,int lengthMus, int lengthOrq);
 int inf_promedioPorInstrumento (Orquesta* orquestas, Musico* musicos, int lengthOrq, int lengthMus);
 int inf_musNoViento (Musico* arrayMusicos, Instrumento* instrumentos,int lengthMus, int length);
+int inf_ordenar (Musico* arrayMus,int lengthMus);
+
 
 #endif // INFORMES_H_INCLUDED
