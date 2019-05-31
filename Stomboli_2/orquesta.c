@@ -154,18 +154,18 @@ int orq_lugarLibre (Orquesta* orquestas, int length, int *posLibre)
  * \return  0 si lo encontro, -1 si no.
  *
  */
-int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, int *id)
+int orq_buscarPorId (Orquesta* orquestas,char *msg,char *msgError, int length, int *posLibre,int id)
 {
     int retorno=-1;
     int i;
-    utn_getInt(msg,msgError,1,3,2,id);
+    ///utn_getInt(msg,msgError,1,3,2,id);
     for(i=0; i<length; i++)
     {
-        if (orquestas[i].IdOrquesta==*id)
+        if (orquestas[i].IdOrquesta==id)
         {
             retorno=0;
-            *id=i;
-            printf("\nEl id ingresado es de la orquesta %s\n",orquestas[i].nombre);
+            *posLibre=i;
+            ///printf("\nEl id ingresado es de la orquesta %s\n",orquestas[i].nombre);
             break;
 
         }
@@ -185,7 +185,7 @@ int orq_baja (Orquesta* orquestas, int length, int *id)
 {
     int retorno=-1;
     orq_mostrar(orquestas,length);
-    if(orq_buscarPorId(orquestas,"\nIngrese Id de la orquesta a dar de Baja:\n","Error",length,id)==0)
+    if(orq_buscarPorId(orquestas,"\nIngrese Id de la orquesta a dar de Baja:\n","Error",length,id,2)==0)
     {
 
         orquestas[*id].isEmpty=2;

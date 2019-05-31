@@ -39,9 +39,10 @@ void informes (Orquesta* arrayOrquestas, int lengthOrq, Instrumento* arrayInstru
                         case 3:
                             inf_menosIntegrantesPorOrquesta(arrayMusicos,arrayOrquestas,lengthMus,lengthOrq);
                             break;
-                         case 4:
+                         case 4:    ///pincha despues de mostrar.
                             inf_InstrumentosOrq(arrayInstrumentos,arrayOrquestas,arrayMusicos,lengthIns,lengthOrq,lengthMus);
-                        case 5:
+                            break;
+                        case 5:     ///else, no hay!!
                              inf_orquestaCompleta(arrayInstrumentos, arrayOrquestas,arrayMusicos, lengthIns,lengthOrq,lengthMus);
                             break;
                         case 6:
@@ -86,7 +87,7 @@ int inf_OrquestaPorLugar(Orquesta* arrayOrquestas, int length)
             {
                 printf("\n Id de la orquesta: %d",arrayOrquestas[i].IdOrquesta);
                 printf("\n Nombre: %s",arrayOrquestas[i].nombre);
-                printf("\n Nombre: %s",arrayOrquestas[i].lugar);
+                printf("\n Lugar: %s",arrayOrquestas[i].lugar);
 
                 switch(arrayOrquestas[i].tipo)
                 {
@@ -118,24 +119,28 @@ int inf_OrquestaPorLugar(Orquesta* arrayOrquestas, int length)
 int inf_musicoMenor (Orquesta* arrayOrquestas, Instrumento* arrayInstrumentos, Musico* musicos,int lengthOrq, int lengthIns, int lengthMus)
 {
     int i;
+    int j;
+    int id;
+
     int retorno=-1;
 
     if((musicos != NULL && lengthMus > 0) && (arrayOrquestas != NULL && lengthOrq > 0) && (arrayInstrumentos != NULL && lengthIns> 0))
     {
         for(i=0; i<=lengthMus; i++)
         {
-            if((musicos[i].isEmpty == 0) && (arrayInstrumentos[i].isEmpty == 0) && (arrayOrquestas[i].isEmpty == 0))
+            if((musicos[i].isEmpty == 0))
             {
                 if(musicos[i].edad<25)
                 {
-                    ///fflush (stdin);
-                    /// __fopurgue(stdin)  PARA LINUX
+                    id=musicos[i].IdOrquesta;
+                    orq_buscarPorId(arrayOrquestas,"","",lengthOrq,&j, id);
+                    ///agregar buscar por id, instrumento.
                     printf("\n\nId de musico: %d",musicos[i].IdMusico);
                     printf("\nNombre: %s",musicos[i].nombre);
                     printf("\nApellido: %s",musicos[i].apellido);
                     printf("\nEdad: %d",musicos[i].edad);
                     printf("\nNombre del Instrumento: %s", arrayInstrumentos[i].nombre);
-                    printf("\nNombre de la Orquesta: %s \n", arrayOrquestas[i].nombre); ///tira basura
+                   printf("\nNombre de la Orquesta: %s \n", arrayOrquestas[j].nombre);
                 }
             }
         }retorno=0;
@@ -174,9 +179,9 @@ int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrques
                         {
                             contadorMusicos++;
                         }
-                        if(contadorMusicos>6)
+                        if(contadorMusicos<6)
                         {
-                            printf("\nEl id de la orquesta que tiene mas de 6 integrantes es: %d",arrayMusicos[i].IdOrquesta);
+                            printf("\nEl id de la orquesta que tiene mas de 6 integrantes es: %d",arrayOrquestas[i].IdOrquesta);
                             printf("\nEl nombre de la orquesta que tiene mas de 6 integrantes es: %s",arrayOrquestas[i].nombre);
                             break;
                         }
@@ -200,22 +205,24 @@ int inf_menosIntegrantesPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrques
 int inf_InstrumentosOrq (Instrumento* arrayInstr, Orquesta* arrayOrq, Musico* arrayMus, int lengthIns, int lengthOrq, int lengthMus)
 {
     int i;
+    int j;
+
     int retorno=-1;
     int buffer;
     if((arrayInstr != NULL && lengthIns>0) && (arrayOrq != NULL && lengthOrq>0 ))
     {
         utn_getInt("ingrese id de la Orquesta","Error",1,100,2,&buffer);
 
-        for (i=0; i<lengthIns; i++)
+        for (i=0; i<arrayMus; i++)
         {
-            if(arrayInstr[i].isEmpty==0)
+            if(arrayMus[i].isEmpty==0)
             {
-                if(arrayOrq[i].IdOrquesta==buffer && arrayMus[i].IdOrquesta==buffer)
+                if(arrayMus[i].IdOrquesta==buffer)
                 {
-
+                    ins_buscarPorId (arrayInstr,"","", lengthIns,&j,arrayMus[i].IdInstrumento);
                     printf("\nNombre: %s",arrayMus[i].nombre);
-                    printf("\nNombre: %s",arrayInstr[i].nombre);
-                    switch(arrayInstr[i].tipo)
+                    printf("\nNombre: %s",arrayInstr[j].nombre);
+                    switch(arrayInstr[j].tipo)
                     {
                         case 1:
                             printf("\nTipo de instrumento: Cuerdas\n");
@@ -351,8 +358,8 @@ int inf_menosMusicosPorOrquesta (Musico* arrayMusicos, Orquesta* arrayOrquestas,
                     bufferMin=contadorMusicos;
                     printf("\nEl id de la orquesta que tiene menos integrantes es: %d",arrayOrquestas[i].IdOrquesta);
                     printf("\nCon %d integrantes es: ",contadorMusicos);
-                    printf("\nEl id de la orquesta que tiene menos integrantes es: %d",arrayOrquestas[i].nombre);
-                    printf("\nEl id de la orquesta que tiene menos integrantes es: %d",arrayOrquestas[i].lugar);
+                    printf("\n %s",arrayOrquestas[i].nombre);
+                    printf("\n %s",arrayOrquestas[i].lugar);
 
                     retorno=0;
 

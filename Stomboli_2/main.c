@@ -65,14 +65,11 @@ int main()
                 ins_mostrar(listado,INSTRUMENTOS);
                 break;
             case 10:
-                ///mus_ordenar(listado3,MUSICOS);
-                ///mus_mostrar(listado,listado3,MUSICOS,INSTRUMENTOS);
                 informes(list2,ORQUESTA,listado,INSTRUMENTOS,listado3,MUSICOS);
                 break;
             case 11:
             seguir= 'n';
             break;
-
             default:
                 printf("Opcion invalida");
                 break;

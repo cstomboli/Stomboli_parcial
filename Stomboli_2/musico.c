@@ -101,9 +101,9 @@ int mus_alta(Orquesta* arrayOrq, Instrumento* arrayIns, Musico* arrayMus, char *
             {
                 if(!utn_getInt("Ingrese Edad:\n","Invalido, reingrese:\n",1,100,2,&bufferEdad))
                 {
-                    if(!orq_buscarPorId(arrayOrq,"Ingrese id de la orquesta\n","Error",lengthOrq,&bufferIndiceOrquesta))
+                    if(!orq_buscarPorId(arrayOrq,"Ingrese id de la orquesta\n","Error",lengthOrq,&bufferIndiceOrquesta,2))
                     {
-                        if(!ins_buscarPorId(arrayIns,"Ingrese instrumento:\n1- Cuerdas \n2- Viento Madera \n3- Viento Metal \n4- Percusion\n","Invalido, reingrese:\n",lengthIns,&bufferIdInstrumento))
+                        if(!ins_buscarPorId(arrayIns,"Ingrese instrumento:\n1- Cuerdas \n2- Viento Madera \n3- Viento Metal \n4- Percusion\n","Invalido, reingrese:\n",lengthIns,&bufferIdInstrumento,2))
                         {
                                 ///if(buscar orquesta por id)
                                 bufferIdOrquesta=arrayOrq[bufferIndiceOrquesta].IdOrquesta;

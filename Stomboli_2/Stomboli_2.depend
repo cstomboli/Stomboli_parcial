@@ -64,3 +64,68 @@
 	<ctype.h>
 	"utn.h"
 
+1559259950 source:d:\stomboli\stomboli_parcial\stomboli_2\instrumento.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"instrumento.h"
+	"utn.h"
+
+1559259733 d:\stomboli\stomboli_parcial\stomboli_2\instrumento.h
+
+1559251706 d:\stomboli\stomboli_parcial\stomboli_2\utn.h
+
+1559251706 source:d:\stomboli\stomboli_parcial\stomboli_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"instrumento.h"
+	"orquesta.h"
+	"musico.h"
+	"utn.h"
+	"informes.h"
+
+1559258979 d:\stomboli\stomboli_parcial\stomboli_2\orquesta.h
+	"instrumento.h"
+	"orquesta.h"
+
+1559251706 d:\stomboli\stomboli_parcial\stomboli_2\musico.h
+	"instrumento.h"
+	"orquesta.h"
+
+1559251706 d:\stomboli\stomboli_parcial\stomboli_2\informes.h
+
+1559259766 source:d:\stomboli\stomboli_parcial\stomboli_2\musico.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"musico.h"
+	"instrumento.h"
+	"orquesta.h"
+	"utn.h"
+
+1559259023 source:d:\stomboli\stomboli_parcial\stomboli_2\orquesta.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"orquesta.h"
+	"instrumento.h"
+	"utn.h"
+
+1559251706 source:d:\stomboli\stomboli_parcial\stomboli_2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+
+1559260130 source:d:\stomboli\stomboli_parcial\stomboli_2\informes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"musico.h"
+	"instrumento.h"
+	"orquesta.h"
+	"utn.h"
+	"informes.h"
+

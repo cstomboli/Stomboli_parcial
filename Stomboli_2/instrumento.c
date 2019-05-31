@@ -149,24 +149,23 @@ int ins_lugarLibre (Instrumento* instrumentos, int length, int *posLibre)
  * \return  0 si lo encontro, -1 si no.
  *
  */
-int ins_buscarPorId (Instrumento* instrumentos,char *msg,char *msgError, int length, int *id)
+int ins_buscarPorId (Instrumento* instrumentos,char *msg,char *msgError, int length,int *pos, int id)
 {
     int retorno=-1;
     int i;
-    utn_getInt(msg,msgError,1,3,2,id);
+    ///utn_getInt(msg,msgError,1,3,2,id);
     for(i=0; i<length; i++)
     {
-        if (instrumentos[i].IdInstrumento==*id)
+        if(instrumentos[i].isEmpty==0)
         {
-            retorno=0;
-            *id=i;
-             break;
+            if (instrumentos[i].IdInstrumento==id)
+            {
+                retorno=0;
+                *pos=i;
+                 break;
+            }
         }
-        else
-        {
-            printf("Id no encontrado.");
-            break;
-        }
+
     }
 
     return retorno;
@@ -187,7 +186,7 @@ int ins_baja (Instrumento* instrumentos, int length)
 
     ins_mostrar(instrumentos,length);
 
-    if(ins_buscarPorId(instrumentos,"\nIngrese Id a dar de baja\n","\nId incorrecto\n",length,&buffer)==0)
+    if(ins_buscarPorId(instrumentos,"\nIngrese Id a dar de baja\n","\nId incorrecto\n",length,&buffer,2)==0)
     {
         instrumentos[buffer].isEmpty=2;
         retorno=0;

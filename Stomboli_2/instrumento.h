@@ -14,7 +14,7 @@ int ins_empty (Instrumento *instrumentos, int length);
 int ins_inicializar(Instrumento* instrumentos, int length);
 int ins_alta(Instrumento* instrumentos, char *msgError,int lengthint);
 int ins_lugarLibre (Instrumento* instrumentos, int length, int *posLibre);
-int ins_buscarPorId (Instrumento* instrumentos,char *msg,char *msgError, int length, int *id);
+int ins_buscarPorId (Instrumento* instrumentos,char *msg,char *msgError, int length,int *pos, int id);
 int ins_baja (Instrumento* instrumentos, int length);
 int ins_mostrarId(Instrumento* instrumentos, int length, int id);
 int ins_mostrar(Instrumento* instrumentos, int length);
